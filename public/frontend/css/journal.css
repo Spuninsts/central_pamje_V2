@@ -1,0 +1,89 @@
+.cen-bg-darkblue{
+    background-color: #002968;
+}
+
+.cen-h2-darkblue {
+    color: #1E429B;
+}
+
+.cen-bg-darkgrey{
+    background-color: #EDEEEF;
+}
+
+/* Nav */
+.nav-item a:hover{
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.dropdown-menu a {
+    background-color: #002968;
+    color: #fff;
+    border-radius: 0;
+}
+
+.dropdown a:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 0;
+}
+
+.dropdown-menu a:link {
+    background-color: #002968;
+    color: #fff;
+    border-radius: 0;
+}
+
+.dropdown-menu a.dropdown-item:hover {
+    background-color: #0d6efd;
+    border-radius: 0;
+  }
+
+.dropdown-toggle[aria-expanded="true"] {
+    background-color: #0d6efd ;
+    border-radius: 0;
+}
+
+.dropdown-menu{
+    background-color: #002968;
+    color: #fff;
+}
+
+.navbar-toggler {
+    background-color: #0d6efd;
+    border: none;
+}
+
+
+ 
+
+
+
+/*--------------------------------------------------------------
+# Counts
+--------------------------------------------------------------*/
+
+  
+.cen-counts  {
+    padding: 20px ;
+    width: 80%;
+    justify-content: space-around;
+    text-align: center;
+    background: #1E429B;
+  }
+  
+
+  
+  .cen-counts  span {
+    font-size: 36px;
+    display: block;
+    font-weight: 600;
+    color: #F9D01A;
+  }
+  
+  .cen-counts  p {
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+  }
