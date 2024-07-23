@@ -41,13 +41,13 @@
         <div class="collapse navbar-collapse cen-bg-darkblue " id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item px-3">
-              <a class="nav-link text-white" href="index.php">HOME</a>
+              <a class="nav-link text-white" href="/">HOME</a>
             </li>
             <li class="nav-item px-3">
               <a class="nav-link text-white" href="#">ABOUT US</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="journal.php">JOURNALS</a>
+              <a class="nav-link text-white " href="journals">JOURNALS</a>
             </li>
             <li class="nav-item px-3">
               <div class="dropdown">

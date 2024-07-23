@@ -8,17 +8,21 @@
       </div>
       <!-- Second Row: Cards -->
       <div class="row row-cols-1 row-cols-md-4 g-4">
+
+        @foreach( $ArticleData as $key => $item)
         <!-- Card 1 -->
         <div class="col">
           <div class="card rounded-0">
-            <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 1">
+            <!-- <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 1"> -->
             <div class="card-body">
-              <h5 class="card-title cen-font-darkblue">Card 1</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
+              <p class="card-text">{{ $item->about }}</p>
+              <!-- <p class="card-text">{{ $item->article_status }}</p> -->
             </div>
           </div>
         </div>
-        <!-- Card 2 -->
+        @endforeach
+        <!-- < !-- Card 2 -- >
         <div class="col">
           <div class="card rounded-0">
             <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 2">
@@ -28,7 +32,7 @@
             </div>
           </div>
         </div>
-        <!-- Card 3 -->
+        < !-- Card 3 -- >
         <div class="col">
           <div class="card rounded-0">
             <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 3">
@@ -38,7 +42,7 @@
             </div>
           </div>
         </div>
-        <!-- Card 4 -->
+        < -- Card 4 -- >
         <div class="col">
           <div class="card rounded-0">
             <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 4">
@@ -47,6 +51,6 @@
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
