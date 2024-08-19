@@ -1,80 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="NobleUI">
-	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-	<title>Admin Panel PAMJE</title>
-
-    <style type="text/css">
-        .auth-admin-side-wrapper {
-            width: 100%;
-            height: 100%;
-            background-image: url("{{ asset('../upload/admin-login.png') }}");
-        }
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CENTRAL - Admin Login Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
     @include('admin.body.css')
 
 </head>
 <body>
-<div class="main-wrapper">
-		<div class="page-wrapper full-page">
-			<div class="page-content d-flex align-items-center justify-content-center">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+        <div class="card p-4 shadow-lg bg-color" style="width: 400px;">
+            <div class="d-flex justify-content-center mb-1">
+                <img src=" {{ asset('../upload/central-logo.svg') }}"  class="logo w-150"/>
+            </div>
+            <h5 class="text-center mb-4 text-secondary">PEER REVIEWER LOGIN PAGE</h5>
+            <form class="forms-sample"  method="POST" action="{{ route('login') }}">
+              @csrf
+                <div class="form-group">
+                    <label for="userEmail" class="form-label">Email / User ID</label>
+                    <input type="text" class="form-control" id="login" placeholder="Email/Username">
 
-				<div class="row w-100 mx-0 auth-page">
-					<div class="col-md-8 col-xl-6 mx-auto">
-						<div class="card">
-							<div class="row">
-                <div class="col-md-4 pe-md-0">
-                  <div class="auth-admin-side-wrapper">
-
-                  </div>
                 </div>
-                <div class="col-md-8 ps-md-0">
-                  <div class="auth-form-wrapper px-4 py-5">
-                    <a href="{{ route('dashboard') }}" class="noble-ui-logo logo-light d-block mb-2">PAMJE <span>CENTRAL</span></a>
-                    <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
-
-                    <form class="forms-sample"  method="POST" action="{{ route('login') }}">
-                     @csrf
-                      <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email/User ID</label>
-                        <input type="text"  name="login" class="form-control" id="login" placeholder="Email/Username">
-                      </div>
-                      <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" autocomplete="current-password" placeholder="Password">
-                      </div>
-                      <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
-                        <label class="form-check-label" for="remember_me">
-                          Remember me
-                        </label>
-                      </div>
-                      <div>
-                      <button type="submit" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                         Login
-                        </button>
-                      </div>
-                      <!-- <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a> -->
-                    </form>
-                  </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="Password">
+             
                 </div>
-              </div>
-						</div>
-					</div>
-				</div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn-signin btn-lg btn-block text-white">Sign in</button>
 
-			</div>
-		</div>
-	</div>
+         
+            </form>
 
-	@include('admin.body.scripts')
+        </div>
+    </div>
+   
+    @include('admin.body.scripts')
 
 </body>
 </html>

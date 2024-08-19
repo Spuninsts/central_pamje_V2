@@ -1,7 +1,7 @@
 <header class="pt-3 ">
         <div class="container d-flex flex-wrap align-self-center mb-1 w-100">
           <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-            <img src="{{ asset('frontend/img/central-logo.svg') }}" alt="The Homestread Logo" width="100" height="100">
+            <img src="{{ asset('frontend/img/central-logo.svg') }}" alt="The Homestread Logo" width="150" height="150">
           </a>
 
 
@@ -47,7 +47,16 @@
               <a class="nav-link text-white" href="#">ABOUT US</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="journals">JOURNALS</a>
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">JOURNALS</a>
+              
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="journals.php">By Alphabetical</a></li>
+                  <li><a class="dropdown-item" href="#">By Category</a></li>
+
+
+                </ul>
+            </div>
             </li>
             <li class="nav-item px-3">
               <div class="dropdown">

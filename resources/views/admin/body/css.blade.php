@@ -10,6 +10,7 @@
 
 	<!-- Plugin css for this page -->
 	<link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/admin-login/adminlogin.css')}}">
 	<!-- End plugin css for this page -->
 
 	<!-- Plugin css for DATA TABLES -->

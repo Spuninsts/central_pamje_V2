@@ -3,7 +3,7 @@
       <div class="row my-4 ">
         <div class="col d-flex justify-content-between align-items-center">
           <h2 class="cen-font-darkblue">Central Features</h2>
-          <a href="#" class="btn btn-primary">View all hello >></a>
+          <a href="#" class="btn btn-primary">View all</a>
         </div>
       </div>
       <!-- Second Row: Cards -->
