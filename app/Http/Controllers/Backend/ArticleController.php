@@ -82,5 +82,17 @@ class ArticleController extends Controller
 
     }// End Method
 
+    public function LoadAllArticleData(Request $request){
+
+        dd(request()->val);
+        $ArticleData = Article::where('article_status','featured')
+                        ->orWhere('article_status','active')
+                        ->get();
+        $JournalData = journal::where('journal_group','chief_editor')
+                        ->get();
+        return view('frontend.frontendalljournalsP', compact('ArticleData','JournalData'));
+
+    }// End Method
+
 
 }
