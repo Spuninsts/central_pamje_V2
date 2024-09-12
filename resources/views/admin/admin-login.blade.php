@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CENTRAL - Admin Login Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
+
     @include('admin.body.css')
 
 </head>
@@ -27,20 +27,20 @@
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="Password">
-             
+
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Remember me</label>
                 </div>
-                <button type="submit" class="btn-signin btn-lg btn-block text-white">Sign in</button>
+                <button type="submit" class="btn-signin btn-lg btn-block text-white">Login</button>
 
-         
+
             </form>
 
         </div>
     </div>
-   
+
     @include('admin.body.scripts')
 
 </body>

@@ -35,6 +35,7 @@ Route::get('/', [UserController::class, 'Index']);
     Route::get('/journals', [ArticleController::class, 'LoadAllArticlesMain'])->name('main.journals');
     Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
     Route::get('/journals/p', [ArticleController::class, 'LoadAllArticlesMainP'])->name('main.journals.p');
+    Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
     //return view('welcome');
 //});
 
