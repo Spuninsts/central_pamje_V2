@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $url = '';
         if($request->user()->role === 'admin'){
-            $url = 'admin/dashboard';
+            $url = '/admin/dashboard';
         } elseif($request->user()->role === 'author' || $request->user()->role === 'reviewer'){
             $url = '/registered'; //this has additional menu for peer search
         } else {
