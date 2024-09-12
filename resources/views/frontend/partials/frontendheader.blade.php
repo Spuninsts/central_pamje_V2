@@ -1,7 +1,7 @@
 <header class="pt-3 ">
         <div class="container d-flex flex-wrap align-self-center mb-1 w-100">
           <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-            <img src="{{ asset('frontend/img/central-logo.svg') }}" alt="The Homestread Logo" width="150" height="150">
+            <img src="{{ asset('frontend/img/central-logo.svg') }}" alt="Central Logo" width="150" height="150">
           </a>
 
 
@@ -41,10 +41,10 @@
         <div class="collapse navbar-collapse cen-bg-darkblue " id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item px-3">
-              <a class="nav-link text-white" href="/">HOME</a>
+              <a class="nav-link text-white" href="index.php">HOME</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link text-white" href="#">ABOUT US</a>
+              <a class="nav-link text-white" href="about.php">ABOUT US</a>
             </li>
             <li class="nav-item px-3">
               <div class="dropdown">
@@ -52,7 +52,7 @@
               
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="journals.php">By Alphabetical</a></li>
-                  <li><a class="dropdown-item" href="#">By Category</a></li>
+                  <li><a class="dropdown-item" href="journal-category">By Category</a></li>
 
 
                 </ul>
@@ -65,10 +65,10 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="for_editors.php">For Editors</a></li>
-                  <li><a class="dropdown-item" href="#">For Researchers</a></li>
-                  <li><a class="dropdown-item" href="#">For Authors</a></li>
-                  <li><a class="dropdown-item" href="#">For Peer Reviewers</a></li>
+                  <li><a class="dropdown-item" href="for-editors.php">For Editors</a></li>
+                  <li><a class="dropdown-item" href="for-researchers">For Researchers</a></li>
+                  <li><a class="dropdown-item" href="for-authers">For Authors</a></li>
+                  <li><a class="dropdown-item" href="for-reviewers">For Peer Reviewers</a></li>
 
                 </ul>
               </div>
@@ -78,7 +78,7 @@
             </li>
 
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="peer_reviewers.php">PEER REVIEWERS</a>
+              <a class="nav-link text-white " href="peer-reviewers.php">PEER REVIEWERS</a>
             </li>
             <li class="nav-item px-3">
               <a class="nav-link text-white " href="contact.php">CONTACT US</a>

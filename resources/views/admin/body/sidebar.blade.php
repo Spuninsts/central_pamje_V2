@@ -1,7 +1,9 @@
 <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          PAMJE<span>ORG</span>
+          
+          <img src="{{ asset('frontend/img/logo-central-w.jpg') }}" alt="Central Logo" width="100" >
+
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
