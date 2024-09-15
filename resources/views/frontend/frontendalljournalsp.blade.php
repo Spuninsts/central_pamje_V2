@@ -113,7 +113,7 @@
                     @endforeach
                     <p><span class="p-bold">Pointh Person:</span> {{ $item->article_contact }}</p>
                     <p><span class="p-bold">Email:</span> {{ $item->email }}</p>
-                    <p><a href="#" >View more Information</a></p>
+                    <p><a href="/journals/data?val={{ $item->journal_mid }}" >View more Information</a></p>
                     </div>
                 </div>
                 <hr>

@@ -24,7 +24,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->randomElement(['MD','MA']), 
+            'title' => fake()->randomElement(['MD','MA']),
             'fname' => fake()->firstName(),
             'lname' => fake()->lastName(),
             'username' => fake()->name(),
@@ -33,8 +33,8 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'address' => fake()->address(),
-            'role' => fake()->randomElement(['admin','editor','previewer','edtpvwr']),
-            'status' => fake()->randomElement(['inactive','active','rejected']),
+            'journal_role' => fake()->randomElement(['admin','editor','previewer','edtpvwr']),
+            'status' => fake()->randomElement(['inactive','active','pending']),
         ];
     }
 
