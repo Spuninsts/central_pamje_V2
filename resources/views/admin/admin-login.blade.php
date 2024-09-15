@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="CENTRAL Admin Login">
-	<meta name="author" content="NobleUI">
+	<meta name="author" content="">
 	<meta name="keywords" content="Central Admin login">
 	<title>CENTRAL - Admin Login Page</title>
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('../upload/favicon/apple-touch-icon.png') }}">
