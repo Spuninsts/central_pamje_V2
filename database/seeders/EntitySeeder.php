@@ -22,6 +22,7 @@ class EntitySeeder extends Seeder
             //first entry
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'INDEX01',
                 'ent_type' => 'index',
                 'ent_name' => 'Health Research and Development Network',
                 'ent_acro' => 'HERDIN-Plus',
@@ -30,6 +31,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'INDEX02',
                 'ent_type' => 'index',
                 'ent_name' => 'ASEAN Citation Index ',
                 'ent_acro' => 'ACI',
@@ -38,6 +40,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'INDEX03',
                 'ent_type' => 'index',
                 'ent_name' => 'Directory of Open Access Journals',
                 'ent_acro' => 'DOAJ',
@@ -46,6 +49,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'INDEX04',
                 'ent_type' => 'index',
                 'ent_name' => 'Western Pacific Region Index Medicus',
                 'ent_acro' => 'WPRIM',
@@ -54,6 +58,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'PUBL01',
                 'ent_type' => 'publisher',
                 'ent_name' => 'PubMed by the US National Library of Medicine',
                 'ent_acro' => '',
@@ -62,6 +67,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'PUBL02',
                 'ent_type' => 'publisher',
                 'ent_name' => 'Elsevier’s Scopus',
                 'ent_acro' => '',
@@ -70,6 +76,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'PUBL03',
                 'ent_type' => 'publisher',
                 'ent_name' => 'Thomson Reuters ISI',
                 'ent_acro' => 'ISI',
@@ -78,6 +85,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
+                'ent_id'=> 'PUBL04',
                 'ent_type' => 'publisher',
                 'ent_name' => 'University of the East Ramon Magsaysay Memorial Medical Center, Inc',
                 'ent_acro' => 'UERMMMC',

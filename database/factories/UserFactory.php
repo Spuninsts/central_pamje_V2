@@ -33,7 +33,6 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'address' => fake()->address(),
-            'journal_role' => fake()->randomElement(['admin','editor','previewer','edtpvwr']),
             'status' => fake()->randomElement(['inactive','active','pending']),
         ];
     }

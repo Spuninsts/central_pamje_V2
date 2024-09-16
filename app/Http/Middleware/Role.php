@@ -15,9 +15,11 @@ class Role
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if($request->user()->role !== $role){
+        if($request->user()->user_type !== $role){
             return redirect('dashboard');
         }
         return $next($request);
     }
+
+    // ATTENTION: Since we removed the role column, we are using user_type
 }

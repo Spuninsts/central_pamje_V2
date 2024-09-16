@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('ent_created_by')->nullable();
+            $table->string('ent_id')->nullable(); // indexes or publisher ID's
             $table->string('ent_type')->nullable(); // indexes or publisher
-            $table->string('ent_name')->nullable(); // active,inactive
-            $table->string('ent_acro')->nullable(); // entity title
+            $table->string('ent_name')->nullable(); // name
+            $table->string('ent_acro')->nullable(); // acronyum
             $table->text('ent_description')->nullable(); // entity description
             $table->text('ent_url')->nullable(); // entity external site
         });

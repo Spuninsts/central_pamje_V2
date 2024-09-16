@@ -8,111 +8,207 @@
 
      <!---main body-->
 
-      <main>
-
-        <!-- Journal dedicated page-->
-    <div class="container py-5 ">
-            <!-- First Row: Heading -->
-            <div class="row my-4">
-                <div class="col d-flex justify-content-between align-items-center">
-                <h2 class="cen-font-darkblue">Journal page</h2>
-                <a href="#" class="btn btn-primary">View all</a>
-                </div>
-            </div>
-
-      <!-- Row with 3 Cards -->
-      <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-
-                    @foreach($ArticleData as $key => $item)
-                        <div class="mb-3">
-                            <label class="form-label">Journal ID</label>
-                            <p>{{ $item->journal_mid }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Journal Name</label>
-                            <p>{{ $item->full_title }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Short Name</label>
-                            <p>{{ $item->short_title }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Journal URL</label>
-                            <p>{{ $item->link }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Joural email</label>
-                            <p>{{ $item->email }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Organization</label>
-                            <p>{{ $item->org_society }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">About this Journal</label>
-                            <p>{{ $item->about }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Aims and Scopes</label>
-                            <p>{{ $item->aims_scope }} </p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Article Publication Policy</label>
-                            <p>{{ $item->policy }} </p>
-                        </div>
-                        @endforeach
-                </div>
-            </div>
+   <!---main body-->
+<main>
+    <div class="container-fluid cen-page-header">
+      <div class="container">
+        <div class="row" >
+          <div class="page-header">
+            <h1>Journal</h1>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
+    <div class="container-fluid">
+      <div class="container">
+      <div class="row my-3">
+        <span><a href="#" class="cen-breadcrumbs"> Home</a> »
+                <a href="#" class="cen-breadcrumbs">Journals</a> »
 
-                    <div class="row mb-3">
-                            <div class="mb-3">
-                                <label for="about" class="form-label">Meet the Team</label>
-                            </div>
+      </div>
+      </div>
+    </div>
 
-                            @foreach($TeamData as $key => $item)
-                            <div class="mb-3">
-                                <label for="aims_scope" class="form-label">Aims and scope</label>
-                                <textarea class="form-control" name="aims_scope" rows="5" placeholder="max of 50 words"></textarea>
-                            </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row my-2">
 
-                            <div class="mb-3">
-                                <label for="link" class="form-label">URL Link </label>
-                                <input type="text" class="form-control" name="link" placeholder="http://">
-                           </div>
-                           <div class="mb-3">
-                                <label for="policy" class="form-label">Article Publication Policy </label>
-                                <input type="text" class="form-control" name="policy" placeholder="">
-                           </div>
+            <!-- Journal Profile 'ArticleData','UserData','$EntityData','OrgData' -->
+            <div class="journal-item">
+            @foreach( $ArticleData as $key => $item)
+                <div class="row my-4 ">
+                    <div class="col-sm-2">
+                        <a href="#"><img src="img/journals_logo/pjohns_logo.jpg"  alt="#"  class="w-100"></a>
+                    </div>
+                    <div class="col-sm-10 my-2" >
+                        <h2 class="fw-bold fs-1">{{ $item->full_title }}</h2>
 
-                           <div class="mb-3">
-                                <label for="indexing" class="form-label">Indexing</label>
-                                <textarea class="form-control" name="indexing" rows="5" placeholder=""></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="publisher" class="form-label">Publisher</label>
-                                <input type="text" class="form-control" name="publisher" placeholder="">
-                           </div>
+                        <p><span class="p-bold"> Website: </span>
+                        <a href="{{ $item->link }}">{{ $item->link }}</a></p>
+
+                        <p><span class="p-bold"> Contact: </span>{{ $item->article_contact }}</p>
+                        <p>
+                        <span class="p-bold">Organization:</span> {{ $OrgData[0]->org_title }}
+                        </p>
+
+                        <p>
+                        <span class="p-bold">Email:</span> {{ $item->email }}
+                        </p>
+
+                        <p>
+                        <span class="p-bold">Mobile No:</span> {{ $item->journal_mid }}
+                        </p>
+                    </div>
+                </div>
+
+                </div>
+
+                <!-- About -->
+                <div class="cen-about">
+                <div class="row my-4">
+                        <h5 class="text-danger fw-bold">About</h5>
+                </div>
+
+                <div class="row  my-4">
+                    <p>
+                    {{ $item->about }}
+                    </p>
+                </div>
+
+                </div>
+
+                <!-- Aims and Scope-->
+                <div class="cen-aims">
+                <div class="row my-4">
+                        <h5 class="text-danger fw-bold">Aims and Scope</h5>
+                </div>
+
+                <div class="row  my-4">
+                    <p>
+                    {{ $item->aims_scope }}
+                    </p>
+                </div>
+
+                </div>
+                <!-- Article Pub Policy -->
+                <div class="cen-article">
+                <div class="row my-4">
+                        <h5 class="text-danger fw-bold">Article Publication Policy</h5>
+                </div>
+
+                <div class="row  my-4">
+                    <p>
+                    {{ $item->policy }}
+                    </p>
+                </div>
+
+                </div>
+            @endforeach
+
+
+            <!-- Indexing -->
+            <div class="cen-indexing">
+              <div class="row my-4">
+                    <h5 class="text-danger fw-bold">Indexing</h5>
+              </div>
+
+              <div class="row  my-4">
+              @foreach($EntityData as $key => $item)
+                    @if ($item->ent_type == 'index')
+                    <p> {{ $item->ent_name }}</p>
+                    @endif
+               @endforeach
+              </div>
+            </div>
+
+            <!-- Publisher -->
+            <div class="cen-indexing">
+              <div class="row my-4">
+                    <h5 class="text-danger fw-bold">Publisher</h5>
+              </div>
+
+              <div class="row  my-4">
+              @foreach($EntityData as $key => $item)
+                    @if ($item->ent_type == 'publisher')
+                    <p> {{ $item->ent_name }}</p>
+                    @endif
+              @endforeach
+              </div>
+            </div>
+            <!-- Poster
+            <div class="cen-indexing">
+              <div class="row my-5">
+              <img src="https://via.placeholder.com/885x436"  alt="#"  class="w-100">
+
+            </div>
+            -->
+
+
+            <!-- Editorial Team-->
+
+                <div class="cen-editorial text-center">
+                    <div class="row my-4">
+                        <h3 class="fw-bold text-danger">Editorial Team</h3>
+                    </div>
+                    <div class="row my-4"></div>
+
+                    @foreach($role_array as $role)
+                    <div class="row my-4">
+                        <h5 class="fw-bold">{{ $role }}</h5>
+                        @foreach($AssociateData as $key => $item)
+                            @if($item->association_role == $role)
+                                @foreach($UserData as $key1 => $item1)
+                                    @if($item->association_id == $item1->user_id)
+                                        <p>{{ $item1->title }} {{ $item1->fname }} {{ $item1->mname }} {{ $item1->lname }}</p>
+                                    @endif
+                                @endforeach
+                            @endif
                         @endforeach
                     </div>
-                </div> <!-- card body -->
-             </div>
+                    @endforeach
+
+                         <!--   <div class="row my-4"></div>
+
+                            <div class="row my-4">
+                                <h5 class="fw-bold">Associate Editors</h5>
+                        @foreach($UserData as $key => $item)
+                            <p> {{ $item->title }} {{ $item->fname }} {{ $item->mname }} {{ $item->lname }} </p>
+                        @endforeach
+                            </div>
+
+                             <div class="row my-4"></div>
+
+                            <div class="row my-4">
+                                <h5 class="fw-bold">Managing Editor</h5>
+                                <p>Erasmo Gonzalo DV. Llanes MD, DNP</p>
+                            </div>
+
+                            <div class="row my-4"></div>
+
+                            <div class="row my-4">
+                                <h5 class="fw-bold">Editorial Advisory Board</h5>
+                                <p>Jose M. Acuin, MD, MSC</p>
+                                <p>Robert G. Berkowitz, MBBS, MD</p>
+                                <p>Charlotte M. Chiong, MD, PhP</p>
+                                <p>Jose Angelito U. Hardillo, MD, PhD</p>
+                                <p>KJ Lee, MD</p>
+                            </div>
+
+                            <div class="row my-4"></div>
+
+                            <div class="row my-4">
+                                <h5 class="fw-bold">Editorial Assistant</h5>
+                                <p>April Christine E. Dagame</p>
+                            </div> -->
+
+                </div>
+
+
         </div>
+      </div>
     </div>
-
-    </div>
-
-
-    </main>
+</main>
 
         <!--footer-->
         @include('frontend.partials.frontendfooter')

@@ -23,21 +23,30 @@ class OrganizationSeeder extends Seeder
         DB::table('organizations')->insert([
             //first entry
             [
-                'org_id' => 'org01',
+                'org_id' => 'ORG01',
                 'org_status' => 'active',
-                'org_title' => 'org1 Label',
-                'org_description' => 'org1 Description',
+                'org_title' => 'Philippine Society of Otolaryngology Head and Neck Surgery',
+                'org_description' => 'PSHONS',
                 'org_image_path' => '/public/images/kjhaskdfjhsadfsdf.jpg',
                 'org_url' => 'http://www.org1.com'
             ],
             [
-                'org_id' => 'org02',
+                'org_id' => 'ORG02',
                 'org_status' => 'active',
-                'org_title' => 'second Label',
+                'org_title' => 'Philippine Nurses Association, Inc.',
                 'org_description' => 'org Description',
                 'org_image_path' => '/public/images/32ewfr2e3w.jpg',
                 'org_url' => 'http://www.og]2.com'
             ],
+            [
+                'org_id' => 'ORG03',
+                'org_status' => 'active',
+                'org_title' => 'Philippine Society of Pathologists, Inc',
+                'org_description' => 'org Description',
+                'org_image_path' => '/public/images/32ewfr2e3w.jpg',
+                'org_url' => 'http://www.og]2.com'
+            ],
+
 
         ]);
     }

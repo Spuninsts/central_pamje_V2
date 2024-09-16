@@ -55,6 +55,7 @@ require __DIR__.'/auth.php';
 
 // to protect pages, middleware was created with role, so that specific pages will only exists on users.
 Route::middleware(['auth','role:admin'])->group(function(){
+
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 
