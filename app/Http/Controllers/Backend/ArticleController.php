@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\journal;
+use App\Models\User;
+use App\Models\organization;
+use App\Models\Association;
+use App\Models\entity;
 use DB;
 
 
@@ -84,13 +88,59 @@ class ArticleController extends Controller
 
     public function LoadAllArticleData(Request $request){
 
-        dd(request()->val);
-        $ArticleData = Article::where('article_status','featured')
-                        ->orWhere('article_status','active')
+        //dd(request()->val);  // value from link parameter
+
+        // * ARTICLE Data
+        $ArticleData = Article::where('journal_mid',request()->val)
                         ->get();
-        $JournalData = journal::where('journal_group','chief_editor')
+
+        $AssociateData = Association::where('association_journal',$ArticleData[0]->journal_mid)
                         ->get();
-        return view('frontend.frontendalljournalsP', compact('ArticleData','JournalData'));
+
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_id);
+            if($assoc_id->association_source == 'user')
+                array_push($role_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        //dd($role_array);
+        //dd($temp_array); // this has all the ID's needed for the other information.
+
+        // * need to get indexes, publisher and users.  * //
+
+        // * USERS
+        $UserData = User::whereIn('user_id',$temp_array)
+                        ->get();
+        //dd($UserData);
+
+       /*  $assoc_user_array = array();
+         foreach($AssociateData as $adata){
+            //dd($adata->association_id);
+            foreach($UserData as $udata){
+                //dd($udata->user_id);
+                    if($adata->association_id == $udata->user_id)
+                        $assoc_user_array[$adata->association_role] = $udata->fname;
+                        //array_push($assoc_user_array,$udata->fname);
+                        //array_push($assoc_user_array,$adata->association_role);
+                }
+        }
+
+        dd($assoc_user_array); */
+
+        // * Publisher and Indexes
+        $EntityData = entity::whereIn('ent_id',$temp_array)
+                        ->get();
+
+        //dd($EntityData);
+        // * ORGANIZATION
+        $OrgData = organization::where('org_id',$ArticleData[0]->org_society)
+                        ->get();
+        //dd($OrgData);
+        return view('frontend.frontendjournal', compact('ArticleData','AssociateData','UserData','EntityData','OrgData','role_array'));
 
     }// End Method
 

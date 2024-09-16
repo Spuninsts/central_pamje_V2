@@ -31,9 +31,9 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $url = '';
-        if($request->user()->role === 'admin'){
-            $url = '/admin/dashboard';
-        } elseif($request->user()->role === 'author' || $request->user()->role === 'reviewer'){
+        if($request->user()->user_type === 'admin'){
+            $url = 'admin/dashboard';
+        } elseif($request->user()->user_type === 'author' || $request->user()->user_type === 'reviewer'){
             $url = '/registered'; //this has additional menu for peer search
         } else {
             $url = '/';

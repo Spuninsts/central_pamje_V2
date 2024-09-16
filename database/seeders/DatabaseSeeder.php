@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Association;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,7 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(EntitySeeder::class);
         $this->call(JournalSeeder::class);
-        \App\Models\User::factory(2)->create();
+        $this->call(AssociationSeeder::class);
+        //\App\Models\User::factory(2)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

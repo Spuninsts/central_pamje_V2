@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Article; //Journal Org
-use App\Models\ArticleType; // Specialization
 use App\Models\Banner;
 use App\Models\Page;
-use App\Models\Organization;
 use App\Models\journal;
 
     /**

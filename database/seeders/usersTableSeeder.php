@@ -17,65 +17,48 @@ class usersTableSeeder extends Seeder
         DB::table('users')->insert([
             //admin
             [
+                'user_id'=>'USER01',
                 'title'=>'MD',
                 'fname'=>'admin',
                 'mname'=>'',
                 'lname'=>'istrator',
                 'email'=>'domainjunkie@gmail.com',
                 'password'=>Hash::make('111'),
-                'journal_id'=>'',
-                'journal_role'=>'',
                 'username'=>'admin',
                 'status'=>'active',
                 'user_type' => 'admin'
             ],
             [ //author
+                'user_id'=>'USER02',
                 'title'=>'MD',
                 'fname'=>'editor',
                 'mname'=>'',
                 'lname'=>'iam',
                 'email'=>'domain.junkie@gmail.com',
                 'password'=>Hash::make('111'),
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'username'=>'author',
                 'status'=>'active',
                 'user_type' => 'standard'
             ],
 
             [ //reviewer
+                'user_id'=>'USER03',
                 'title'=>'MD',
                 'fname'=>'reviewer',
                 'mname'=>'',
                 'lname'=>'tomorrow',
                 'email'=>'dom.ainjunkie@gmail.com',
                 'password'=>Hash::make('111'),
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'username'=>'reviewer',
                 'status'=>'active',
                 'user_type' => 'standard'
             ],
-            [ //2nd author
-                'title'=>'MD',
-                'fname'=>'second',
-                'mname'=>'',
-                'lname'=>'author',
-                'email'=>'djunkie456@gmail.com',
-                'password'=>Hash::make('111'),
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
-                'username'=>'author2',
-                'status'=>'active',
-                'user_type' => 'standard'
-            ],
             [ //1st non std
+                'user_id'=>'USER04',
                 'title'=>'Dr.',
                 'fname'=>'Francis',
                 'mname'=>'G.',
                 'lname'=>'Moria',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -85,12 +68,11 @@ class usersTableSeeder extends Seeder
 
 
             [ //1st non std
+                'user_id'=>'USER05',
                 'title'=>'Dr.',
                 'fname'=>'Ivy',
                 'mname'=>'A.',
                 'lname'=>'Rosales',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -100,11 +82,10 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER06',
                 'title'=>'Dr.',
                 'fname'=>'Frances',
                 'lname'=>'saura-Sanchez',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -114,12 +95,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER07',
                 'title'=>'Dr.',
                 'fname'=>'Marie Christine',
                 'mname'=>'F.',
                 'lname'=>'Bernardo',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -128,11 +108,10 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER08',
                 'title'=>'Dr.',
                 'fname'=>'Ann Margarette',
                 'lname'=>'Chang',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -142,11 +121,10 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER09',
                 'title'=>'Dr.',
                 'fname'=>'Farash Kristine',
                 'lname'=>'Fontilla-Santiago',
-                'journal_id'=>'JRN00003',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -156,11 +134,10 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER10',
                 'title'=>'Dr.',
                 'fname'=>'Maricel',
                 'lname'=>'Regino-Ribo',
-                'journal_id'=>'JRN00003',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -169,12 +146,11 @@ class usersTableSeeder extends Seeder
                 'email'=>''
             ],
             [
+                'user_id'=>'USER11',
                 'title'=>'Dr.',
                 'fname'=>'Augustina',
                 'mname'=>'D.',
                 'lname'=>'Abelardo',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -183,11 +159,10 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER12',
                 'title'=>'Dr.',
                 'fname'=>'Jose',
                 'lname'=>'Carnate Jr.',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -197,12 +172,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER13',
                 'title'=>'Ms.',
                 'fname'=>'Rizalina',
                 'mname'=>'F.',
                 'lname'=>'Chua',
-                'journal_id'=>'JRN00003',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -211,12 +185,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER14',
                 'title'=>'Dr.',
                 'fname'=>'Nelson',
                 'mname'=>'T.',
                 'lname'=>'Geraldino',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -225,12 +198,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER15',
                 'title'=>'Dr.',
                 'fname'=>'Evelina',
                 'mname'=>'N.',
                 'lname'=>'Lagamayo',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -239,12 +211,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER16',
                 'title'=>'Dr.',
                 'fname'=>'Raymundo',
                 'mname'=>'W.',
                 'lname'=>'Lo',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -253,12 +224,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER17',
                 'title'=>'Dr.',
                 'fname'=>'Miguel Martin',
                 'mname'=>'N.',
                 'lname'=>'Moreno II',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -267,12 +237,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER18',
                 'title'=>'Dr.',
                 'fname'=>'Januario',
                 'mname'=>'D.',
                 'lname'=>'Veloso',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -280,12 +249,11 @@ class usersTableSeeder extends Seeder
                 'email'=>''
             ],
             [ //1st non std
+                'user_id'=>'USER19',
                 'title'=>'Dr.',
                 'fname'=>'Erlinda',
                 'mname'=>'',
                 'lname'=>'Castro-Palaganas',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -293,12 +261,11 @@ class usersTableSeeder extends Seeder
                 'email'=>''
             ],
             [ //1st non std
+                'user_id'=>'USER20',
                 'title'=>'Dr.',
                 'fname'=>'Jose Florencio',
                 'mname'=>'F.',
                 'lname'=>'Lapena',
-                'journal_id'=>'JRN00003',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -306,12 +273,11 @@ class usersTableSeeder extends Seeder
                 'email'=>''
             ],
             [ //1st non std
+                'user_id'=>'USER21',
                 'title'=>'Dr.',
                 'fname'=>'Socorro',
                 'mname'=>'C.',
                 'lname'=>'Yanez',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -320,12 +286,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER22',
                 'title'=>'Dr.',
                 'fname'=>'Rowen',
                 'mname'=>'T.',
                 'lname'=>'Yolo',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -334,12 +299,11 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER23',
                 'title'=>'Dr.',
                 'fname'=>'Jose Ma',
                 'mname'=>'C.',
                 'lname'=>'Avila',
-                'journal_id'=>'JRN00002',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
@@ -348,34 +312,197 @@ class usersTableSeeder extends Seeder
             ],
 
             [ //1st non std
+                'user_id'=>'USER24',
                 'title'=>'Dr.',
                 'fname'=>'Marissa',
                 'mname'=>'A.',
                 'lname'=>'Orillaza',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
             ],
-
-            [ //1st non std
+            [
+                'user_id'=>'USER25',
                 'title'=>'Dr.',
                 'fname'=>'Marita V',
                 'mname'=>'T.',
                 'lname'=>'Reyes',
-                'journal_id'=>'JRN00001',
-                'journal_role'=>'',
                 'status'=>'active',
                 'user_type' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
             ],
-
-
+            [
+                'user_id'=>'USER26',
+                'title'=>'Ms.',
+                'fname'=>'April Christine',
+                'mname'=>'E.',
+                'lname'=>'Dagame',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER27',
+                'title'=>'MD',
+                'fname'=>'Christopher Mallorre',
+                'mname'=>'E.',
+                'lname'=>'Calaquian',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER28',
+                'title'=>'MD,MSC',
+                'fname'=>'Ryner Jose',
+                'mname'=>'C.',
+                'lname'=>'Carrillo',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER29',
+                'title'=>'MD',
+                'fname'=>'Samantha',
+                'mname'=>'R.',
+                'lname'=>'Soriano-Castañeda',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER30',
+                'title'=>'MD',
+                'fname'=>'Antonio',
+                'mname'=>'H.',
+                'lname'=>'Chua',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER31',
+                'title'=>'MD',
+                'fname'=>'Rodante',
+                'mname'=>'A.',
+                'lname'=>'Roldan',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER32',
+                'title'=>'MD',
+                'fname'=>'Marifee',
+                'mname'=>'U.',
+                'lname'=>'Reyes',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER33',
+                'title'=>'MD, DNP',
+                'fname'=>'Filipa',
+                'mname'=>'T.',
+                'lname'=>'Cevallos-Schnabel',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER34',
+                'title'=>'MD',
+                'fname'=>'Erasmo Gonzalo',
+                'mname'=>'DV.',
+                'lname'=>'Llanes',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER35',
+                'title'=>'MD, MSC',
+                'fname'=>'Jose',
+                'mname'=>'M.',
+                'lname'=>'Acuin',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER36',
+                'title'=>'MD, MBBS',
+                'fname'=>'Robert',
+                'mname'=>'G.',
+                'lname'=>'Berkowitz',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER37',
+                'title'=>'MD, PhD',
+                'fname'=>'Charlotte',
+                'mname'=>'M.',
+                'lname'=>'Chiong',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER38',
+                'title'=>'MD, PhD',
+                'fname'=>'Jose Angelito',
+                'mname'=>'U.',
+                'lname'=>'Hardillo',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
+            [
+                'user_id'=>'USER39',
+                'title'=>'MD',
+                'fname'=>'KJ',
+                'mname'=>'',
+                'lname'=>'Lee',
+                'status'=>'active',
+                'user_type' => 'contact',
+                'password'=>Hash::make('111'),
+                'username'=>'',
+                'email'=>''
+            ],
         ]);
 
 
