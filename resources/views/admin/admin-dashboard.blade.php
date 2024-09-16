@@ -7,7 +7,7 @@
   	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="keywords" content="">
-	<title>Admin CENTRAL PAMJE -Dashboard</title>
+	<title>PAMJE -Dashboard</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('../upload/favicon/apple-touch-icon.png') }}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('../upload/favicon/favicon-32x32.png') }}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('../upload/favicon/favicon-16x16.png') }}">
