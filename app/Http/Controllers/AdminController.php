@@ -9,6 +9,9 @@ use App\Models\Article; //Journal Org
 use App\Models\Banner;
 use App\Models\Page;
 use App\Models\journal;
+use App\Models\organization;
+use App\Models\Association;
+use App\Models\entity;
 
     /**
      * Thist controller will handle all Administrative tasks
@@ -87,7 +90,8 @@ class AdminController extends Controller
 
     public function ActiveArticles(){
 
-        $ArticleData = Article::latest()->get();
+        $ArticleData = Article::where('article_status','!=','inactive')
+                        ->get();
         return view('admin.active-articles', compact('ArticleData'));
 
     }// End Method
@@ -103,6 +107,58 @@ class AdminController extends Controller
         //resources-view-folder-filename
             return view('admin.new-article-wizard');
     }// End Method
+
+    public function EditArticleData(Request $request){
+
+        //dd(request()->val);
+        // * ARTICLE Data
+        $ArticleData = Article::where('journal_mid',request()->val)
+                        ->get();
+
+        $AssociateData = Association::where('association_journal',$ArticleData[0]->journal_mid)
+                        ->get();
+
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_id);
+            if($assoc_id->association_source == 'user')
+                array_push($role_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        //dd($role_array);
+        //dd($temp_array); // this has all the ID's needed for the other information.
+
+        // * need to get indexes, publisher and users.  * //
+
+        // * USERS
+        $UserData = User::whereIn('user_id',$temp_array)
+                        ->get();
+        //dd($UserData);
+
+        // * Publisher and Indexes
+        $EntityData = entity::whereIn('ent_id',$temp_array)
+                        ->get();
+
+        //dd($EntityData);
+        // * ORGANIZATION
+        $OrgData = organization::where('org_id',$ArticleData[0]->org_society)
+                        ->get();
+
+        //dd($OrgData);
+        if( empty($OrgData[0]) ){
+            $OrgData = array(
+                        array("org_title" => "No Organization")
+                       );
+        }
+
+        //dd($OrgData[0]['org_title']);
+        return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','OrgData','role_array'));
+
+
+    }// end edit function
 
     public function AdminArticleStore(Request $request){
         $id = Auth::user()->fname;
@@ -168,6 +224,30 @@ class AdminController extends Controller
                 'journal_link' => 'None',
             ]);
         }
+
+        return redirect()->route('admin.active-articles');
+
+    }//ENd Method
+
+    public function AdminArticleUpdate(Request $request){
+        $id = Auth::user()->fname;
+
+        if($request->file('article_photo')){
+            $file = $request->file('article_photo');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filename);
+        }else{$filename = "nologo";}
+
+        if($request->file('article_logo')){
+            $file = $request->file('article_logo');
+            $filenamelogo = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamelogo);
+        }else{$filenamelogo  = "nologo";}
+
+        $article_stat = "active";
+        if($request->article_featured){$article_stat = "featured";}
+        if(is_null($request->article_active)){$article_stat = "draft";}
+
 
         return redirect()->route('admin.active-articles');
 

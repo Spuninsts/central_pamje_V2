@@ -117,19 +117,19 @@ class ArticleController extends Controller
                         ->get();
         //dd($UserData);
 
-       /*  $assoc_user_array = array();
-         foreach($AssociateData as $adata){
-            //dd($adata->association_id);
-            foreach($UserData as $udata){
-                //dd($udata->user_id);
-                    if($adata->association_id == $udata->user_id)
-                        $assoc_user_array[$adata->association_role] = $udata->fname;
-                        //array_push($assoc_user_array,$udata->fname);
-                        //array_push($assoc_user_array,$adata->association_role);
+            /*  $assoc_user_array = array();
+                foreach($AssociateData as $adata){
+                    //dd($adata->association_id);
+                    foreach($UserData as $udata){
+                        //dd($udata->user_id);
+                            if($adata->association_id == $udata->user_id)
+                                $assoc_user_array[$adata->association_role] = $udata->fname;
+                                //array_push($assoc_user_array,$udata->fname);
+                                //array_push($assoc_user_array,$adata->association_role);
+                        }
                 }
-        }
 
-        dd($assoc_user_array); */
+                dd($assoc_user_array); */
 
         // * Publisher and Indexes
         $EntityData = entity::whereIn('ent_id',$temp_array)

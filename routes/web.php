@@ -36,6 +36,7 @@ Route::get('/', [UserController::class, 'Index']);
     Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
     Route::get('/journals/p', [ArticleController::class, 'LoadAllArticlesMainP'])->name('main.journals.p');
     Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
+
     //return view('welcome');
 //});
 
@@ -67,6 +68,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/active-articles', [AdminController::class, 'ActiveArticles'])->name('admin.active-articles');
     Route::get('/admin/new-article', [AdminController::class, 'NewArticle'])->name('admin.new-article');//loads the form page
     Route::get('/admin/new-article-wizard', [AdminController::class, 'NewArticleWizard'])->name('admin.new-article-wizard');//loads the form page
+    // Route::get('/admin/article/data', [AdminController::class, 'LoadArticleData'])->name('admin.article.data'); // loads all article data in console
+    Route::get('/admin/article/edit', [AdminController::class, 'EditArticleData'])->name('admin.article.edit'); // allows edit of data.
 
     //Articles - these are the pages for news, announcement and additional single page articles.
     Route::get('/admin/active-banners', [AdminController::class, 'ActiveBanners'])->name('admin.active-banners');
@@ -85,6 +88,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     //Record Creator
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::post('/admin/article/store', [AdminController::class, 'AdminArticleStore'])->name('admin.article.store');
+    Route::post('/admin/article/update', [AdminController::class, 'AdminArticleUpdate'])->name('admin.article.update');
     Route::post('/admin/banner/store', [AdminController::class, 'AdminBannerStore'])->name('admin.banner.store');
     Route::post('/admin/page/store', [AdminController::class, 'AdminPageStore'])->name('admin.page.store');
 

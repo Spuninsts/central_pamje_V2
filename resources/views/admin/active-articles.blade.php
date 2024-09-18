@@ -29,8 +29,8 @@
 
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Tables</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Data Table</li>
+					<li class="breadcrumb-item"><a href="#">Journals</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Active Journals</li>
 					</ol>
 				</nav>
 
@@ -55,7 +55,7 @@
 							<table id="dataTableExample" class="table">
 							<thead>
 								<tr>
-								<th>ID</th>
+								<th>Journal ID</th>
 								<th>Journal</th>
 								<th>Acronym</th>
 								<th>Organization</th>
@@ -66,7 +66,7 @@
 							<tbody>
 								@foreach( $ArticleData as $key => $item)
 								<tr>
-								<td>{{ $key+1 }}</td>
+								<td><a href="/admin/article/edit?val={{ $item->journal_mid }}">{{ $item->journal_mid }}</a></td>
 								<td>{{ $item->full_title }}</td>
 								<td>{{ $item->short_title }}</td>
 								<td>{{ $item->org_society }}</td>
