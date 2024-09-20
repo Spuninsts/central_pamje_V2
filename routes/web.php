@@ -31,10 +31,20 @@ Route::get('/', [UserController::class, 'Index']);
     //dd(view('welcome'));
     //dd(view('frontend.g_main'));
     //return view('frontend.frontendmain');
-    Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main');
+
+    // - NOT LOGGED IN VIEW --//
+    Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main'); //home main page
+    Route::get('/aboutus', [ArticleController::class, 'LoadAllAboutUsMain'])->name('main.aboutus');
     Route::get('/journals', [ArticleController::class, 'LoadAllArticlesMain'])->name('main.journals');
-    Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
-    Route::get('/journals/p', [ArticleController::class, 'LoadAllArticlesMainP'])->name('main.journals.p');
+    Route::get('/journals/alphabet', [ArticleController::class, 'LoadArticleAlphabeticalMain'])->name('main.journals.alphabet');
+    Route::get('/journals/category', [ArticleController::class, 'LoadArticleCategoryMain'])->name('main.journals.category');
+    Route::get('/resources/editors', [ArticleController::class, 'LoadEditorMain'])->name('main.resources.editor');
+    Route::get('/resources/researchers', [ArticleController::class, 'LoadResearcherMain'])->name('main.resources.researcher');
+    Route::get('/resources/authors', [ArticleController::class, 'LoadAuthorMain'])->name('main.resources.author');
+    Route::get('/resources/reviewers', [ArticleController::class, 'LoadReviewerMain'])->name('main.resources.reviewer');
+    Route::get('/newsannouncements', [ArticleController::class, 'LoadNewsAnnouncementMain'])->name('main.news.announcement');
+    Route::get('/contactus', [ArticleController::class, 'LoadContactUsMain'])->name('main.contact.us');
+    //Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
     Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
 
     //return view('welcome');
@@ -66,6 +76,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //Journals - don't get confused with the term article here.
     Route::get('/admin/active-articles', [AdminController::class, 'ActiveArticles'])->name('admin.active-articles');
+    Route::get('/admin/feature-articles', [AdminController::class, 'FeatureArticles'])->name('admin.feature-articles');
+    Route::get('/admin/inactive-articles', [AdminController::class, 'InactiveArticles'])->name('admin.inactive-articles');
     Route::get('/admin/new-article', [AdminController::class, 'NewArticle'])->name('admin.new-article');//loads the form page
     Route::get('/admin/new-article-wizard', [AdminController::class, 'NewArticleWizard'])->name('admin.new-article-wizard');//loads the form page
     // Route::get('/admin/article/data', [AdminController::class, 'LoadArticleData'])->name('admin.article.data'); // loads all article data in console
@@ -95,8 +107,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 }); // end group
 
 
-/* Route::middleware(['auth','role:researcher'])->group(function(){
-    Route::get('/researcher/dashboard', [PeerEditorController::class, 'ResearcherDashboard'])->name('researcher.dashboard');
+/* Route::middleware(['auth','role:registered'])->group(function(){
+    Route::get('/registered', [PeerEditorController::class, 'ResearcherDashboard'])->name('researcher.dashboard');
 }); // end group peer reviewer and editor */
 
 /* Route::middleware(['auth','role:author'])->group(function(){
@@ -104,6 +116,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
 }); // end group user
  */
 
-/* Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login'); */
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
-//Route::get('/login', [AdminController::class, 'TempLogin'])->name('login');
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login'); //admin login.
+Route::get('/login', [UserController::class, 'UserLogin'])->name('login'); // user login
+Route::get('/register', [UserController::class, 'UserRegister'])->name('register'); // user registration

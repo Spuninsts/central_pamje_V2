@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\organization;
 use App\Models\Association;
 use App\Models\entity;
+use App\Models\page;
 use DB;
 
 
@@ -22,6 +23,51 @@ class ArticleController extends Controller
                                 ->orderBy('full_title')
                                 ->get();
         return view('frontend.frontendmain', compact('ArticleData'));
+
+    }// End Method
+
+    public function LoadArticleAlphabeticalMain(Request $request){
+
+        $req = request()->val;
+        // the prefix determines what page.
+        if($req == 'all')
+            $ArticleData = Article::where('article_status','!=','inactive')
+                                    ->orderBy('full_title')
+                                    ->get();
+        else
+            $ArticleData = Article::where('article_status','!=','inactive')
+                                    ->where('full_title','LIKE',$req . '%' )
+                                    ->orderBy('full_title')
+                                    ->get();
+
+        //dd($ArticleData);
+            return view('frontend.frontendalljournals', compact('ArticleData'));
+
+    }// End Method
+
+    public function LoadArticleCategoryMain(Request $request){
+
+        $req = request()->val;
+        // the prefix determines what page.
+        if($req == 'all')
+            $ArticleData = Article::where('article_status','!=','inactive')
+                                    ->orderBy('full_title')
+                                    ->get();
+        else
+            $ArticleData = Article::where('article_status','!=','inactive')
+                                    ->where('full_title','LIKE',$req . '%' )
+                                    ->orderBy('full_title')
+                                    ->get();
+
+        //dd($ArticleData);
+            return view('frontend.frontendcategoryjournals', compact('ArticleData'));
+
+    }// End Method
+
+        //Loads about us  page
+    public function LoadAllAboutUsMain(){
+
+        return view('frontend.frontendaboutus');
 
     }// End Method
 
@@ -75,16 +121,72 @@ class ArticleController extends Controller
 
     }// End Method
 
-    public function LoadAllArticlesMainP(){
+    // -- RESOURCES -- //
+    public function LoadEditorMain(){
 
-        $ArticleData = Article::where('article_status','featured')
-                        ->orWhere('article_status','active')
+        $PageData = page::where('page_type','editor')
+                        ->orWhere('page_type','editor tools')
+                        ->orderBy('page_title')
                         ->get();
-        $JournalData = journal::where('journal_group','chief_editor')
-                        ->get();
-        return view('frontend.frontendalljournalsP', compact('ArticleData','JournalData'));
+        return view('frontend.frontendeditors', compact('PageData'));
 
     }// End Method
+
+    public function LoadAuthorMain(){
+
+        $PageData = page::where('page_type','author')
+                        ->orderBy('page_title')
+                        ->get();
+        return view('frontend.frontendauthors', compact('PageData'));
+
+    }// End Method
+
+    public function LoadReviewerMain(){
+
+        $PageData = page::where('page_type','reviewer')
+                        ->orderBy('page_title')
+                        ->get();
+        return view('frontend.frontendreviewers', compact('PageData'));
+
+    }// End Method
+
+    public function LoadResearcherMain(){
+
+        $PageData = page::where('page_type','researcher')
+                        ->orderBy('page_title')
+                        ->get();
+        return view('frontend.frontendresearchers', compact('PageData'));
+
+    }// End Method
+
+
+    // -- RESOURCES -- //
+
+    // -- News and Announcements -- //
+
+    public function LoadNewsAnnouncementMain(){
+
+        $PageData = page::where('page_status','active')
+                        ->where(function($query) {
+                            $query->where('page_type','news')
+                                  ->orWhere('page_type','announcement');
+                        })
+                        ->orderBy('created_at')
+                        ->get();
+        //dd($PageData);
+        return view('frontend.frontendnewsannouncements', compact('PageData'));
+
+    }// End Method
+
+    // -- Contact US -- //
+    public function LoadContactUsMain(){
+
+        return view('frontend.frontendcontactus');
+
+    }// End Method
+
+
+    // -- News and Announcements -- //
 
     public function LoadAllArticleData(Request $request){
 
@@ -140,6 +242,11 @@ class ArticleController extends Controller
         $OrgData = organization::where('org_id',$ArticleData[0]->org_society)
                         ->get();
         //dd($OrgData);
+        if( empty($OrgData[0]) ){
+            $OrgData = array(
+                        array("org_title" => "No Organization")
+                       );
+        }
         return view('frontend.frontendjournal', compact('ArticleData','AssociateData','UserData','EntityData','OrgData','role_array'));
 
     }// End Method

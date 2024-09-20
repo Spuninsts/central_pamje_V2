@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('org_society')->nullable(); // name of organization society
             $table->string('email')->nullable();
             $table->string('article_contact')->nullable();
+            $table->string('contact_number')->nullable();
             $table->string('logo')->nullable();
             $table->string('photo')->nullable();
             $table->longText('about')->nullable();

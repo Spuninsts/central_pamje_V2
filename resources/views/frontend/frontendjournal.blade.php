@@ -23,8 +23,8 @@
     <div class="container-fluid">
       <div class="container">
       <div class="row my-3">
-        <span><a href="#" class="cen-breadcrumbs"> Home</a> »
-                <a href="#" class="cen-breadcrumbs">Journals</a> »
+        <span><a href="/" class="cen-breadcrumbs"> Home</a> »
+                <a href="/journals/alphabet?val=all" class="cen-breadcrumbs">Journals</a> »
 
       </div>
       </div>
@@ -39,7 +39,7 @@
             @foreach( $ArticleData as $key => $item)
                 <div class="row my-4 ">
                     <div class="col-sm-2">
-                        <a href="#"><img src="img/journals_logo/pjohns_logo.jpg"  alt="#"  class="w-100"></a>
+                        <a href="#"><img src="{{ $item->photo }}"  alt="{{ $item->full_title }}"  class="w-100"></a>
                     </div>
                     <div class="col-sm-10 my-2" >
                         <h2 class="fw-bold fs-1">{{ $item->full_title }}</h2>
@@ -49,7 +49,7 @@
 
                         <p><span class="p-bold"> Contact: </span>{{ $item->article_contact }}</p>
                         <p>
-                        <span class="p-bold">Organization:</span> {{ $OrgData[0]->org_title }}
+                        <span class="p-bold">Organization:</span> {{ $OrgData[0]['org_title'] }}
                         </p>
 
                         <p>
@@ -57,7 +57,7 @@
                         </p>
 
                         <p>
-                        <span class="p-bold">Mobile No:</span> {{ $item->journal_mid }}
+                        <span class="p-bold">Mobile No:</span> {{ $item->contact_number }}
                         </p>
                     </div>
                 </div>

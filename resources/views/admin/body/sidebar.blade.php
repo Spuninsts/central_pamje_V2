@@ -1,7 +1,7 @@
 <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          
+
           <img src="{{ asset('frontend/img/logo-central-w.jpg') }}" alt="Central Logo" width="100" >
 
         </a>
@@ -93,14 +93,17 @@
                   <a href="{{ route('admin.active-articles') }}" class="nav-link">Active</a>
                 </li>
                 <li class="nav-item">
-                  <a href="featured-journals" class="nav-link">Featured</a>
+                  <a href="/admin/feature-articles" class="nav-link">Featured</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.new-article') }}" class="nav-link">New Journals</a>
+                  <a href="{{ route('admin.new-article') }}" class="nav-link">New Journal Form</a>
                 </li>
                 <li class="nav-item">
+                  <a href="/admin/inactive-articles" class="nav-link">Inactive</a>
+                </li>
+                <!-- <li class="nav-item">
                   <a href="{{ route('admin.new-article-wizard') }}#" class="nav-link">New Journals Wizard</a>
-                </li>
+                </li> -->
               </ul>
             </div>
 

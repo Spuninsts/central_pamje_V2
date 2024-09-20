@@ -10,19 +10,25 @@
           </form>
 
           <ul class="nav align-self-end mb-2">
-            <li class="nav-item mx-1"><button type="button" class="btn btn-primary ">
+          <li class="nav-item mx-1">
+            <a href="/login" ><button type="button" class="btn btn-primary ">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
                 <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
               </svg>
               &nbsp;
-              Log in</button></li>
-            <li class="nav-item mx-1"><button type="button" class="btn btn-primary ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-              </svg>
+              Log in</button>
+            </a></li>
+            <li class="nav-item mx-1">
+            <a href="/register" >
+                <button type="button" class="btn btn-primary ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg>
               &nbsp;
-              Register</button></li>
+              Register</button>
+            </a>
+            </li>
           </ul>
 
         </div>
@@ -41,18 +47,18 @@
         <div class="collapse navbar-collapse cen-bg-darkblue " id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item px-3">
-              <a class="nav-link text-white" href="index.php">HOME</a>
+              <a class="nav-link text-white" href="/">HOME</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link text-white" href="about.php">ABOUT US</a>
+              <a class="nav-link text-white" href="/aboutus">ABOUT US</a>
             </li>
             <li class="nav-item px-3">
               <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">JOURNALS</a>
-              
+
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="journals.php">By Alphabetical</a></li>
-                  <li><a class="dropdown-item" href="journal-category">By Category</a></li>
+                  <li><a class="dropdown-item" href="/journals/alphabet?val=all">By Alphabetical</a></li>
+                  <li><a class="dropdown-item" href="/journals/category?va=all">By Category</a></li>
 
 
                 </ul>
@@ -65,23 +71,29 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="for-editors.php">For Editors</a></li>
-                  <li><a class="dropdown-item" href="for-researchers">For Researchers</a></li>
-                  <li><a class="dropdown-item" href="for-authers">For Authors</a></li>
-                  <li><a class="dropdown-item" href="for-reviewers">For Peer Reviewers</a></li>
+                  <li><a class="dropdown-item" href="/resources/editors">For Editors</a></li>
+                  <li><a class="dropdown-item" href="/resources/researchers">For Researchers</a></li>
+                  <li><a class="dropdown-item" href="/resources/authors">For Authors</a></li>
+                  <li><a class="dropdown-item" href="/resources/reviewers">For Peer Reviewers</a></li>
 
                 </ul>
               </div>
+
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="#">NEWS AND ANNOUNCEMENT</a>
+              <a class="nav-link text-white " href="/newsannouncements">NEWS AND ANNOUNCEMENT</a>
             </li>
 
+            <!-- Peer reviewer should be hidden -- >
+
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="peer-reviewers.php">PEER REVIEWERS</a>
+              <a class="nav-link text-white " href="#">PEER REVIEWERS</a>
             </li>
+
+             < !-- Peer reviewer should be hidden -->
+
             <li class="nav-item px-3">
-              <a class="nav-link text-white " href="contact.php">CONTACT US</a>
+              <a class="nav-link text-white " href="/contactus">CONTACT US</a>
             </li>
           </ul>
         </div>

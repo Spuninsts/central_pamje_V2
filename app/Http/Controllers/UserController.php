@@ -11,4 +11,14 @@ class UserController extends Controller
         //return view('admin.admin-login');
     } //End function
 
+    public function UserLogin(){
+        //resources-view-folder-filename
+            return view('registered.default-login');
+    }// End Method
+
+    public function UserRegister(){
+        //resources-view-folder-filename
+            return view('registered.default-form');
+    }// End Method
+
 }

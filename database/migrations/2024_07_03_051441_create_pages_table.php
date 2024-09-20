@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('page_created_by')->nullable();
             $table->string('page_status')->nullable(); //active,inactive
-            $table->string('page_type')->nullable(); //news,announcement,banner(banner more info page)
+            $table->string('page_type')->nullable(); //news,announcement,banner(banner more info page), Editors page.
             $table->string('page_title')->nullable(); // page title
             $table->text('page_description')->nullable(); // page description
             $table->text('page_image_path')->nullable(); // for the image

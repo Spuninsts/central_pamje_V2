@@ -47,11 +47,6 @@ class AdminController extends Controller
             return view('admin.admin-login');
     }// End Method
 
-    public function TempLogin(){
-        //resources-view-folder-filename
-            return view('admin.admin-login');
-    }// End Method
-
     public function AdminProfile(){
 
         $id = Auth::user()->id;
@@ -93,6 +88,22 @@ class AdminController extends Controller
         $ArticleData = Article::where('article_status','!=','inactive')
                         ->get();
         return view('admin.active-articles', compact('ArticleData'));
+
+    }// End Method
+
+    public function FeatureArticles(){
+
+        $ArticleData = Article::where('article_status','featured')
+                        ->get();
+        return view('admin.featured-articles', compact('ArticleData'));
+
+    }// End Method
+
+    public function InactiveArticles(){
+
+        $ArticleData = Article::where('article_status','inactive')
+                        ->get();
+        return view('admin.inactive-articles', compact('ArticleData'));
 
     }// End Method
 
@@ -169,18 +180,23 @@ class AdminController extends Controller
         /* $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         ]);*/
-
-        if($request->file('article_photo')){
-            $file = $request->file('article_photo');
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'), $filename);
-        }else{$filename = "nologo";}
-
-        if($request->file('article_logo')){
+        $image_path = '/upload/admin_images/';
+        $article_photo = $request->file('article_photo');
+        //dd($request->file($article_photo[0]));
+        foreach ($article_photo as $ap ){
+            //dd($request->hasFile($ap));
+            if($request->hasFile($ap)){
+                $file = $request->file($ap);
+                $filename = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path($image_path), $filename);
+            }else{$filename = "nologo";}
+        }
+        /* if($request->file('article_logo')){
             $file = $request->file('article_logo');
             $filenamelogo = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filenamelogo);
-        }else{$filenamelogo  = "nologo";}
+        }else{$filenamelogo  = "nologo";} */
+        //dd($filename);
 
         $article_stat = "active";
         if($request->article_featured){$article_stat = "featured";}
@@ -195,12 +211,12 @@ class AdminController extends Controller
             'org_society' => $request->org_society,
             'email' => $request->email,
             'article_contact' => $request->journal_contact,
+            'contact_number' => $request->contact_number,
             'about' => $request->about,
             'aims_scope' => $request->aims_scope,
             'link' => $request->link,
             'policy' => $request->policy,
-            'photo' => $filename,
-            'logo' => $filenamelogo,
+            'photo' => $image_path.$filename,
         ]);
 
         if($request->has('indexing')){
@@ -232,6 +248,7 @@ class AdminController extends Controller
     public function AdminArticleUpdate(Request $request){
         $id = Auth::user()->fname;
 
+        dd($request);
         if($request->file('article_photo')){
             $file = $request->file('article_photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
