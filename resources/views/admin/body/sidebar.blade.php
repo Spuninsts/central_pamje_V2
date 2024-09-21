@@ -136,7 +136,7 @@
 
         <!-- Index Block  -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/admin/active-index" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Indexes</span>
             </a>

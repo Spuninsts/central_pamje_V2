@@ -85,6 +85,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //Articles - these are the pages for news, announcement and additional single page articles.
     Route::get('/admin/active-banners', [AdminController::class, 'ActiveBanners'])->name('admin.active-banners');
+    Route::get('/admin/active-index', [AdminController::class, 'ActiveIndex'])->name('admin.active-index');
     Route::get('/admin/new-banner', [AdminController::class, 'NewBanner'])->name('admin.new-banner');
     Route::get('/admin/active-pages', [AdminController::class, 'ActivePages'])->name('admin.active-pages');
     Route::get('/admin/new-page', [AdminController::class, 'NewPage'])->name('admin.new-page');
@@ -102,6 +103,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/article/store', [AdminController::class, 'AdminArticleStore'])->name('admin.article.store');
     Route::post('/admin/article/update', [AdminController::class, 'AdminArticleUpdate'])->name('admin.article.update');
     Route::post('/admin/banner/store', [AdminController::class, 'AdminBannerStore'])->name('admin.banner.store');
+    Route::post('/admin/entity/store', [AdminController::class, 'AdminEntityStore'])->name('admin.entity.store');
     Route::post('/admin/page/store', [AdminController::class, 'AdminPageStore'])->name('admin.page.store');
 
 }); // end group

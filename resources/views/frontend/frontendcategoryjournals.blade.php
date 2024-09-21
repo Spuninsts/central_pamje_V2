@@ -60,7 +60,7 @@
 
 
 <!-- Saved in parser cache with key enwiki:pcache:idhash:957318-0!canonical and timestamp 20240909123729 and revision id 1229034112. Rendering was triggered because: page-view
- -->
+ --><!--
  </div><div class="mw-category-generated" lang="en" dir="ltr"><div id="mw-subcategories">
 <h2>Subcategories</h2>
 <p>This category has the following 69 subcategories, out of 69 total.
@@ -140,9 +140,9 @@
 </p><div lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-category"><div class="mw-category-group"><h3>&nbsp;</h3>
 <ul><li><a href="/wiki/List_of_medical_journals" title="List of medical journals">List of medical journals</a></li>
 <li><a href="/wiki/Medical_journal" title="Medical journal">Medical journal</a></li></ul></div></div></div>
-</div></div><!--esi <esi:include src="/esitest-fa8a495983347898/content" /> --><noscript><img src="https://login.wikimedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+</div></div>< !--esi <esi:include src="/esitest-fa8a495983347898/content" /> -- ><noscript><img src="https://login.wikimedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
 <div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Category:Medical_journals&amp;oldid=1229034112">https://en.wikipedia.org/w/index.php?title=Category:Medical_journals&amp;oldid=1229034112</a>"</div></div>
-					<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Academic_works_about_medicine" title="Category:Academic works about medicine">Academic works about medicine</a></li><li><a href="/wiki/Category:Medical_research" title="Category:Medical research">Medical research</a></li><li><a href="/wiki/Category:Healthcare_journals" title="Category:Healthcare journals">Healthcare journals</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-ns-shown">Hidden categories: <ul><li><a href="/wiki/Category:Categories_requiring_diffusion" title="Category:Categories requiring diffusion">Categories requiring diffusion</a></li><li><a href="/wiki/Category:Commons_category_link_is_on_Wikidata" title="Category:Commons category link is on Wikidata">Commons category link is on Wikidata</a></li></ul></div></div>
+					<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Academic_works_about_medicine" title="Category:Academic works about medicine">Academic works about medicine</a></li><li><a href="/wiki/Category:Medical_research" title="Category:Medical research">Medical research</a></li><li><a href="/wiki/Category:Healthcare_journals" title="Category:Healthcare journals">Healthcare journals</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-ns-shown">Hidden categories: <ul><li><a href="/wiki/Category:Categories_requiring_diffusion" title="Category:Categories requiring diffusion">Categories requiring diffusion</a></li><li><a href="/wiki/Category:Commons_category_link_is_on_Wikidata" title="Category:Commons category link is on Wikidata">Commons category link is on Wikidata</a></li></ul></div></div> -->
 				</div>
 
 

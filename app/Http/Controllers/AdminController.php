@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Article; //Journal Org
-use App\Models\Banner;
+use App\Models\banner;
 use App\Models\Page;
 use App\Models\journal;
 use App\Models\organization;
@@ -112,6 +112,20 @@ class AdminController extends Controller
         $JournalID = $this->JournalIDGen() + 1;
         $NewJournalID = 'JRN0000'.$JournalID;
         return view('admin.new-article',compact('NewJournalID'));
+    }// End Method
+
+    public function NewIndex(){
+        //resources-view-folder-filename
+        $IndexID = $this->EntityIDGen() + 1;
+        $NewIndexID = 'INDEX0'.$IndexID;
+        return view('admin.new-index',compact('NewIndexID'));
+    }// End Method
+
+    public function NewPublisher(){
+        //resources-view-folder-filename
+        $PubID = $this->EntityIDGen() + 1;
+        $NewPubID = 'PUBLISHER0'.$PubID;
+        return view('admin.new-publisher',compact('NewPubID'));
     }// End Method
 
     public function NewArticleWizard(){
@@ -248,23 +262,33 @@ class AdminController extends Controller
     public function AdminArticleUpdate(Request $request){
         $id = Auth::user()->fname;
 
-        dd($request);
+        //dd($request);
         if($request->file('article_photo')){
             $file = $request->file('article_photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
         }else{$filename = "nologo";}
 
-        if($request->file('article_logo')){
-            $file = $request->file('article_logo');
-            $filenamelogo = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'), $filenamelogo);
-        }else{$filenamelogo  = "nologo";}
-
         $article_stat = "active";
         if($request->article_featured){$article_stat = "featured";}
         if(is_null($request->article_active)){$article_stat = "draft";}
 
+
+        $this_article = Article::find($request->article_id);
+        //dd($this_article);
+        $this_article->article_status = $article_stat;
+        $this_article->full_title = $request->full_title;
+        $this_article->short_title = $request->short_title;
+        $this_article->org_society = $request->org_society;
+        $this_article->email = $request->email;
+        $this_article->article_contact = $request->journal_contact;
+        $this_article->contact_number = $request->contact_number;
+        $this_article->about = $request->about;
+        $this_article->aims_scope = $request->aims_scope;
+        $this_article->link = $request->link;
+        $this_article->policy = $request->policy;
+        $this_article->updated_at = now();
+        $this_article->save();
 
         return redirect()->route('admin.active-articles');
 
@@ -276,7 +300,7 @@ class AdminController extends Controller
 
      public function ActiveBanners(){
 
-        $BannerData = Banner::latest()->get();
+        $BannerData = banner::latest()->get();
         return view('admin.active-banners', compact('BannerData'));
 
     }// End Method
@@ -312,6 +336,33 @@ class AdminController extends Controller
         return redirect()->route('admin.active-banners');
 
     }//End Method
+
+    public function AdminEntityStore(Request $request){
+        $id = Auth::user()->fname;
+        entity::insert([
+            'ent_created_by' => $id,
+            'ent_id' => $request->index_id,
+            'ent_type' => $request->entity_type,
+            'ent_name' => $request->index_name,
+            'ent_acro' => $request->index_acronym,
+            'ent_description' => $request->index_description,
+            'ent_url' => $request->index_url,
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('admin.active-indexes');
+
+    }//End Method
+
+    public function ActiveIndexes(){
+
+        $IndexData = entity::where('ent_type','index')
+                    ->orderBy('ent_id')
+                    ->get();
+        //dd($IndexData);
+        return view('admin.active-indexes', compact('IndexData'));
+
+    }// End Method
 
 
     /**
@@ -362,6 +413,17 @@ class AdminController extends Controller
     public function JournalIDGen(){
         $ArticleID = Article::latest('id')->first('id');
         return($ArticleID['id']);
+
+    }
+
+    public function EntityIDGen(){
+        $EntityID = entity::latest('id')->first('id');
+        return($EntityID['id']);
+    }// gets the ID of Entity, the id number corresponds to the entity ID
+
+    public function OrgIDGen(){
+        $OrgID = organization::latest('id')->first('id');
+        return($OrgID['id']);
 
     }
 

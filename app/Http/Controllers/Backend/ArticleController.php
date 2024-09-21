@@ -21,7 +21,9 @@ class ArticleController extends Controller
 
         $ArticleData = Article::where('article_status','featured')
                                 ->orderBy('full_title')
-                                ->get();
+                                ->get(['journal_mid','full_title','short_title','about']);
+
+        //dd($ArticleData);
         return view('frontend.frontendmain', compact('ArticleData'));
 
     }// End Method

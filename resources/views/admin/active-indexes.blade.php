@@ -39,7 +39,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="mt-3">
-							<a href="{{ route('admin.new-page') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Page</a>
+							<a href="{{ route('admin.new-index') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Index</a>
 							</div>
 						</div>
 					</div>
@@ -55,25 +55,21 @@
 							<table id="dataTableExample" class="table">
 							<thead>
 								<tr>
-								<th>ID</th>
-                                <th>Type</th>
-								<th>Title</th>
+								<th>Index ID</th>
+								<th>Name</th>
+                                <th>Acronym</th>
 								<th>Description</th>
-								<th>Status</th>
-								<th>Image</th>
-								<th>Link/th>
+								<th>Link</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach( $PageData as $key => $item)
+								@foreach( $IndexData as $key => $item)
 								<tr>
-								<td>{{ $key+1 }}</td>
-                                <td>{{ $item->page_type }}</td>
-								<td>{{ $item->page_title }}</td>
-								<td>{{ $item->page_description }}</td>
-								<td>{{ $item->page_status }}</td>
-								<td>{{ $item->page_image_path }}</td>
-								<td>{{ $item->page_url }}</td>
+                                <td>{{ $item->ent_id }}</td>
+								<td>{{ $item->ent_name }}</td>
+								<td>{{ $item->ent_acro }}</td>
+								<td>{{ $item->ent_description }}</td>
+								<td>{{ $item->ent_url }}</td>
 								</tr>
 							@endforeach
 							</tbody>

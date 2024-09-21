@@ -18,6 +18,9 @@
                 @csrf
                     @foreach($ArticleData as $item)
                         <div class="mb-3">
+                            <input type="hidden" class="form-control" name="article_id" value="{{ $item->id }}" readonly>
+                        </div>
+                        <div class="mb-3">
                             <label for="journal_id" class="form-label">Journal ID</label>
                             <input type="text" class="form-control" name="journal_id" value="{{ $item->journal_mid }}" readonly>
                         </div>
