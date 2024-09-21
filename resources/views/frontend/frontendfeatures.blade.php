@@ -16,7 +16,7 @@
             <img class="card-img-top rounded-0" src="/upload/no_image.jpg" alt="{{ $item->short_title }}">
             <div class="card-body">
               <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
-              <p class="card-text">{{ substr($item->about,10) }}</p>
+              <p class="card-text">{{ substr($item->about,0) }}</p>
               <p><a href="/journals/data?val={{$item->journal_mid}}" >View more Information</a></p>
             </div>
           </div>

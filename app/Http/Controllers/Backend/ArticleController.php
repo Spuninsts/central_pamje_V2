@@ -23,6 +23,10 @@ class ArticleController extends Controller
                                 ->orderBy('full_title')
                                 ->get(['journal_mid','full_title','short_title','about']);
 
+        for($x=0;$x < count($ArticleData); $x++){
+            $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
+        }
+
         //dd($ArticleData);
         return view('frontend.frontendmain', compact('ArticleData'));
 
@@ -65,6 +69,17 @@ class ArticleController extends Controller
             return view('frontend.frontendcategoryjournals', compact('ArticleData'));
 
     }// End Method
+
+    function getContextSummary($text) {
+        // Split the text into an array of words
+        $words = explode(' ', $text);
+
+        // Get only the first 100 words
+        $first100Words = array_slice($words, 0, 20);
+
+        // Combine the words back into a string
+        return implode(' ', $first100Words) . '...';
+    }
 
         //Loads about us  page
     public function LoadAllAboutUsMain(){
