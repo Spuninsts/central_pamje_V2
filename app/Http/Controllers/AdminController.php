@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Article; //Journal Org
 use App\Models\banner;
-use App\Models\Page;
+use App\Models\page;
 use App\Models\journal;
 use App\Models\organization;
 use App\Models\Association;
@@ -371,7 +371,7 @@ class AdminController extends Controller
 
      public function ActivePages(){
 
-        $PageData = Page::latest()->get();
+        $PageData = page::latest()->get();
         return view('admin.active-pages', compact('PageData'));
 
     }// End Method
@@ -396,7 +396,7 @@ class AdminController extends Controller
             $file->move(public_path('/upload/admin_images/'), $filename);
         }else{$filename = "noimage";}
 
-        Page::insert([
+        page::insert([
             'page_created_by' => $id,
             'page_status' => $request->page_status,
             'page_type' => $request->page_type,
