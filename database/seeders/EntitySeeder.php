@@ -58,7 +58,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
-                'ent_id'=> 'PUBL01',
+                'ent_id'=> 'PUB01',
                 'ent_type' => 'publisher',
                 'ent_name' => 'PubMed by the US National Library of Medicine',
                 'ent_acro' => '',
@@ -67,7 +67,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
-                'ent_id'=> 'PUBL02',
+                'ent_id'=> 'PUB02',
                 'ent_type' => 'publisher',
                 'ent_name' => 'Elsevier’s Scopus',
                 'ent_acro' => '',
@@ -76,7 +76,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
-                'ent_id'=> 'PUBL03',
+                'ent_id'=> 'PUB03',
                 'ent_type' => 'publisher',
                 'ent_name' => 'Thomson Reuters ISI',
                 'ent_acro' => 'ISI',
@@ -85,7 +85,7 @@ class EntitySeeder extends Seeder
             ],
             [
                 'ent_created_by' => 'admin',
-                'ent_id'=> 'PUBL04',
+                'ent_id'=> 'PUB04',
                 'ent_type' => 'publisher',
                 'ent_name' => 'University of the East Ramon Magsaysay Memorial Medical Center, Inc',
                 'ent_acro' => 'UERMMMC',

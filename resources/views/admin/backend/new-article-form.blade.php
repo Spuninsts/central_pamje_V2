@@ -31,7 +31,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="org_society" class="form-label">Name of Organization or Society </label>
-                            <input type="text" class="form-control" name="org_society" placeholder="">
+                            <select name="org_society" id="org_society">
+                                <option value="">--Select an organization--</option>
+                                @foreach($organizationData as $item)
+                                    <option value="{{$item->org_id}}">{{$item->org_title}}</option>
+                                @endforeach
+
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Journal eContact </label>
@@ -77,13 +83,28 @@
                                 <input type="text" class="form-control" name="policy" placeholder="">
                            </div>
 
-                           <div class="mb-3">
-                                <label for="indexing" class="form-label">Indexing</label>
-                                <textarea class="form-control" name="indexing" rows="5" placeholder=""></textarea>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="indexing" class="form-label">Indexing</label>
+                                        <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="journal_indexes[]" multiple="multiple" data-width="100%" data-select2-id="4" tabindex="-1" aria-hidden="true">
+                                            @foreach( $EntityData as $key => $item)
+                                                @if ($item->ent_type == 'index')
+                                                    <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                </div>
+
+
                             <div class="mb-3">
                                 <label for="publisher" class="form-label">Publisher</label>
-                                <input type="text" class="form-control" name="publisher" placeholder="">
+                                <select class="form-select mb-3" name="journal_publisher" data-width="50%" aria-hidden="true">
+                                    <option>Select Publisher...</option>
+                                    @foreach( $EntityData as $key => $item)
+                                        @if ($item->ent_type == 'publisher')
+                                            <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                            </div>
 
                     </div>

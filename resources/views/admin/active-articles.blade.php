@@ -39,7 +39,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="mt-3">
-							<a href="new-article" class="btn btn-info active" role="button" aria-pressed="true">Add Journal</a>
+							<a href="{{ route('admin.new-article') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Journal</a>
 							</div>
 						</div>
 					</div>

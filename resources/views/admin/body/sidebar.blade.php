@@ -1,6 +1,6 @@
 <nav class="sidebar">
       <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
+        <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
 
           <img src="{{ asset('frontend/img/logo-central-w.jpg') }}" alt="Central Logo" width="100" >
 
@@ -15,7 +15,7 @@
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="dashboard" class="nav-link">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
@@ -65,17 +65,26 @@
             <div class="collapse" id="users">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="active-users" class="nav-link">Active</a>
+                  <a href="/admin/active/users?val=active" class="nav-link">Active</a>
+                </li>
+                  <li class="nav-item">
+                      <a href="/admin/active/users?val=reviewer" class="nav-link">Reviewers</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="/admin/active/users?val=author" class="nav-link">Authors</a>
+                  </li>
+                <li class="nav-item">
+                  <a href="/admin/active/users?val=approval" class="nav-link">Approvals</a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">For Approval</a>
+                  <a href="/admin/active/users?val=organization" class="nav-link">Contacts</a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">Inactive</a>
+                  <a href="/admin/active/users?val=inactive" class="nav-link">Inactive</a>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">Org Contacts</a>
-                </li>
+                  <li class="nav-item">
+                      <a href="/admin/active/users?val=admin" class="nav-link">Admin</a>
+                  </li>
               </ul>
             </div>
           </li>
@@ -89,21 +98,23 @@
             </a>
             <div class="collapse" id="journals">
               <ul class="nav sub-menu">
+
                 <li class="nav-item">
                   <a href="{{ route('admin.active-articles') }}" class="nav-link">Active</a>
                 </li>
+
                 <li class="nav-item">
-                  <a href="/admin/feature-articles" class="nav-link">Featured</a>
+                  <a href="/admin/feature/articles" class="nav-link">Featured</a>
                 </li>
+
                 <li class="nav-item">
-                  <a href="{{ route('admin.new-article') }}" class="nav-link">New Journal Form</a>
+                  <a href="/admin/inactive/articles" class="nav-link">Inactive</a>
                 </li>
+
                 <li class="nav-item">
-                  <a href="/admin/inactive-articles" class="nav-link">Inactive</a>
+                  <a href="/admin/new/article" class="nav-link">NewJournal</a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a href="{{ route('admin.new-article-wizard') }}#" class="nav-link">New Journals Wizard</a>
-                </li> -->
+
               </ul>
             </div>
 
@@ -121,22 +132,22 @@
                  <li class="nav-item">
                   <a href="{{ route('admin.active-banners') }}" class="nav-link">Banners</a>
                 </li>
-                <li class="nav-item">
+               <!--  <li class="nav-item">
                   <a href="{{ route('admin.new-banner') }}" class="nav-link">New Banner</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a href="{{ route('admin.active-pages') }}" class="nav-link">Pages</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="{{ route('admin.new-page') }}" class="nav-link">New Page</a>
-                </li>
+                </li> -->
               </ul>
             </div>
         </li>
 
         <!-- Index Block  -->
         <li class="nav-item">
-            <a href="/admin/active-index" class="nav-link">
+            <a href="/admin/active/indexes?val=index" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Indexes</span>
             </a>
@@ -144,7 +155,7 @@
 
         <!-- Publisher Block  -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/admin/active/publishers?val=publisher" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Publishers</span>
             </a>
@@ -152,7 +163,7 @@
 
         <!-- Organization Block  -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/admin/active/organizations" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
               <span class="link-title">Organizations</span>
             </a>

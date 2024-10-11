@@ -25,7 +25,7 @@
             @include('admin.body.header')
 			<!-- partial -->
 
-            @include('admin.backend.new-banner-form')
+            @include('admin.backend.new-publisher-form')
 
 			<!-- partial:partials/_footer.html -->
             @include('admin.body.footer')

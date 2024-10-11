@@ -25,7 +25,7 @@
             @include('admin.body.header')
 			<!-- partial -->
 
-            @include('admin.active-users-table')
+            @include('admin.backend.active-users-table')
 
 			<!-- partial:partials/_footer.html -->
             @include('admin.body.footer')

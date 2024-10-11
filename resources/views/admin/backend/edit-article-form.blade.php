@@ -81,23 +81,39 @@
                                 <input type="text" class="form-control" name="policy" value="{{ $item->policy }}">
                            </div>
                         @endforeach
-                            <!-- {{ $index_var = $publisher_var  = ''}}
-                             @foreach($EntityData as $key => $item)
+
+                        <div class="mb-3">
+                            <label for="indexing" class="form-label">Indexing</label>
+                            <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="journal_indexes[]" multiple="multiple" data-width="100%" data-select2-id="4" tabindex="-1" aria-hidden="true">
+                                @foreach( $EntityData as $key => $item)
                                     @if ($item->ent_type == 'index')
-                                        {{ $index_var .= $item->ent_name.PHP_EOL }}
-                                    @else
-                                        {{ $publisher_var .= $item->ent_name.PHP_EOL }}
+                                        @if(in_array($item->ent_id,explode(",",$ArticleData[0]->indexing)))
+                                            <option value="{{$item->ent_id}}" selected>{{$item->ent_name}}</option>
+                                        @else
+                                            <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
+                                        @endif
                                     @endif
-                            @endforeach -->
-                            <!-- This is commented out to keep values from displaying, but its working -->
-                           <div class="mb-3">
-                                <label for="indexing" class="form-label">Indexing</label>
-                                <textarea class="form-control" name="indexing" rows="5" >{{ $index_var }}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="publisher" class="form-label">Publisher</label>
-                                <input type="text" class="form-control" name="publisher" value="{{ $publisher_var }}">
-                           </div>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="publisher" class="form-label">Publisher</label>
+                            <select class="form-select mb-3" name="journal_publisher" data-width="50%" aria-hidden="true">
+                                <option>Select Publisher...</option>
+                                @foreach( $EntityData as $key => $item)
+                                    @if ($item->ent_type == 'publisher')
+                                        @if($item->ent_id == $ArticleData[0]->publisher)
+                                            <option value="{{$item->ent_id}}" selected>{{$item->ent_name}}</option>
+                                        @else
+                                            <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
 
                     </div>
                 </div> <!-- card body -->

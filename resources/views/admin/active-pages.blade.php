@@ -67,7 +67,7 @@
 							<tbody>
 								@foreach( $PageData as $key => $item)
 								<tr>
-								<td>{{ $key+1 }}</td>
+								<td>{{ $item->page_id }}</td>
                                 <td>{{ $item->page_type }}</td>
 								<td>{{ $item->page_title }}</td>
 								<td>{{ $item->page_description }}</td>

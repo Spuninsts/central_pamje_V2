@@ -25,7 +25,7 @@
             @include('admin.body.header')
 			<!-- partial -->
 
-            @include('admin.backend.new-organization-form')
+            @include('admin.backend.new-user-form')
 
 			<!-- partial:partials/_footer.html -->
             @include('admin.body.footer')

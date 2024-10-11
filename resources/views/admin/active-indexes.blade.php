@@ -63,7 +63,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach( $IndexData as $key => $item)
+								@foreach( $EntityData as $key => $item)
 								<tr>
                                 <td>{{ $item->ent_id }}</td>
 								<td>{{ $item->ent_name }}</td>

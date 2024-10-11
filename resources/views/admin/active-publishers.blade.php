@@ -29,8 +29,8 @@
 
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Indexes</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Active Indexes</li>
+					<li class="breadcrumb-item"><a href="#">Publishers</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Active Publishers</li>
 					</ol>
 				</nav>
 
@@ -39,7 +39,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="mt-3">
-							<a href="{{ route('admin.new-page') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Page</a>
+							<a href="{{ route('admin.new-publisher') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Publisher</a>
 							</div>
 						</div>
 					</div>
@@ -50,30 +50,26 @@
 					<div class="col-md-12 grid-margin stretch-card">
 					<div class="card">
 						<div class="card-body">
-						<h6 class="card-title">Indexes</h6>
+						<h6 class="card-title">Publishers</h6>
 						<div class="table-responsive">
 							<table id="dataTableExample" class="table">
 							<thead>
 								<tr>
-								<th>ID</th>
-                                <th>Type</th>
-								<th>Title</th>
+								<th>Index ID</th>
+								<th>Name</th>
+                                <th>Acronym</th>
 								<th>Description</th>
-								<th>Status</th>
-								<th>Image</th>
-								<th>Link/th>
+								<th>Link</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach( $PageData as $key => $item)
+								@foreach( $EntityData as $key => $item)
 								<tr>
-								<td>{{ $key+1 }}</td>
-                                <td>{{ $item->page_type }}</td>
-								<td>{{ $item->page_title }}</td>
-								<td>{{ $item->page_description }}</td>
-								<td>{{ $item->page_status }}</td>
-								<td>{{ $item->page_image_path }}</td>
-								<td>{{ $item->page_url }}</td>
+                                <td>{{ $item->ent_id }}</td>
+								<td>{{ $item->ent_name }}</td>
+								<td>{{ $item->ent_acro }}</td>
+								<td>{{ $item->ent_description }}</td>
+								<td>{{ $item->ent_url }}</td>
 								</tr>
 							@endforeach
 							</tbody>

@@ -63,7 +63,7 @@ class AdminController extends Controller
         $data->name = $request->name;
         $data->phone = $request->phone;
         $data->email = $request->email;
-        $data->address = $request->address;
+        $data->user_address = $request->address;
 
         if($request->file('photo')){
             $file = $request->file('photo');
@@ -85,7 +85,8 @@ class AdminController extends Controller
 
     public function ActiveArticles(){
 
-        $ArticleData = Article::where('article_status','!=','inactive')
+        $ArticleData = Article::where('article_status','active')
+                        ->orWhere('article_status','featured')
                         ->get();
         return view('admin.active-articles', compact('ArticleData'));
 
@@ -109,29 +110,52 @@ class AdminController extends Controller
 
     public function NewArticle(){
         //resources-view-folder-filename
-        $JournalID = $this->JournalIDGen() + 1;
-        $NewJournalID = 'JRN0000'.$JournalID;
-        return view('admin.new-article',compact('NewJournalID'));
+        //$JournalID = $this->JournalIDGen() + 1;
+        $NewJournalID = $this->IDGen('journal');
+        $organizationData = organization::all();
+        $EntityData = entity::whereIn("ent_type",array("index","publisher"))->get();
+        //$PublisherData = entity::where("ent_type","publisher")->get();
+        //dd($PublisherData);
+
+        return view('admin.new-article',compact('organizationData','NewJournalID','EntityData'));
     }// End Method
 
     public function NewIndex(){
         //resources-view-folder-filename
-        $IndexID = $this->EntityIDGen() + 1;
-        $NewIndexID = 'INDEX0'.$IndexID;
+        //$IndexID = $this->EntityIDGen() + 1;
+        $NewIndexID = $this->IDGen('index');
         return view('admin.new-index',compact('NewIndexID'));
     }// End Method
 
     public function NewPublisher(){
         //resources-view-folder-filename
-        $PubID = $this->EntityIDGen() + 1;
-        $NewPubID = 'PUBLISHER0'.$PubID;
-        return view('admin.new-publisher',compact('NewPubID'));
+        //$PubID = $this->EntityIDGen() + 1;
+        $NewPublisherID = $this->IDGen('publisher');
+        return view('admin.new-publisher',compact('NewPublisherID'));
+    }// End Method
+
+    public function NewOrganization(){
+        //resources-view-folder-filename
+        //$OrgID = $this->OrgIDGen() + 1;
+        $NewOrgID = $this->IDGen('organization');
+        return view('admin.new-organization',compact('NewOrgID'));
     }// End Method
 
     public function NewArticleWizard(){
         //resources-view-folder-filename
-            return view('admin.new-article-wizard');
+        $organizationData = organization::all();
+            return view('admin.new-article-wizard',compact('organizationData'));
     }// End Method
+
+    public function EditUserData(Request $request){
+
+        $userData = User::where('user_id',$request->val)
+            ->first();
+        //dd($userData);
+        $organizationData = organization::all();
+
+        return view('admin.edit-user', compact('userData','organizationData'));
+    }//End User edit page
 
     public function EditArticleData(Request $request){
 
@@ -164,8 +188,10 @@ class AdminController extends Controller
         //dd($UserData);
 
         // * Publisher and Indexes
-        $EntityData = entity::whereIn('ent_id',$temp_array)
-                        ->get();
+        //$EntityData = entity::whereIn('ent_id',explode(",",$ArticleData[0]->indexing))
+        //                    ->orWhere('ent_id',$ArticleData[0]->publisher)
+        //                    ->get();
+        $EntityData = entity::whereIn("ent_type",array("index","publisher"))->get();
 
         //dd($EntityData);
         // * ORGANIZATION
@@ -188,7 +214,7 @@ class AdminController extends Controller
     public function AdminArticleStore(Request $request){
         $id = Auth::user()->fname;
 
-        //dd($request->article_featured);
+        //dd($request->journal_publishers);
        //dd($request->article_active);
         //validation
         /* $request->validate([
@@ -197,13 +223,17 @@ class AdminController extends Controller
         $image_path = '/upload/admin_images/';
         $article_photo = $request->file('article_photo');
         //dd($request->file($article_photo[0]));
-        foreach ($article_photo as $ap ){
-            //dd($request->hasFile($ap));
-            if($request->hasFile($ap)){
-                $file = $request->file($ap);
-                $filename = date('YmdHi').$file->getClientOriginalName();
-                $file->move(public_path($image_path), $filename);
-            }else{$filename = "nologo";}
+        if(!empty($article_photo)) {
+            foreach ($article_photo as $ap) {
+                //dd($request->hasFile($ap));
+                    if ($request->hasFile($ap)) {
+                        $file = $request->file($ap);
+                        $filename = date('YmdHi') . $file->getClientOriginalName();
+                        $file->move(public_path($image_path), $filename);
+                    }
+                }
+            }else{
+            $filename = "nologo";
         }
         /* if($request->file('article_logo')){
             $file = $request->file('article_logo');
@@ -231,36 +261,17 @@ class AdminController extends Controller
             'link' => $request->link,
             'policy' => $request->policy,
             'photo' => $image_path.$filename,
+            'indexing' => implode(",",$request->journal_indexes),
+            'publisher' => $request->journal_publisher,
         ]);
-
-        if($request->has('indexing')){
-            journal::insert([
-                'journal_created_by' => $id,
-                'journal_id' => $request->journal_id,
-                'journal_type' => 'indexing',
-                'journal_value' => $request->indexing,
-                'journal_group' => '',
-                'journal_link' => 'None',
-            ]);
-        }
-
-        if($request->has('publisher')){
-            journal::insert([
-                'journal_created_by' => $id,
-                'journal_id' => $request->journal_id,
-                'journal_type' => 'publisher',
-                'journal_value' => $request->publisher,
-                'journal_group' => '',
-                'journal_link' => 'None',
-            ]);
-        }
 
         return redirect()->route('admin.active-articles');
 
     }//ENd Method
 
+
     public function AdminArticleUpdate(Request $request){
-        $id = Auth::user()->fname;
+
 
         //dd($request);
         if($request->file('article_photo')){
@@ -294,6 +305,15 @@ class AdminController extends Controller
 
     }//ENd Method
 
+    public function ActiveOrganization(){
+
+        $OrganizationData = organization::where('org_status','active')
+                            ->get();
+
+        return view('admin.active-organizations', compact('OrganizationData'));
+
+    }//End Organization data retrieval
+
     /**
      * This section is for Banners
      */
@@ -307,7 +327,8 @@ class AdminController extends Controller
 
     public function NewBanner(){
         //resources-view-folder-filename
-            return view('admin.new-banner');
+            $recordID = $this->IDGen('banner');
+            return view('admin.new-banner', compact('recordID'));
     }// End Method
 
     public function AdminBannerStore(Request $request){
@@ -327,42 +348,92 @@ class AdminController extends Controller
 
         Banner::insert([
             'banner_created_by' => $id,
+            'banner_id' => $request->banner_id,
             'banner_title' => $request->banner_title,
             'banner_description' => $request->banner_description,
             'banner_image_path' => $filename,
-            'banner_url' => $request->banner_url
+            'banner_url' => $request->banner_url,
+            'banner_status' => $request->banner_status,
+            'created_at' => now()
         ]);
 
         return redirect()->route('admin.active-banners');
 
     }//End Method
 
+    public function EditBannerData(Request $request){
+
+         //dd($request->val);
+        $bannerData = banner::where('banner_id',$request->val)
+            ->first();
+
+        return view('admin.edit-banner', compact('bannerData'));
+    }//End User edit page
+
     public function AdminEntityStore(Request $request){
         $id = Auth::user()->fname;
+        if( $request->entity_type == 'index'){
+            $entity_view = '/admin/active/indexes?val=index';
+        }else{
+            $entity_view = '/admin/active/publishers?val=publisher';
+        }
         entity::insert([
             'ent_created_by' => $id,
-            'ent_id' => $request->index_id,
+            'ent_id' => $request->entity_id,
             'ent_type' => $request->entity_type,
-            'ent_name' => $request->index_name,
-            'ent_acro' => $request->index_acronym,
-            'ent_description' => $request->index_description,
-            'ent_url' => $request->index_url,
+            'ent_name' => $request->entity_name,
+            'ent_acro' => $request->entity_acronym,
+            'ent_description' => $request->entity_description,
+            'ent_url' => $request->entity_url,
             'created_at' => now()
         ]);
 
-        return redirect()->route('admin.active-indexes');
+        return redirect($entity_view);
 
     }//End Method
 
-    public function ActiveIndexes(){
+    public function AdminOrganizationStore(Request $request){
+        $id = Auth::user()->fname;
+        organization::insert([
+            'org_created_by' => $id,
+            'org_id' => $request->organization_id,
+            'org_title' => $request->organization_name,
+            'org_description' => $request->organization_description,
+            'org_url' => $request->organization_url,
+            'org_status' => 'active',
+            'org_image_path' => '', // needs to update with images.
+            'created_at' => now()
+        ]);
 
-        $IndexData = entity::where('ent_type','index')
+        return redirect()->route('admin.active-organization');
+
+    }//End Method
+
+    public function ActiveEntity(Request $request){
+
+        //dd(request()->val);
+        if (request()->val == "index"){
+        $EntityData = entity::where('ent_type','index')
                     ->orderBy('ent_id')
                     ->get();
-        //dd($IndexData);
-        return view('admin.active-indexes', compact('IndexData'));
+
+        $entity_view = 'admin.active-indexes';
+        //return view('admin.active-indexes', compact('EntityData'));
+
+        }elseif (request()->val == "publisher"){
+        $EntityData = entity::where('ent_type','publisher')
+                    ->orderBy('ent_id')
+                    ->get();
+                    $entity_view = 'admin.active-publishers';
+        //return view('admin.active-publishers', compact('EntityData'));
+        }
+        //dd( $EntityData);
+        return view($entity_view, compact('EntityData'));
+
+
 
     }// End Method
+
 
 
     /**
@@ -398,12 +469,14 @@ class AdminController extends Controller
 
         page::insert([
             'page_created_by' => $id,
+            'page_id' => $request->page_id,
             'page_status' => $request->page_status,
             'page_type' => $request->page_type,
             'page_title' => $request->page_title,
             'page_description' => $request->page_description,
             'page_image_path' => $filename,
-            'page_url' => $request->page_url
+            'page_url' => $request->page_url,
+            'created_at' => now()
         ]);
 
         return redirect()->route('admin.active-pages');
@@ -413,7 +486,6 @@ class AdminController extends Controller
     public function JournalIDGen(){
         $ArticleID = Article::latest('id')->first('id');
         return($ArticleID['id']);
-
     }
 
     public function EntityIDGen(){
@@ -424,7 +496,34 @@ class AdminController extends Controller
     public function OrgIDGen(){
         $OrgID = organization::latest('id')->first('id');
         return($OrgID['id']);
+    }
 
+    public function IDGen($record){
+
+        switch ($record) {
+            case 'banner':
+                $ID = banner::latest('id')->first('id');
+                return("BANNER0".$ID['id']+1);
+            case 'page':
+                $ID = page::latest('id')->first('id');
+                return("PAGE0".$ID['id']+1);
+            case 'user': //user
+                $ID = User::latest('id')->first('id');
+                return("USER0".$ID['id']+1);
+            case 'index': //entity
+                $ID = entity::latest('id')->first('id');
+                return("INDEX0".$ID['id']+1);
+            case 'publisher': //entity
+                $ID = entity::latest('id')->first('id');
+                return("PUB0".$ID['id']+1);
+            case 'organization': //entity
+                $ID = organization::latest('id')->first('id');
+                return("ORG0".$ID['id']+1);
+            default:
+                $ID = Article::latest('id')->first('id');
+                return("JOURNAL0".$ID['id']+1);
+
+        }
     }
 
 }

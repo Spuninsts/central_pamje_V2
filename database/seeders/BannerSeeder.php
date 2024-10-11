@@ -21,6 +21,7 @@ class BannerSeeder extends Seeder
         DB::table('banners')->insert([
             //first entry
             [
+                'banner_id' => 'BANNER01',
                 'banner_created_by' => 'admin',
                 'banner_status' => 'active',
                 'banner_title' => 'First Label',
@@ -29,6 +30,7 @@ class BannerSeeder extends Seeder
                 'banner_url' => 'http://www.test.com'
             ],
             [   //second entry
+                'banner_id' => 'BANNER02',
                 'banner_created_by' => 'admin',
                 'banner_status' => 'active',
                 'banner_title' => 'Second Label',

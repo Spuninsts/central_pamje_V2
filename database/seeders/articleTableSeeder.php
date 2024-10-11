@@ -18,7 +18,7 @@ class articleTableSeeder extends Seeder
             //first entry
             [
                 'created_by' => '1',
-                'journal_mid'=> 'JRN00001',
+                'journal_mid'=> 'JOURNAL01',
                 'article_status' => 'featured',
                 'full_title' => 'Philippine Journal of Otolaryngology Head and Neck Surgery',
                 'short_title' => 'PJHONS',
@@ -33,7 +33,7 @@ class articleTableSeeder extends Seeder
             ],
             [   //second entry
                 'created_by' => '2',
-                'journal_mid'=> 'JRN00002',
+                'journal_mid'=> 'JOURNAL02',
                 'article_status' => 'featured',
                 'full_title' => 'Philippine Journal of Nursing',
                 'short_title' => 'PJN',
@@ -48,7 +48,7 @@ class articleTableSeeder extends Seeder
             ],
             [   //third entry
                 'created_by' => '2',
-                'journal_mid'=> 'JRN00003',
+                'journal_mid'=> 'JOURNAL03',
                 'article_status' => 'featured',
                 'full_title' => 'Philippine Journal of Pathology',
                 'short_title' => 'PJP',
@@ -63,7 +63,7 @@ class articleTableSeeder extends Seeder
             ],
             [   //third entry
                 'created_by' => '2',
-                'journal_mid'=> 'JRN00004',
+                'journal_mid'=> 'JOURNAL04',
                 'article_status' => 'featured',
                 'full_title' => 'UERMMMCI, Inc. Health Sciences Journal',
                 'short_title' => 'UHSJ',

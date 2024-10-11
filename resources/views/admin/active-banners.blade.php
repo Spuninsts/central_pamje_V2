@@ -66,7 +66,7 @@
 							<tbody>
 								@foreach( $BannerData as $key => $item)
 								<tr>
-								<td>{{ $key+1 }}</td>
+								<td><a href="/admin/banner/edit?val={{ $item->banner_id }}">{{ $item->banner_id }}</a></td>
 								<td>{{ $item->banner_title }}</td>
 								<td>{{ $item->banner_description }}</td>
 								<td>{{ $item->banner_status }}</td>

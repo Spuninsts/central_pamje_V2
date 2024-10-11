@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('page_id')->nullable();
             $table->string('page_created_by')->nullable();
             $table->string('page_status')->nullable(); //active,inactive
             $table->string('page_type')->nullable(); //news,announcement,banner(banner more info page), Editors page.

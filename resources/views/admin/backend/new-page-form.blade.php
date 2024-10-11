@@ -34,7 +34,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="page_status" class="form-label">Page Status</label>
-                            <input type="text" class="form-control" name="page_status" autocomplete="off" placeholder="active">
+                            <select name="page_status" >
+                                <option value="draft" selected>draft</option>
+                                <option value="inactive">inactive</option>
+                                <option value="active">active</option>
+                            </select>
                         </div>
 
                 </div>

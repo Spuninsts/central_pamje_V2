@@ -23,6 +23,7 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert([
 
             [   //first entry
+                'page_id' => 'PAGE01',
                 'page_status' => 'active',
                 'page_type' => 'news',
                 'page_title' => 'First News',
@@ -31,6 +32,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.news1.com'
             ],
             [   //second entry
+                'page_id' => 'PAGE02',
                 'page_status' => 'active',
                 'page_type' => 'announcement',
                 'page_title' => 'First announcement',
@@ -39,6 +41,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.announcement1.com'
             ],
             [   //third entry
+                'page_id' => 'PAGE03',
                 'page_status' => 'active',
                 'page_type' => 'news',
                 'page_title' => 'First news2',
@@ -47,6 +50,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.news2.com'
             ],
             [   //fourth entry
+                'page_id' => 'PAGE04',
                 'page_status' => 'active',
                 'page_type' => 'announcement',
                 'page_title' => 'First announcement2',
@@ -55,6 +59,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.announcement2.com'
             ],
             [   //fifth entry
+                'page_id' => 'PAGE05',
                 'page_status' => 'active',
                 'page_type' => 'banner',
                 'page_title' => 'First banner1',
@@ -63,6 +68,7 @@ class PageSeeder extends Seeder
                 'page_url' => '/page/data/banner1'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE06',
                 'page_status' => 'active',
                 'page_type' => 'banner',
                 'page_title' => 'First banner2',
@@ -71,6 +77,7 @@ class PageSeeder extends Seeder
                 'page_url' => '/page/data/banner2'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE07',
                 'page_status' => 'active',
                 'page_type' => 'editor',
                 'page_title' => 'ICMJE Recommendations',
@@ -79,6 +86,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/journals-following-the-icmje-recommendations/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE08',
                 'page_status' => 'active',
                 'page_type' => 'editor',
                 'page_title' => 'EQUATOR Network',
@@ -87,6 +95,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE09',
                 'page_status' => 'active',
                 'page_type' => 'editor',
                 'page_title' => 'WAME',
@@ -95,6 +104,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE10',
                 'page_status' => 'active',
                 'page_type' => 'editor',
                 'page_title' => 'COPE',
@@ -103,6 +113,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://publicationethics.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE11',
                 'page_status' => 'active',
                 'page_type' => 'editor',
                 'page_title' => 'WAME Recommendations on Chatbots and Generative Artificial Intelligence in Relation to Scholarly Publications, Revised May 31, 2023',
@@ -111,6 +122,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/page3.php?id=106'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE12',
                 'page_status' => 'active',
                 'page_type' => 'editor tools',
                 'page_title' => 'DOI',
@@ -119,6 +131,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.doi.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE13',
                 'page_status' => 'active',
                 'page_type' => 'editor tools',
                 'page_title' => 'WAME Manuscript submission checklist',
@@ -127,6 +140,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.wame.org/manuscript-submission-checklist '
             ],
             [   //sixth entry
+                'page_id' => 'PAGE14',
                 'page_status' => 'active',
                 'page_type' => 'editor tools',
                 'page_title' => 'WAME Recommendations on Publication Ethics Policies for Medical Journals',
@@ -135,6 +149,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/recommendations-on-publication-ethics-policies-for-medical-journals'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE15',
                 'page_status' => 'active',
                 'page_type' => 'editor tools',
                 'page_title' => 'WAME Syllabus for Prospective and Newly Appointed Editors',
@@ -143,6 +158,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/syllabus-for-prospective-and-newly-appointed-editors'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE16',
                 'page_status' => 'active',
                 'page_type' => 'researcher',
                 'page_title' => 'ICMJE Recommendations',
@@ -151,6 +167,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/journals-following-the-icmje-recommendations/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE17',
                 'page_status' => 'active',
                 'page_type' => 'researcher',
                 'page_title' => 'EQUATOR Network',
@@ -159,6 +176,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE18',
                 'page_status' => 'active',
                 'page_type' => 'researcher',
                 'page_title' => 'WAME',
@@ -167,6 +185,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE19',
                 'page_status' => 'active',
                 'page_type' => 'researcher',
                 'page_title' => 'COPE',
@@ -175,6 +194,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://publicationethics.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE20',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => 'EQUATOR network',
@@ -183,6 +203,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE21',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => 'ICJME: Responsibilities in the Submission and Peer-Review Process',
@@ -191,6 +212,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/recommendations/browse/roles-and-responsibilities/responsibilities-in-the-submission-and-peer-peview-process.html'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE22',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => 'ICJME: Defining the Role of Authors and Contributors',
@@ -199,6 +221,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/recommendations/browse/roles-and-responsibilities/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE23',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => 'ICMJE Guidelines',
@@ -207,6 +230,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://icmje.org/recommendations/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE24',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => '2022 National Ethical Guidelines for Research Involving Human Participants',
@@ -215,6 +239,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/'
             ],
             [   //sixth entry
+                'page_id' => 'PAGE25',
                 'page_status' => 'active',
                 'page_type' => 'author',
                 'page_title' => 'ORCID Number',

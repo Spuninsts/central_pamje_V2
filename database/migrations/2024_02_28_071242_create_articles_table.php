@@ -28,8 +28,8 @@ return new class extends Migration
             $table->longText('aims_scope')->nullable();
             $table->text('link')->nullable();
             $table->longText('policy')->nullable();
-            //$table->longText('indexing')->nullable();
-            //$table->string('publisher')->nullable();
+            $table->longText('indexing')->nullable();
+            $table->string('publisher')->nullable();
             $table->timestamps();
         });
     }
