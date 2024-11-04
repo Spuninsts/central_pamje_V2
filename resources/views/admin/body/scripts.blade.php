@@ -52,5 +52,7 @@
     <script src="{{ asset('backend/assets/js/dropify.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pickr.js') }}"></script>
     <script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/addnewitem.js') }}"></script>
+    {{--<script src="{{ asset('backend/assets/js/page-categories.js') }}"></script>--}}
 
     <!-- End for review -->

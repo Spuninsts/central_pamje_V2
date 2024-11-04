@@ -55,7 +55,7 @@
 							<table id="dataTableExample" class="table">
 							<thead>
 								<tr>
-								<th>Index ID</th>
+								<th>Publisher ID</th>
 								<th>Name</th>
                                 <th>Acronym</th>
 								<th>Description</th>
@@ -65,7 +65,7 @@
 							<tbody>
 								@foreach( $EntityData as $key => $item)
 								<tr>
-                                <td>{{ $item->ent_id }}</td>
+                                <td><a href="/admin/entity/edit?val={{ $item->ent_id }}">{{ $item->ent_id }}</a></td>
 								<td>{{ $item->ent_name }}</td>
 								<td>{{ $item->ent_acro }}</td>
 								<td>{{ $item->ent_description }}</td>

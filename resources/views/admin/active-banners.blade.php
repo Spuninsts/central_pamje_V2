@@ -60,7 +60,7 @@
 								<th>Description</th>
 								<th>Status</th>
 								<th>Image</th>
-								<th>Link/th>
+								<th>Link</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -71,7 +71,7 @@
 								<td>{{ $item->banner_description }}</td>
 								<td>{{ $item->banner_status }}</td>
 								<td>{{ $item->banner_image_path }}</td>
-								<td>{{ $item->banner_url }}</td>
+								<td><a href="{{ $item->banner_url }}" target="_blank">{{ $item->banner_url }}</a></td>
 								</tr>
 							@endforeach
 							</tbody>

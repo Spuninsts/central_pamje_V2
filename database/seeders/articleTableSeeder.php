@@ -29,7 +29,10 @@ class articleTableSeeder extends Seeder
                 'about' => 'The Philippine Journal of Otolaryngology Head and Neck Surgery (PJOHNS) is the official, open-access journal of the Philippine Society of Otolaryngology Head and Neck Surgery. Committed to ethical and high-quality publishing, it adheres to international standards set by International Committee of Medical Journal Editors (ICMJE), Committee on Publication Ethics (COPE), Directory of Open Access Journals (DOAJ), Open Access Scholarly Publishers Association (OASPA), and World Association of Medical Editors (WAME). Led by dedicated editors, the journal publishes original research and scholarly work, aiming to advance knowledge and contribute to best practices in the field.',
                 'aims_scope' => 'PJOHNS serves as a global scholarly forum for knowledge exchange amongst otolaryngologists and healthcare professionals in the field of otolaryngology and head and neck medicine and surgery. It publishes diverse peer-reviewed content, including original research, case studies, and reviews, with a focus on the Philippines and Asia-Pacific region. The journal prioritizes research relevant to low- and middle-income countries.',
                 'link' => 'https://pjohns.pso-hns.org/index.php/pjohns',
-                'policy' => 'Published semiannually in paid print, free open access electronic versions'
+                'policy' => 'Published semiannually in paid print, free open access electronic versions',
+                'article_category' => '',
+                'article_tags' => '',
+                'photo' => '/frontend/img/journal01.jpg',
             ],
             [   //second entry
                 'created_by' => '2',
@@ -44,7 +47,10 @@ class articleTableSeeder extends Seeder
                 'about' => 'The Philippine Journal of Nursing (PJN), a biannual, peer-reviewed publication of the Philippine Nurses Association, serves as a platform for Filipino nurses. It features original research and scientific papers (including abstracts) across diverse nursing areas like clinical, community, administrative, and educational settings. As the official journal, PJN promotes professional growth by: (i) Publishing high-quality research and scholarship; (ii) Providing updates on relevant policies and standards; and (iii) Facilitating collegial interaction among nurses. ',
                 'aims_scope' => 'None',
                 'link' => 'http://www.pna-pjn.com',
-                'policy' => 'Open Access'
+                'policy' => 'Open Access',
+                'article_category' => '',
+                'article_tags' => '',
+                'photo' => '/frontend/img/journal02.jpg',
             ],
             [   //third entry
                 'created_by' => '2',
@@ -59,7 +65,10 @@ class articleTableSeeder extends Seeder
                 'about' => 'The Philippine Journal of Pathology (PJP) is a flagship open-access, peer-reviewed journal dedicated to advancing understanding and knowledge in the field of pathology within the Philippines. Published by the Philippine Society of Pathologists, Inc. Committee on Publications, the PJP prioritizes studies and case reports relevant to the Philippine context, encompassing clinical and anatomic pathology, laboratory medicine, and associated disciplines. Targeting Filipino pathologists, laboratorians, diagnosticians, and allied professionals, the PJP fosters knowledge dissemination and ensures that valuable findings reach a wider audience, contributing to improved diagnostics, patient care, and public health outcomes.',
                 'aims_scope' => 'None',
                 'link' => 'https://philippinejournalofpathology.org/index.php/PJP',
-                'policy' => 'Open Access'
+                'policy' => 'Open Access',
+                'article_category' => '',
+                'article_tags' => '',
+                'photo' => '/frontend/img/journal03.jpg',
             ],
             [   //third entry
                 'created_by' => '2',
@@ -74,7 +83,10 @@ class articleTableSeeder extends Seeder
                 'about' => 'None',
                 'aims_scope' => 'None',
                 'link' => 'https://uerm.edu.ph/research/journals',
-                'policy' => 'Open Access'
+                'policy' => 'Open Access',
+                'article_category' => '',
+                'article_tags' => '',
+                'photo' => '/frontend/img/journal04.jpg',
             ],
 
         ]);

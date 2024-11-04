@@ -42,6 +42,15 @@ class AdminController extends Controller
         return redirect('/admin/login');
     }// End Method
 
+    public function userLogout(Request $request){
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }// End Method
     public function AdminLogin(){
         //resources-view-folder-filename
             return view('admin.admin-login');
@@ -82,6 +91,99 @@ class AdminController extends Controller
     /**
      * This section is for Articles
      */
+    public function UserMembershipUpdate(Request $request){
+        $this_association = Association::where('association_journal',$request->association_journal)
+            ->where('association_source',"user")
+            ->get();
+        //dd($this_association);
+        //drop all records with the journal ID and the association source = user
+        if($this_association){
+            $this_association->each(function ($model) {
+                $model->delete();
+            });
+        }
+
+        //insert new data into association table
+        foreach ($request as $value) { //just the parameter
+            //dd($value);
+            foreach($value as $key1 => $item){
+                //dd($key1,$item);//first iteam in the array
+                if(substr($key1,0,-1) == "new_role"){
+                    //dd(substr($key1,0,-1),substr($key1,-1));
+                    $number = substr($key1,-1);
+                    $myrole = $item;
+                }
+                if(substr($key1,0,-1) == "journal_users" && substr($key1,-1) == $number ){
+                    //dd($myrole);
+                    //dd(substr($key1,0,-1),substr($key1,-1));
+                    if(is_array($item)){
+                        foreach($item as $item2){
+                            //dd($myrole,$item2,$request->association_journal);
+                            Association::insert([
+                                'association_journal' => $request->association_journal,
+                                'association_source' => 'user',
+                                'association_id' => $item2,
+                                'association_role' => $myrole,
+                                'updated_at' => now(),
+                                'created_at' => now(),
+
+                            ]);
+                        }
+                    }
+                    else{
+                        //dd($myrole,$item,$request->association_journal);
+                        Association::insert([
+                            'association_journal' => $request->association_journal,
+                            'association_source' => 'user',
+                            'association_id' => $item,
+                            'association_role' => $myrole,
+                            'updated_at' => now(),
+                            'created_at' => now(),
+
+                        ]);
+                    }
+
+                }
+                /*else{
+                    dd(substr($key1,0,-1));
+                }
+                if(is_array($item)){
+                    dd($key1,$item);
+                }
+                else{
+                    dd('Not Array '.$key1,$item);
+                }*/
+            }
+
+        }
+
+        /*Association::insert([
+            'association_journal' => $request->association_journal,
+            'association_source' => 'user',
+            'association_id' => $id,
+            'association_role' => $id,
+            'updated_at' => now(),
+
+        ]);*/
+
+        /*$this_association->article_status = $article_stat;
+        $this_association->full_title = $request->full_title;
+        $this_association->short_title = $request->short_title;
+        $this_association->org_society = $request->org_society;
+        $this_association->email = $request->email;
+        $this_association->article_contact = $request->journal_contact;
+        $this_association->contact_number = $request->contact_number;
+        $this_association->about = $request->about;
+        $this_association->aims_scope = $request->aims_scope;
+        $this_association->link = $request->link;
+        $this_association->policy = $request->policy;
+        $this_association->updated_at = now();
+        $this_association->save();*/
+
+        return redirect()->route('admin.active-articles');
+
+    }//ENd Method
+
 
     public function ActiveArticles(){
 
@@ -186,7 +288,10 @@ class AdminController extends Controller
         $UserData = User::whereIn('user_id',$temp_array)
                         ->get();
         //dd($UserData);
-
+        $AllUserData = User::where('user_status','active')
+                            ->where('user_type','contact')
+                            ->get();
+        //dd($AllUserData);
         // * Publisher and Indexes
         //$EntityData = entity::whereIn('ent_id',explode(",",$ArticleData[0]->indexing))
         //                    ->orWhere('ent_id',$ArticleData[0]->publisher)
@@ -195,7 +300,8 @@ class AdminController extends Controller
 
         //dd($EntityData);
         // * ORGANIZATION
-        $OrgData = organization::where('org_id',$ArticleData[0]->org_society)
+        $organizationData = organization::all();
+        /*$OrgData = organization::where('org_id',$ArticleData[0]->org_society)
                         ->get();
 
         //dd($OrgData);
@@ -203,10 +309,10 @@ class AdminController extends Controller
             $OrgData = array(
                         array("org_title" => "No Organization")
                        );
-        }
+        }*/
 
-        //dd($OrgData[0]['org_title']);
-        return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','OrgData','role_array'));
+        //dd($role_array);
+        return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','role_array','AllUserData','organizationData'));
 
 
     }// end edit function
@@ -220,15 +326,15 @@ class AdminController extends Controller
         /* $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         ]);*/
-        $image_path = '/upload/admin_images/';
+        $image_path = '/frontend/img/';
         $article_photo = $request->file('article_photo');
         //dd($request->file($article_photo[0]));
         if(!empty($article_photo)) {
             foreach ($article_photo as $ap) {
                 //dd($request->hasFile($ap));
                     if ($request->hasFile($ap)) {
-                        $file = $request->file($ap);
-                        $filename = date('YmdHi') . $file->getClientOriginalName();
+                        $file = $request->file('article_photo');
+                        $filename = $request->journal_id;
                         $file->move(public_path($image_path), $filename);
                     }
                 }
@@ -274,10 +380,11 @@ class AdminController extends Controller
 
 
         //dd($request);
+        $image_path = '/frontend/img/';
         if($request->file('article_photo')){
             $file = $request->file('article_photo');
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'), $filename);
+            $filename = $request->article_id;
+            $file->move(public_path('/frontend/img/'), $filename);
         }else{$filename = "nologo";}
 
         $article_stat = "active";
@@ -298,8 +405,27 @@ class AdminController extends Controller
         $this_article->aims_scope = $request->aims_scope;
         $this_article->link = $request->link;
         $this_article->policy = $request->policy;
+        $this_article->publisher = $request->journal_publisher;
+        if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+            $this_article->indexing = implode(",", $request->journal_indexes);
+        }
+        $this_article->photo = $image_path.$filename;
         $this_article->updated_at = now();
         $this_article->save();
+
+        if($request->new_role){
+                foreach($request->new_users as $item){
+                    //dd($myrole,$item2,$request->association_journal);
+                    Association::insert([
+                        'association_journal' => $request->journal_id,
+                        'association_source' => 'user',
+                        'association_id' => $item,
+                        'association_role' => $request->new_role,
+                        'created_at' => now(),
+
+                    ]);
+                }
+        }
 
         return redirect()->route('admin.active-articles');
 
@@ -313,7 +439,53 @@ class AdminController extends Controller
         return view('admin.active-organizations', compact('OrganizationData'));
 
     }//End Organization data retrieval
+    public function AdminOrganizationUpdate(Request $request){
+        //dd($request);
+        if($request->file('organization_image')){
+            $file = $request->file('organization_image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('/upload/admin_images/'), $filename);
+        }else{$filename = "nologo";}
 
+        $organization_stat = $request->organization_status;
+        if(is_null($organization_stat)){$organization_stat = "draft";}
+
+        $this_organization = organization::where('org_id',$request->organization_id)->first();
+        //dd($this_banner);
+        $this_organization->org_description = $request->organization_description;
+        $this_organization->org_title = $request->organization_title;
+        $this_organization->org_image_path = $filename;
+        $this_organization->org_url = $request->organization_url;
+        $this_organization->org_status = $organization_stat;
+        $this_organization->updated_at = now();
+        $this_organization->save();
+
+        return redirect()->route('admin.active-organizations');
+    }
+    public function EditOrgData(Request $request){
+        //dd($request->val);
+        $organizationData = organization::where('org_id',$request->val)
+            ->first();
+
+        return view('admin.edit-organization', compact('organizationData'));
+    }//End User edit page
+
+    public function AdminOrganizationStore(Request $request){
+        $id = Auth::user()->fname;
+        organization::insert([
+            'org_created_by' => $id,
+            'org_id' => $request->organization_id,
+            'org_title' => $request->organization_name,
+            'org_description' => $request->organization_description,
+            'org_url' => $request->organization_url,
+            'org_status' => 'active',
+            'org_image_path' => '', // needs to update with images.
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('admin.active-organizations');
+
+    }//End Method
     /**
      * This section is for Banners
      */
@@ -327,8 +499,10 @@ class AdminController extends Controller
 
     public function NewBanner(){
         //resources-view-folder-filename
+            $pageData = page::where('page_type','banner')
+                        ->get();
             $recordID = $this->IDGen('banner');
-            return view('admin.new-banner', compact('recordID'));
+            return view('admin.new-banner', compact('recordID','pageData'));
     }// End Method
 
     public function AdminBannerStore(Request $request){
@@ -361,15 +535,50 @@ class AdminController extends Controller
 
     }//End Method
 
+    public function AdminBannerUpdate(Request $request){
+         //dd($request);
+        if($request->file('banner_image')){
+            $file = $request->file('banner_image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('/upload/admin_images/'), $filename);
+        }else{$filename = "nologo";}
+
+            $banner_stat = $request->banner_status;
+        if(is_null($banner_stat)){$banner_stat = "draft";}
+
+            $this_banner = banner::where('banner_id',$request->banner_id)->first();
+            //dd($this_banner);
+            $this_banner->banner_description = $request->banner_description;
+            $this_banner->banner_title = $request->banner_title;
+            $this_banner->banner_image_path = $filename;
+            $this_banner->banner_url = $request->banner_url;
+            $this_banner->banner_status = $banner_stat;
+            $this_banner->updated_at = now();
+            $this_banner->save();
+
+        return redirect()->route('admin.active-banners');
+
+    }//End Method
+
     public function EditBannerData(Request $request){
 
          //dd($request->val);
+        $pageData = page::where('page_type','banner')
+                        ->get();
         $bannerData = banner::where('banner_id',$request->val)
             ->first();
 
-        return view('admin.edit-banner', compact('bannerData'));
+        return view('admin.edit-banner', compact('bannerData','pageData'));
     }//End User edit page
 
+    public function EditPageData(Request $request){
+
+        //dd($request->val);
+        $pageData = page::where('page_id',$request->val)
+            ->first();
+
+        return view('admin.edit-page', compact('pageData'));
+    }//End User edit page
     public function AdminEntityStore(Request $request){
         $id = Auth::user()->fname;
         if( $request->entity_type == 'index'){
@@ -392,22 +601,27 @@ class AdminController extends Controller
 
     }//End Method
 
-    public function AdminOrganizationStore(Request $request){
-        $id = Auth::user()->fname;
-        organization::insert([
-            'org_created_by' => $id,
-            'org_id' => $request->organization_id,
-            'org_title' => $request->organization_name,
-            'org_description' => $request->organization_description,
-            'org_url' => $request->organization_url,
-            'org_status' => 'active',
-            'org_image_path' => '', // needs to update with images.
-            'created_at' => now()
-        ]);
+    public function AdminEntityUpdate(Request $request){
+        //dd($request);
+        if( $request->entity_type == 'index'){
+            $entity_view = '/admin/active/indexes?val=index';
+        }else{
+            $entity_view = '/admin/active/publishers?val=publisher';
+        }
 
-        return redirect()->route('admin.active-organization');
+        $this_entity= entity::where('ent_id',$request->entity_id)->first();
+        //dd($this_banner);
+        $this_entity->ent_description = $request->entity_description;
+        $this_entity->ent_name = $request->entity_name;
+        $this_entity->ent_acro = $request->entity_acronym;
+        $this_entity->ent_url = $request->entity_url;
+        $this_entity->updated_at = now();
+        $this_entity->save();
+
+        return redirect($entity_view);
 
     }//End Method
+
 
     public function ActiveEntity(Request $request){
 
@@ -434,6 +648,15 @@ class AdminController extends Controller
 
     }// End Method
 
+    public function EditEntityData(Request $request){
+
+        //dd($request->val);
+        $entityData = entity::where('ent_id',$request->val)
+            ->first();
+
+        return view('admin.edit-entity', compact('entityData'));
+    }//End User edit page
+
 
 
     /**
@@ -449,7 +672,8 @@ class AdminController extends Controller
 
     public function NewPage(){
         //resources-view-folder-filename
-            return view('admin.new-page');
+        $NewPageID = $this->IDGen('page');
+            return view('admin.new-page', compact('NewPageID'));
     }// End Method
 
     public function AdminPageStore(Request $request){
@@ -459,7 +683,7 @@ class AdminController extends Controller
         /* $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         ]);*/
-        //dd($request->file('Page_image'));
+        //dd($request);
 
         if($request->file('page_image')){
             $file = $request->file('page_image');
@@ -471,18 +695,76 @@ class AdminController extends Controller
             'page_created_by' => $id,
             'page_id' => $request->page_id,
             'page_status' => $request->page_status,
-            'page_type' => $request->page_type,
+            'page_type' => strtolower($request->page_type),
             'page_title' => $request->page_title,
             'page_description' => $request->page_description,
             'page_image_path' => $filename,
             'page_url' => $request->page_url,
+            'page_category' => strtolower($request->page_category),
+            'page_subcategory' => implode(",",$request->page_subcategory), //implode
+            'page_tags' => $request->page_class, //this can be extended into multiple
             'created_at' => now()
+
         ]);
 
         return redirect()->route('admin.active-pages');
 
     }//End Method
 
+    public function AdminPageUpdate(Request $request){
+        //dd($request);
+        if($request->file('page_image')){
+            $file = $request->file('page_image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('/upload/admin_images/'), $filename);
+        }else{$filename = "nologo";}
+
+        $page_stat = $request->page_status;
+        if(is_null($page_stat)){$page_stat = "draft";}
+
+        $this_page = page::where('page_id',$request->page_id)->first();
+        //dd($this_page);
+        $this_page->page_description = $request->page_description;
+        $this_page->page_title = $request->page_title;
+        $this_page->page_image_path = $filename;
+        $this_page->page_url = $request->page_url;
+        $this_page->page_status = $page_stat;
+        $this_page->page_type = $request->page_type;
+        $this_page->page_category = $request->page_category;
+        $this_page->page_tags = $request->page_class;
+        $this_page->page_subcategory = implode(",",$request->page_subcategory);
+        $this_page->updated_at = now();
+        $this_page->save();
+
+        return redirect()->route('admin.active-pages');
+
+    }//End Method
+
+    public function GetPageSubcategories($page_category){
+
+         switch ($page_category) {
+             case 'Editor':
+                 $subcategories = config('sitevariables.sub_editor');
+                 dd(json($subcategories));
+                 return response()->json($subcategories);
+             case 'Author':
+                 $subcategories = config('sitevariables.sub_author');
+                 dd(json($subcategories));
+                 return response()->json($subcategories);
+             case 'Researcher':
+                 $subcategories = config('sitevariables.sub_researcher');
+                 dd(json($subcategories));
+                 return response()->json($subcategories);
+             case 'Reviewer':
+                 $subcategories = config('sitevariables.sub_reviewer');
+                 dd(json($subcategories));
+                 return response()->json($subcategories);
+             default:
+                 $subcategories = array_merge(config('sitevariables.sub_editor'), config('sitevariables.sub_author'), config('sitevariables.sub_researcher'), config('sitevariables.sub_reviewer'));
+                 dd(json($subcategories));
+                 return response()->json($subcategories);
+         }
+    }// End Page SUbcategory
     public function JournalIDGen(){
         $ArticleID = Article::latest('id')->first('id');
         return($ArticleID['id']);

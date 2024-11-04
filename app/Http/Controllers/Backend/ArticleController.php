@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\banner;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\journal;
@@ -19,6 +20,10 @@ class ArticleController extends Controller
     //Loads main page
     public function LoadFeaturedArticlesMain(){
 
+        $BannerData = banner::where('banner_status',"active")
+                            ->orderBy('id','DESC')
+                            ->get();
+        //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
                                 ->orderBy('full_title')
                                 ->get(['journal_mid','full_title','short_title','about']);
@@ -28,7 +33,26 @@ class ArticleController extends Controller
         }
 
         //dd($ArticleData);
-        return view('frontend.frontendmain', compact('ArticleData'));
+        return view('frontend.frontendmain', compact('ArticleData','BannerData'));
+
+    }// End Method
+
+    public function LoadFeaturedArticlesMainAuth(){
+
+        $BannerData = banner::where('banner_status',"active")
+            ->orderBy('id','DESC')
+            ->get();
+        //dd($BannerData);
+        $ArticleData = Article::where('article_status','featured')
+            ->orderBy('full_title')
+            ->get(['journal_mid','full_title','short_title','about']);
+
+        for($x=0;$x < count($ArticleData); $x++){
+            $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
+        }
+
+        //dd($ArticleData);
+        return view('frontend.frontendmainauth', compact('ArticleData','BannerData'));
 
     }// End Method
 
@@ -141,9 +165,9 @@ class ArticleController extends Controller
     // -- RESOURCES -- //
     public function LoadEditorMain(){
 
-        $PageData = page::where('page_type','editor')
-                        ->orWhere('page_type','editor tools')
-                        ->orderBy('page_title')
+        $PageData = page::where('page_category','Editor')
+                        ->where('page_status','active')
+                        ->orderBy('page_id')
                         ->get();
         return view('frontend.frontendeditors', compact('PageData'));
 
@@ -151,17 +175,19 @@ class ArticleController extends Controller
 
     public function LoadAuthorMain(){
 
-        $PageData = page::where('page_type','author')
-                        ->orderBy('page_title')
-                        ->get();
+        $PageData = page::where('page_category','Author')
+            ->where('page_status','active')
+            ->orderBy('page_id')
+            ->get();
         return view('frontend.frontendauthors', compact('PageData'));
 
     }// End Method
 
     public function LoadReviewerMain(){
 
-        $PageData = page::where('page_type','reviewer')
-                        ->orderBy('page_title')
+        $PageData = page::where('page_category','Reviewer')
+                        ->where('page_status','active')
+                        ->orderBy('page_id')
                         ->get();
         return view('frontend.frontendreviewers', compact('PageData'));
 
@@ -169,8 +195,9 @@ class ArticleController extends Controller
 
     public function LoadResearcherMain(){
 
-        $PageData = page::where('page_type','researcher')
-                        ->orderBy('page_title')
+        $PageData = page::where('page_category','Researcher')
+                        ->where('page_status','active')
+                        ->orderBy('page_id')
                         ->get();
         return view('frontend.frontendresearchers', compact('PageData'));
 
@@ -185,8 +212,8 @@ class ArticleController extends Controller
 
         $PageData = page::where('page_status','active')
                         ->where(function($query) {
-                            $query->where('page_type','news')
-                                  ->orWhere('page_type','announcement');
+                            $query->where('page_type','News')
+                                  ->orWhere('page_type','Announcement');
                         })
                         ->orderBy('created_at')
                         ->get();

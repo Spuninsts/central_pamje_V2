@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Association;
+use App\Models\entity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\organization;
+use JetBrains\PhpStorm\NoReturn;
 
 class UserController extends Controller
 {
@@ -133,8 +136,47 @@ class UserController extends Controller
         $this_user->updated_at = now();
         $this_user->save();
 
-        return redirect()->route('admin.active-users');
+        return redirect('admin/active/users?val=active');
 
     }//ENd Method
+
+
+    public function EditUserMembership(Request $request){
+
+        //dd(request()->val);
+        //dd($request);
+
+        $AssociateData = Association::where('association_journal',request()->val)
+            ->get();
+
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_id);
+            if($assoc_id->association_source == 'user')
+                array_push($role_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        //dd($role_array);
+        //dd($temp_array); // this has all the ID's needed for the other information.
+
+        // * need to get indexes, publisher and users.  * //
+
+        // * USERS
+        $UserData = User::whereIn('user_id',$temp_array) // associated users
+            ->get();
+        //dd($UserData);
+        $AllUserData = User::where('user_status','active') // all contacts that can be added
+            ->where('user_type','contact')
+            ->get();
+
+
+        //dd($role_array);
+        return view('admin.edit-members', compact('AssociateData','UserData','role_array','AllUserData'));
+
+
+    }// end edit function
 
 }

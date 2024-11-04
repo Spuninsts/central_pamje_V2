@@ -30,6 +30,8 @@ return new class extends Migration
             $table->longText('policy')->nullable();
             $table->longText('indexing')->nullable();
             $table->string('publisher')->nullable();
+            $table->string('article_category')->nullable();
+            $table->longText('article_tags')->nullable();
             $table->timestamps();
         });
     }

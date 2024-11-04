@@ -28,10 +28,22 @@
                             <label for="banner_description" class="form-label">Banner Description</label>
                             <textarea class="form-control" name="banner_description" rows="5" placeholder="max of 100 words"></textarea>
                         </div>
+
                         <div class="mb-3">
-                            <label for="banner_url" class="form-label">Banner URL</label>
-                            <input type="text" class="form-control" name="banner_url" placeholder="">
+                            <label for="publisher" class="form-label">Banner Link</label>
+                            <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="banner_url"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
+                                <option value="" selected>Select an existing Page</option>
+                                @foreach($pageData as $page)
+                                    <option value="/admin/page/edit?val={{$page->page_id}}" >{{$page->page_title}}</option>
+                                @endforeach
+                            </select>
                         </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Banner Url" id="newItemInput">
+                            <button class="btn btn-primary" type="button" id="addNewItem">Add URL instead</button>
+                        </div>
+
                         <div class="mb-3">
                             <label for="banner_status" class="form-label">Banner Status</label>
                             <select name="banner_status" >

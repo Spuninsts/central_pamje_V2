@@ -28,7 +28,7 @@
                                     <div class="mb-3">
                                         <label for="user_type" class="form-label">User Type</label>
                                         <select name="user_type" >
-                                            <option value="{$userData->user_type}}" selected>{{$userData->user_type}}</option>
+                                            <option value="{{$userData->user_type}}" selected>{{$userData->user_type}}</option>
                                             <option value="author">Author</option>
                                             <option value="reviewer">Reviewer</option>
                                             <option value="organization">Org Contact</option>

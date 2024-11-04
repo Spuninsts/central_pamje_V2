@@ -28,6 +28,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'HERDIN-Plus',
                 'ent_description' => 'Description for  herdin',
                 'ent_url' => 'https://www.herdin.ph/',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -37,6 +38,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'ACI',
                 'ent_description' => 'Description for  ASEAN Citation Index ',
                 'ent_url' => 'https://asean-cites.org/',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -46,6 +48,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'DOAJ',
                 'ent_description' => 'Description for  DOAJ',
                 'ent_url' => 'https://doaj.org/',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -55,6 +58,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'WPRIM',
                 'ent_description' => 'Description for  WPRIM',
                 'ent_url' => 'http://www.wprim.org//',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -64,6 +68,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => '',
                 'ent_description' => 'Description for Pubmed',
                 'ent_url' => '',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -73,6 +78,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => '',
                 'ent_description' => 'Description for Elsevier’s Scopus',
                 'ent_url' => '',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -82,6 +88,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'ISI',
                 'ent_description' => 'Description for Thomson Reuters ISI',
                 'ent_url' => '',
+                'ent_status' => 'active',
             ],
             [
                 'ent_created_by' => 'admin',
@@ -91,6 +98,7 @@ class EntitySeeder extends Seeder
                 'ent_acro' => 'UERMMMC',
                 'ent_description' => 'Description for University of the East Ramon Magsaysay Memorial Medical Center, Inc',
                 'ent_url' => '',
+                'ent_status' => 'active',
             ],
 
         ]);

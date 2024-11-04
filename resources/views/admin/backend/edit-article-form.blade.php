@@ -33,9 +33,23 @@
                             <label for="short_title" class="form-label">Short Title or Acronym</label>
                             <input type="text" class="form-control" name="short_title" autocomplete="off" value="{{ $item->short_title }}">
                         </div>
-                        <div class="mb-3">
+                        {{--<div class="mb-3">
                             <label for="org_society" class="form-label">Name of Organization or Society </label>
                             <input type="text" class="form-control" name="org_society" value="{{ $OrgData[0]['org_title'] }}">
+                        </div>--}}
+                        <div class="mb-3">
+                            <label for="org_society" class="form-label">Name of Organization or Society </label>
+                            <select name="org_society" id="org_society">
+                                <option value="">--Select Organization -- </option>
+                                @foreach($organizationData as $itemo)
+                                    @if( $item->org_society == $itemo->org_id )
+                                        <option value="{{$itemo->org_id}}" selected>{{$itemo->org_title}}</option>
+                                    @endif
+
+                                        <option value="{{$itemo->org_id}}">{{$itemo->org_title}}</option>
+                                @endforeach
+
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Journal eContact </label>
@@ -126,37 +140,17 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5>Editorial Team</h5>
-                    </br>
-                    @foreach($role_array as $role)
-                    <div class="row mb-3">
-                        <h5>{{ $role }}</h5>
-                        @foreach($AssociateData as $key => $item)
-                            @if($item->association_role == $role)
-                                @foreach($UserData as $key1 => $item1)
-                                    @if($item->association_id == $item1->user_id)
-                                        <p>{{ $item1->title }} {{ $item1->fname }} {{ $item1->mname }} {{ $item1->lname }}</p>
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
-                    </div>
-                    @endforeach
-                    <!-- USER MODAL -->
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Update Team
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Save all changes before editing on this page, saving here will cause a whole page refresh</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        @foreach($role_array as $role)
+                   <!--ACCORDION  -->
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Editorial Team
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @foreach($role_array as $role)
                                         <div class="row mb-3">
                                             <h5>{{ $role }}</h5>
                                             @foreach($AssociateData as $key => $item)
@@ -169,19 +163,89 @@
                                                 @endif
                                             @endforeach
                                         </div>
-                                        @endforeach
+                                    @endforeach
+
+                                    <div class="input-group mb-3">
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Modify Membership
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Attention</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <H4><span class="badge text-bg-secondary">Save this page before navigating to Membership page.</span></H4>
+                                                        <H4><span class="badge text-bg-danger">Any Unsaved data on this page will be lost.</span></H4>
+                                                        <H4><span class="badge text-bg-secondary">Click Continue to edit user membership.</span></H4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a class="btn btn-primary" href="/admin/edit/members?val={{$ArticleData[0]->journal_mid}}" >Continue</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+
+
+
                                     </div>
+
                                 </div>
                             </div>
-                    <!-- USER MODAL  -->
+
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Add new group and users
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+
+                                <div class="accordion-body">
+                                    <!-- THis section is for select type of users -->
+
+                                    <div class="container mt-5">
+                                        <div class="mb-3">
+                                            <label for="publisher" class="form-label">Member Type</label>
+                                                <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="new_role"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
+                                                    <option value="" selected>Select an option</option>
+                                                    @foreach($role_array as $role)
+                                                        <option value="{{$role}}" >{{$role}}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="New Member Type" id="newItemInput">
+                                            <button class="btn btn-primary" type="button" id="addNewItem">Add new membership</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- THis section is for select type of users -->
+
+                                    <label for="publisher" class="form-label">Users</label>
+                                    <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="new_users[]" multiple="multiple" data-width="100%" data-select2-id="5" tabindex="-1" aria-hidden="true">
+                                        @foreach( $AllUserData as $key => $item)
+                                            <option value="{{$item->user_id}}" >{{$item->title}}&nbsp;{{$item->fname}}&nbsp;{{$item->lname}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ACCORDION  -->
+
                 </div>
             </div> <!-- card body -->
-            </div>
+        </div>
     </div>
 
     <div class="row">

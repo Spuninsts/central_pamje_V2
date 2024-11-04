@@ -17,15 +17,15 @@
             <form method="POST" action="{{ route('admin.organization.store') }}" class="forms-sample">
                 @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="entity_type" value="organization">
+                            <input type="hidden" class="form-control" name="entity_type" value="organization">
                         </div>
                         <div class="mb-3">
                             <label for="journal_id" class="form-label">Organization ID</label>
                             <input type="text" class="form-control" name="organization_id" value="{{$NewOrgID}}" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="organization_title" class="form-label">Organization Name</label>
-                            <input type="text" class="form-control" name="organization_name"  >
+                            <label for="organization_title" class="form-label">Organization Name *</label>
+                            <input type="text" class="form-control" name="organization_name"  required>
                         </div>
                         <div class="mb-3">
                             <label for="organization_description" class="form-label">Organization Description</label>

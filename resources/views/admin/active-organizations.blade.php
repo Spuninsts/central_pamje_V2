@@ -64,7 +64,7 @@
 							<tbody>
 							@foreach( $OrganizationData as $key => $item)
 								<tr>
-                                <td>{{ $item->org_id }}</td>
+                                <td><a href="/admin/organization/edit?val={{ $item->org_id }}">{{ $item->org_id }}</a></td>
 								<td>{{ $item->org_title }}</td>
 								<td>{{ $item->org_description }}</td>
 								<td>{{ $item->org_url }}</td>

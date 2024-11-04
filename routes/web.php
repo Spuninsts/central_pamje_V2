@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\ArticleController;
 use App\Http\Controllers\Backend\ArticleTypeController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 /*
@@ -50,13 +51,16 @@ Route::get('/', [UserController::class, 'Index']);
     //return view('welcome');
 //});
 
-/* Route::get('{any}', [UserController::class, 'Index'])->where('any','/*', '.*'); */
+/* Route::get('{any}', [UserController::class, 'Index'])->where('any','/*', '.*');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/', function () {
+    return view('frontend/frontendmain');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
+    //Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main'); //home main page
+    Route::get('/dashboard', [ArticleController::class, 'LoadFeaturedArticlesMainAuth'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -75,6 +79,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/active/users', [UserController::class, 'ActiveUsers'])->name('admin.active-users');
     Route::get('/admin/new/user', [UserController::class, 'NewUser'])->name('admin.new-user');
     Route::get('/admin/edit/user', [AdminController::class, 'EditUserData'])->name('admin.user.edit'); // allows edit of data.
+    Route::get('/admin/edit/members', [UserController::class, 'EditUserMembership'])->name('admin.edit.members');
+
 
     //Journals - don't get confused with the term article here.
     Route::get('/admin/active/articles', [AdminController::class, 'ActiveArticles'])->name('admin.active-articles');
@@ -91,6 +97,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/active/pages', [AdminController::class, 'ActivePages'])->name('admin.active-pages');
     Route::get('/admin/new/page', [AdminController::class, 'NewPage'])->name('admin.new-page');
     Route::get('/admin/banner/edit', [AdminController::class, 'EditBannerData'])->name('admin.banner.edit');
+    Route::get('/admin/page/edit', [AdminController::class, 'EditPageData'])->name('admin.page.edit');
+    //Route::get('/admim/page/subcategories/{page_category}', [AdminController::class, 'GetPageSubcategories']);
 
     //Other Entities
     Route::get('/admin/active/indexes', [AdminController::class, 'ActiveEntity'])->name('admin.active-indexes');
@@ -99,18 +107,26 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/new/index', [AdminController::class, 'NewIndex'])->name('admin.new-index');
     Route::get('/admin/new/publisher', [AdminController::class, 'NewPublisher'])->name('admin.new-publisher');
     Route::get('/admin/new/organization', [AdminController::class, 'NewOrganization'])->name('admin.new-organization');
+    Route::get('/admin/entity/edit', [AdminController::class, 'EditEntityData'])->name('admin.entity.edit');
+    Route::get('/admin/organization/edit', [AdminController::class, 'EditOrgData'])->name('admin.organization.edit');
 
     //Record Creator
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::post('/admin/article/store', [AdminController::class, 'AdminArticleStore'])->name('admin.article.store');
     Route::post('/admin/article/update', [AdminController::class, 'AdminArticleUpdate'])->name('admin.article.update');
+    Route::post('/admin/publisher/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.publisher.update');
+    Route::post('/admin/index/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.index.update');
     Route::post('/admin/banner/store', [AdminController::class, 'AdminBannerStore'])->name('admin.banner.store');
     Route::post('/admin/banner/update', [AdminController::class, 'AdminBannerUpdate'])->name('admin.banner.update');
+    Route::post('/admin/page/update', [AdminController::class, 'AdminPageUpdate'])->name('admin.page.update');
     Route::post('/admin/entity/store', [AdminController::class, 'AdminEntityStore'])->name('admin.entity.store');
+    Route::post('/admin/entity/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.entity.update');
     Route::post('/admin/page/store', [AdminController::class, 'AdminPageStore'])->name('admin.page.store');
     Route::post('/admin/organization/store', [AdminController::class, 'AdminOrganizationStore'])->name('admin.organization.store');
+    Route::post('/admin/organization/update', [AdminController::class, 'AdminOrganizationUpdate'])->name('admin.organization.update');
     Route::post('/admin/user/store', [UserController::class, 'AdminUserStore'])->name('admin.user.store');
     Route::post('/admin/user/update', [UserController::class, 'AdminUserUpdate'])->name('admin.user.update');
+    Route::post('/admin/members/update', [AdminController::class, 'UserMembershipUpdate'])->name('admin.members.update');
 
 }); // end group
 
@@ -128,3 +144,4 @@ Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login'); //admin login.
 Route::get('/login', [UserController::class, 'UserLogin'])->name('login'); // user login
 Route::get('/register', [UserController::class, 'UserRegister'])->name('register'); // user registration
+Route::get('/logout', [AdminController::class, 'userLogout'])->name('user.logout');

@@ -33,7 +33,7 @@
 							<div class="row">
                 <div class="col-md-12 ps-md-0 ">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="{{ route('dashboard') }}" class="noble-ui-logo logo-light d-block mb-2 text-center">
+                    <a href="{{ route('main') }}" class="noble-ui-logo logo-light d-block mb-2 text-center">
                       <img src=" {{ asset('../upload/logo1-3-transparent.png') }}"  class="logo w-50"/></a>
 
                        <h5 class="text-muted fw-normal my-4 text-center">Welcome back! Log in to your account.</h5>

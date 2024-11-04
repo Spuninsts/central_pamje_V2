@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('page_status')->nullable(); //active,inactive
             $table->string('page_type')->nullable(); //news,announcement,banner(banner more info page), Editors page.
             $table->string('page_title')->nullable(); // page title
+            $table->string('page_category')->nullable();
+            $table->string('page_subcategory')->nullable();
+            $table->longText('page_tags')->nullable();
             $table->text('page_description')->nullable(); // page description
             $table->text('page_image_path')->nullable(); // for the image
             $table->string('page_url')->nullable(); // third party url

@@ -61,13 +61,13 @@
 								<th>Description</th>
 								<th>Status</th>
 								<th>Image</th>
-								<th>Link/th>
+								<th>Link</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach( $PageData as $key => $item)
 								<tr>
-								<td>{{ $item->page_id }}</td>
+								<td><a href="/admin/page/edit?val={{ $item->page_id }}">{{ $item->page_id }}</a></td>
                                 <td>{{ $item->page_type }}</td>
 								<td>{{ $item->page_title }}</td>
 								<td>{{ $item->page_description }}</td>

@@ -13,7 +13,7 @@
         <!-- Card 1 -->
         <div class="col">
           <div class="card rounded-0">
-            <img class="card-img-top rounded-0" src="/upload/no_image.jpg" alt="{{ $item->short_title }}">
+            <img class="card-img-top rounded-0" src="/frontend/img/{{$item->journal_mid}}.jpg" alt="{{ $item->short_title }}">
             <div class="card-body">
               <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
               <p class="card-text">{{ substr($item->about,0) }}</p>
