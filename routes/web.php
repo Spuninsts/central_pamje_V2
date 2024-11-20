@@ -48,6 +48,10 @@ Route::get('/', [UserController::class, 'Index']);
     //Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
     Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
 
+    //SEARCH FUNCTION
+    //Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+    // SEARCH
     //return view('welcome');
 //});
 
@@ -93,6 +97,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //Articles - these are the pages for news, announcement and additional single page articles.
     Route::get('/admin/active/banners', [AdminController::class, 'ActiveBanners'])->name('admin.active-banners');
+    Route::get('/admin/active/announcements', [AdminController::class, 'ActiveAnnouncements'])->name('admin.active-announcements');
+    Route::get('/admin/active/resources', [AdminController::class, 'ActiveResources'])->name('admin.active-resources');
+    Route::get('/admin/active/news', [AdminController::class, 'ActiveNews'])->name('admin.active-news');
+
     Route::get('/admin/new/banner', [AdminController::class, 'NewBanner'])->name('admin.new-banner');
     Route::get('/admin/active/pages', [AdminController::class, 'ActivePages'])->name('admin.active-pages');
     Route::get('/admin/new/page', [AdminController::class, 'NewPage'])->name('admin.new-page');

@@ -21,19 +21,19 @@
                                         <label for="user_status" class="form-label">User Status</label>
                                         <select name="user_status" >
                                             <option value="{{$userData->user_status}}" selected>{{$userData->user_status}}</option>
-                                            <option value="inactive">inactive</option>
-                                            <option value="active">active</option>
+                                            <option value="inactive">Inactive</option>
+                                            <option value="active">Active</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="user_type" class="form-label">User Type</label>
                                         <select name="user_type" >
                                             <option value="{{$userData->user_type}}" selected>{{$userData->user_type}}</option>
-                                            <option value="author">Author</option>
+                                            <option value="editor">Editor</option>
                                             <option value="reviewer">Reviewer</option>
                                             <option value="organization">Org Contact</option>
                                             <option value="standard">Standard</option>
-                                            <option value="admin">admin</option>
+                                            <option value="admin">Admin</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">

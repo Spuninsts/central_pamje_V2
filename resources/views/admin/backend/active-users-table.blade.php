@@ -33,6 +33,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Organization</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -44,6 +45,7 @@
         <td>{{ $item->fname }}&nbsp;{{$item->lname}}</td>
         <td>{{ $item->email}}</td>
         <td>{{ $item->user_type}}</td>
+        <td>{{ $item->org_id}}</td>
         <td>{{ $item->user_status}}</td>
       </tr>
         @endforeach

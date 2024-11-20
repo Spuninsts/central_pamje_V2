@@ -28,7 +28,7 @@ class usersTableSeeder extends Seeder
                 'user_status'=>'active',
                 'user_type' => 'admin'
             ],
-            [ //author
+            [ //editor
                 'user_id'=>'USER02',
                 'title'=>'MD',
                 'fname'=>'editor',
@@ -36,11 +36,22 @@ class usersTableSeeder extends Seeder
                 'lname'=>'iam',
                 'email'=>'domain.junkie@gmail.com',
                 'password'=>Hash::make('111'),
-                'username'=>'author',
+                'username'=>'editor',
                 'user_status'=>'active',
-                'user_type' => 'standard'
+                'user_type' => 'editor'
             ],
-
+            [ //editor
+                'user_id'=>'USER40',
+                'title'=>'MD',
+                'fname'=>'reviewer',
+                'mname'=>'',
+                'lname'=>'iam',
+                'email'=>'domain.kie@gmail.com',
+                'password'=>Hash::make('111'),
+                'username'=>'reviewer',
+                'user_status'=>'active',
+                'user_type' => 'reviewer'
+            ],
             [ //reviewer
                 'user_id'=>'USER03',
                 'title'=>'MD',
@@ -51,7 +62,7 @@ class usersTableSeeder extends Seeder
                 'password'=>Hash::make('111'),
                 'username'=>'reviewer',
                 'user_status'=>'active',
-                'user_type' => 'standard'
+                'user_type' => 'reviewer'
             ],
             [ //1st non std
                 'user_id'=>'USER04',

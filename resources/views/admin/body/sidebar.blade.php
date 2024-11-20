@@ -71,7 +71,7 @@
                       <a href="/admin/active/users?val=reviewer" class="nav-link">Reviewers</a>
                   </li>
                   <li class="nav-item">
-                      <a href="/admin/active/users?val=author" class="nav-link">Authors</a>
+                      <a href="/admin/active/users?val=editor" class="nav-link">Editors</a>
                   </li>
                 <li class="nav-item">
                   <a href="/admin/active/users?val=approval" class="nav-link">Approvals</a>
@@ -129,15 +129,24 @@
             </a>
             <div class="collapse" id="articles">
               <ul class="nav sub-menu">
+                  <li class="nav-item">
+                      <a href="{{ route('admin.active-pages') }}" class="nav-link">Pages</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('admin.active-resources') }}" class="nav-link">Resources</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('admin.active-announcements') }}" class="nav-link">Announcements</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('admin.active-news') }}" class="nav-link">News</a>
+                  </li>
                  <li class="nav-item">
                   <a href="{{ route('admin.active-banners') }}" class="nav-link">Banners</a>
                 </li>
                <!--  <li class="nav-item">
                   <a href="{{ route('admin.new-banner') }}" class="nav-link">New Banner</a>
                 </li> -->
-                <li class="nav-item">
-                  <a href="{{ route('admin.active-pages') }}" class="nav-link">Pages</a>
-                </li>
                 <!-- <li class="nav-item">
                   <a href="{{ route('admin.new-page') }}" class="nav-link">New Page</a>
                 </li> -->

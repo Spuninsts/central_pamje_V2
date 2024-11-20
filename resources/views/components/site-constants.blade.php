@@ -24,8 +24,14 @@ $sub_editor = [
     "Publication Ethics"
 ];
 $sub_researcher = [
+    "Blogs",
+    "Report",
+    "Articles",
+    "Essential Readings",
+    "Toolkits",
     "Research Methodologies",
     "Other Useful Educational Resources"
+
 ];
 
 $sub_common = [

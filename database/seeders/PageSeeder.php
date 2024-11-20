@@ -30,9 +30,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First News Description',
                 'page_image_path' => '/public/images/lkjh897u3hijf.jpg',
                 'page_url' => 'http://www.news1.com',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //second entry
                 'page_id' => 'PAGE02',
@@ -42,9 +42,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First announcement Description',
                 'page_image_path' => '/public/images/lkjh2343fd3hijf.jpg',
                 'page_url' => 'http://www.announcement1.com',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //third entry
                 'page_id' => 'PAGE03',
@@ -54,9 +54,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First news2 Description',
                 'page_image_path' => '/public/images/lkj23eh2343fd3hijf.jpg',
                 'page_url' => 'http://www.news2.com',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //fourth entry
                 'page_id' => 'PAGE04',
@@ -66,9 +66,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First announcement2 Description',
                 'page_image_path' => '/public/images/lkjh2324erfd343fd3hijf.jpg',
                 'page_url' => 'http://www.announcement2.com',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //fifth entry
                 'page_id' => 'PAGE05',
@@ -78,9 +78,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First banner1 Description',
                 'page_image_path' => '/public/images/lkjh2324erfd343fd3hijf.jpg',
                 'page_url' => '/page/data/banner1',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //sixth entry
                 'page_id' => 'PAGE06',
@@ -90,9 +90,9 @@ class PageSeeder extends Seeder
                 'page_description' => 'First banner2 Description',
                 'page_image_path' => '/public/images/lkjh2324erfd343fd3hijf.jpg',
                 'page_url' => '/page/data/banner2',
-                'page_category' => '',
-                'page_subcategory' => '',
-                'page_tags' => ''
+                'page_category' => 'none',
+                'page_subcategory' => 'none',
+                'page_tags' => 'none'
             ],
             [   //sixth entry
                 'page_id' => 'PAGE07',

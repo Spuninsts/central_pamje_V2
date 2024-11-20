@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AdminController;
+
 use App\Models\Article;
 use App\Models\Association;
 use App\Models\entity;
@@ -11,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\organization;
 use JetBrains\PhpStorm\NoReturn;
+
 
 class UserController extends Controller
 {
@@ -62,6 +65,11 @@ class UserController extends Controller
                     ->Where('user_type','author')
                     ->get();
                 break;
+            case 'editor':
+                $UserData = User::Where('user_status','active')
+                    ->Where('user_type','editor')
+                    ->get();
+                break;
             case 'inactive':
                 $UserData = User::Where('user_status','inactive')
                     ->Where('user_type','!=','admin')
@@ -90,8 +98,24 @@ class UserController extends Controller
         return($UserID['id']);
     }
 
+    public function IsNewOrgId($org_id){
+        // this functions returns a new orgID if the parameter is not found.
+        $admincontroller = new AdminController();
+        $this_org = organization::where('org_id',$org_id)->first();
+
+        if(!$this_org or $this_org == "" or $this_org == null or is_null($this_org)) {
+            return $admincontroller->IDGen("organization");
+            //dd($admincontroller->IDGen("organization"));
+        } else {
+            return false;
+        }
+    }
+
     public function AdminUserStore(Request $request){
 
+        //dd($request);
+        // this line checks if its a new org, it will retrieve an org id for adition.
+        $orgid = $this->IsNewOrgId($request->user_organization);
 
         $user_stat = "active";
         if($request->user_status == "approval"){$user_stat = "approval";}
@@ -100,9 +124,20 @@ class UserController extends Controller
         $user_password = Str::random(30);
         $user_password = Hash::make($user_password);
 
+        if($orgid){
+            organization::insert([
+                'org_id' => $orgid,
+                'org_status' => "active",
+                'org_title' => $request->user_organization,
+            ]);
+            $entry_orgid = $orgid;
+        } else {
+            $entry_orgid = $request->user_organization;
+        }
+
         User::insert([
             'user_id' => $request->user_id,
-            'org_id' => $request->user_organization,
+            'org_id' => $entry_orgid,
             'title' => $request->user_title,
             'fname' => $request->user_first_name,
             'lname' => $request->user_last_name,

@@ -328,25 +328,9 @@
           <table class="table table-hover mb-0">
             <thead>
               <tr>
-                <th class="pt-0">#</th>
-                <th class="pt-0">Test Data</th>
-                <th class="pt-0">Start Date</th>
-                <th class="pt-0">Due Date</th>
-                <th class="pt-0">Status</th>
-                <th class="pt-0">Assign</th>
+                <th class="pt-0">Under Construction, This section will display summary of records</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>test</td>
-                <td>01/01/2022</td>
-                <td>26/04/2022</td>
-                <td><span class="badge bg-danger">test</span></td>
-                <td>test</td>
-              </tr>
-             
-            </tbody>
           </table>
         </div>
       </div>

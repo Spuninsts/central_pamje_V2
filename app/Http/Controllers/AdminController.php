@@ -42,7 +42,7 @@ class AdminController extends Controller
         return redirect('/admin/login');
     }// End Method
 
-    public function userLogout(Request $request){
+        public function userLogout(Request $request){
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -279,7 +279,7 @@ class AdminController extends Controller
         }
         $role_array = array_values(array_unique($role_array)); //unique roles for users.
 
-        //dd($role_array);
+        //dd($role_array == null);
         //dd($temp_array); // this has all the ID's needed for the other information.
 
         // * need to get indexes, publisher and users.  * //
@@ -311,7 +311,7 @@ class AdminController extends Controller
                        );
         }*/
 
-        //dd($role_array);
+        //dd(!$AssociateData);
         return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','role_array','AllUserData','organizationData'));
 
 
@@ -490,12 +490,43 @@ class AdminController extends Controller
      * This section is for Banners
      */
 
+    /**
+     ************ PAGES ********* Banner has a banner record, for banners only.
+     *If the banner has an internal page, it will be created in the page DB.
+     * Don't Get Confused :)
+     */
      public function ActiveBanners(){
 
         $BannerData = banner::latest()->get();
         return view('admin.active-banners', compact('BannerData'));
 
     }// End Method
+    public function ActiveResources(){
+
+        $PageData = page::where('page_type','Resource')
+                        ->where('page_status','active')
+                        ->get();
+        return view('admin.active-resources', compact('PageData'));
+
+    }// End Active Resource Method
+
+    public function ActiveAnnouncements(){
+
+        $PageData = page::where('page_type','Announcement')
+            ->where('page_status','active')
+            ->get();
+        return view('admin.active-announcements', compact('PageData'));
+
+    }// End Active Announcements Method
+
+    public function ActiveNews(){
+
+        $PageData = page::where('page_type','News')
+            ->where('page_status','active')
+            ->get();
+        return view('admin.active-news', compact('PageData'));
+
+    }// End Active Announcements Method
 
     public function NewBanner(){
         //resources-view-folder-filename
@@ -579,6 +610,8 @@ class AdminController extends Controller
 
         return view('admin.edit-page', compact('pageData'));
     }//End User edit page
+
+    /* ************* PAGES End ******** */
     public function AdminEntityStore(Request $request){
         $id = Auth::user()->fname;
         if( $request->entity_type == 'index'){

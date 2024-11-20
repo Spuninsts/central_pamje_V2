@@ -60,9 +60,9 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="page_subcategory" class="form-label">Sub Categories</label>
+                            <label for="page_subcategory" class="form-label">Sub Categories (Only for resource page type) </label>
                             <select class="js-example-basic-multiple form-select select2-hidden-accessible" id="page_subcategory" name="page_subcategory[]" multiple="multiple" data-width="100%" data-select2-id="5" tabindex="-1" aria-hidden="true">
-                                <option value="">Select Subcategory</option>
+                                <option value="none">- None -</option>
                                 @php
                                     $subcategories = array_merge(config('sitevariables.sub_editor'), config('sitevariables.sub_author'), config('sitevariables.sub_researcher'), config('sitevariables.sub_reviewer'));
                                     $subcategories = array_unique($subcategories);
@@ -74,9 +74,9 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="page_class" class="form-label">Page Classification</label>
+                            <label for="page_class" class="form-label">Page Classification (Only for resource page type)</label>
                             <select class="js-example-basic-single form-select select2-hidden-accessible" id="page_class" name="page_class"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
-                                <option value="none" selected>Select Classification</option>
+                                <option value="none" selected>- None -</option>
                                 @foreach(config('sitevariables.sub_classification') as $sc)
                                     <option value="{{$sc}}">{{$sc}}</option>
                                 @endforeach

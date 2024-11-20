@@ -144,9 +144,10 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Editorial Team
-                                </button>
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Editorial Team
+                                    </button>
+
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
@@ -168,9 +169,16 @@
                                     <div class="input-group mb-3">
 
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Modify Membership
-                                        </button>
+                                        @if($role_array == null )
+                                            <button type="button" class="btn btn-primary" readonly>
+                                                Membership needs to be added first
+                                            </button>
+                                        @else
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Modify Membership
+                                            </button>
+                                        @endif
+
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -217,6 +225,11 @@
                                             <label for="publisher" class="form-label">Member Type</label>
                                                 <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="new_role"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
                                                     <option value="" selected>Select an option</option>
+                                                    @if($role_array == null)
+                                                        @php
+                                                            $role_array = config('sitevariables.member_type')
+                                                        @endphp
+                                                    @endif
                                                     @foreach($role_array as $role)
                                                         <option value="{{$role}}" >{{$role}}</option>
                                                     @endforeach

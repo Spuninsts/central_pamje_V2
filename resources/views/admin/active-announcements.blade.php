@@ -29,8 +29,8 @@
 
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Pages</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Active Pages</li>
+					<li class="breadcrumb-item"><a href="#">Announcements</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Active Announcements</li>
 					</ol>
 				</nav>
 
@@ -39,7 +39,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="mt-3">
-							<a href="{{ route('admin.new-page') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Page</a>
+							<a href="{{ route('admin.new-page') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Announcement</a>
 							</div>
 						</div>
 					</div>
@@ -50,14 +50,12 @@
 					<div class="col-md-12 grid-margin stretch-card">
 					<div class="card">
 						<div class="card-body">
-						<h6 class="card-title">Pages</h6>
+						<h6 class="card-title">Announcements</h6>
 						<div class="table-responsive">
 							<table id="dataTableExample" class="table">
 							<thead>
 								<tr>
 								<th>ID</th>
-                                <th>Type</th>
-                                <th>Category</th>
 								<th>Title</th>
 								<th>Description</th>
 								<th>Status</th>
@@ -67,17 +65,15 @@
 							</thead>
 							<tbody>
 								@foreach( $PageData as $key => $item)
-								<tr>
-								<td><a href="/admin/page/edit?val={{ $item->page_id }}">{{ $item->page_id }}</a></td>
-                                <td>{{ $item->page_type }}</td>
-                                <td>{{ $item->page_category }}</td>
-								<td>{{ $item->page_title }}</td>
-								<td>{{ $item->page_description }}</td>
-								<td>{{ $item->page_status }}</td>
-								<td>{{ $item->page_image_path }}</td>
-								<td>{{ $item->page_url }}</td>
-								</tr>
-							@endforeach
+                                    <tr>
+                                    <td><a href="/admin/page/edit?val={{ $item->page_id }}">{{ $item->page_id }}</a></td>
+                                    <td>{{ $item->page_title }}</td>
+                                    <td>{{ $item->page_description }}</td>
+                                    <td>{{ $item->page_status }}</td>
+                                    <td>{{ $item->page_image_path }}</td>
+                                    <td><a href="{{ $item->page_url }}" target="_blank">{{ $item->page_url }}</a></td>
+                                    </tr>
+                                @endforeach
 							</tbody>
 							</table>
 						</div>
