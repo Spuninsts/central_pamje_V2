@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        //return view('auth.login');
+        //return view('admin.admin-login');
+        return view('registered.default-login');
     }
 
     /**
@@ -28,7 +31,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $url = '';
+        if($request->user()->user_type === 'admin'){
+            $url = 'admin/dashboard';
+        } elseif($request->user()->user_type === 'author' || $request->user()->user_type === 'reviewer'){
+            $url = '/dashboard'; //this has additional menu for peer search
+        } else {
+            $url = '/';
+        }
+
+        return redirect()->intended($url);
     }
 
     /**

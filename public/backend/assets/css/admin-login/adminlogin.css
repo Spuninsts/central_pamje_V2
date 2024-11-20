@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.logo{
+    height: 160px;
+    width: 160px;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+   
+}
+
+.btn-signin {
+    background-color: #1E429B;
+    border: none;
+}
+
+.btn-signin:hover {
+    background-color: #048BCB;
+  
+}
+
+.bg-color{
+    background-color: #FCFEFF;
+}
+

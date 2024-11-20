@@ -1,0 +1,53 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use DB;
+
+class OrganizationSeeder extends Seeder
+{
+    /**
+     * Run the database seeds
+    *  $table->string('org_id')->nullable();
+    *  $table->string('org_status')->nullable(); // active,inactive
+    *  $table->string('org_title')->nullable(); // banner title
+    *  $table->text('org_description')->nullable(); // banner description
+    *  $table->text('org_image_path')->nullable(); // for the image
+    *  $table->text('org_url')
+     */
+    public function run(): void
+    {
+        //
+        DB::table('organizations')->insert([
+            //first entry
+            [
+                'org_id' => 'ORG01',
+                'org_status' => 'active',
+                'org_title' => 'Philippine Society of Otolaryngology Head and Neck Surgery',
+                'org_description' => 'PSHONS',
+                'org_image_path' => '/public/images/kjhaskdfjhsadfsdf.jpg',
+                'org_url' => 'http://www.org1.com'
+            ],
+            [
+                'org_id' => 'ORG02',
+                'org_status' => 'active',
+                'org_title' => 'Philippine Nurses Association, Inc.',
+                'org_description' => 'org Description',
+                'org_image_path' => '/public/images/32ewfr2e3w.jpg',
+                'org_url' => 'http://www.og]2.com'
+            ],
+            [
+                'org_id' => 'ORG03',
+                'org_status' => 'active',
+                'org_title' => 'Philippine Society of Pathologists, Inc',
+                'org_description' => 'org Description',
+                'org_image_path' => '/public/images/32ewfr2e3w.jpg',
+                'org_url' => 'http://www.og]2.com'
+            ],
+
+
+        ]);
+    }
+}
