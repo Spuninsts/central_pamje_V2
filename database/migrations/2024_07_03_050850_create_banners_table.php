@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('banner_created_by')->nullable();
             $table->string('banner_status')->nullable(); // active,inactive
             $table->string('banner_title')->nullable(); // banner title
-            $table->text('banner_description')->nullable(); // banner description
+            $table->longText('banner_description')->nullable(); // banner description
             $table->text('banner_image_path')->nullable(); // for the image
             $table->text('banner_url')->nullable();//this can go to a page or third party site.
 

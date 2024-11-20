@@ -26,7 +26,8 @@ class usersTableSeeder extends Seeder
                 'password'=>Hash::make('111'),
                 'username'=>'admin',
                 'user_status'=>'active',
-                'user_type' => 'admin'
+                'user_type' => 'admin',
+                'role' => 'admin'
             ],
             [ //editor
                 'user_id'=>'USER02',
@@ -38,7 +39,8 @@ class usersTableSeeder extends Seeder
                 'password'=>Hash::make('111'),
                 'username'=>'editor',
                 'user_status'=>'active',
-                'user_type' => 'editor'
+                'user_type' => 'editor',
+                'role' => 'editor'
             ],
             [ //editor
                 'user_id'=>'USER40',
@@ -50,7 +52,8 @@ class usersTableSeeder extends Seeder
                 'password'=>Hash::make('111'),
                 'username'=>'reviewer',
                 'user_status'=>'active',
-                'user_type' => 'reviewer'
+                'user_type' => 'reviewer',
+                'role' => 'reviewer'
             ],
             [ //reviewer
                 'user_id'=>'USER03',
@@ -62,7 +65,8 @@ class usersTableSeeder extends Seeder
                 'password'=>Hash::make('111'),
                 'username'=>'reviewer',
                 'user_status'=>'active',
-                'user_type' => 'reviewer'
+                'user_type' => 'reviewer',
+                'role' => 'reviewer'
             ],
             [ //1st non std
                 'user_id'=>'USER04',
@@ -72,6 +76,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Moria',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -86,6 +91,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Rosales',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -99,6 +105,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'saura-Sanchez',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'mname'=>'',
                 'username'=>'',
@@ -113,6 +120,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Bernardo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -125,6 +133,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Chang',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'mname'=>'',
                 'username'=>'',
@@ -138,6 +147,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Fontilla-Santiago',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'mname'=>'',
                 'username'=>'',
@@ -151,6 +161,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Regino-Ribo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'mname'=>'',
                 'username'=>'',
@@ -164,6 +175,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Abelardo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -176,6 +188,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Carnate Jr.',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'mname'=>'',
                 'username'=>'',
@@ -190,6 +203,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Chua',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -203,6 +217,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Geraldino',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -216,6 +231,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Lagamayo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -229,6 +245,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Lo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -242,6 +259,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Moreno II',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -255,6 +273,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Veloso',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -267,6 +286,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Castro-Palaganas',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -279,6 +299,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Lapena',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -291,6 +312,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Yanez',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -304,6 +326,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Yolo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -317,6 +340,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Avila',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -330,6 +354,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Orillaza',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -342,6 +367,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Reyes',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -354,6 +380,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Dagame',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -366,6 +393,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Calaquian',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -378,6 +406,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Carrillo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -390,6 +419,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Soriano-Castañeda',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -402,6 +432,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Chua',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -414,6 +445,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Roldan',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -426,6 +458,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Reyes',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -438,6 +471,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Cevallos-Schnabel',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -450,6 +484,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Llanes',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -462,6 +497,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Acuin',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -474,6 +510,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Berkowitz',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -486,6 +523,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Chiong',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -498,6 +536,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Hardillo',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''
@@ -510,6 +549,7 @@ class usersTableSeeder extends Seeder
                 'lname'=>'Lee',
                 'user_status'=>'active',
                 'user_type' => 'contact',
+                'role' => 'contact',
                 'password'=>Hash::make('111'),
                 'username'=>'',
                 'email'=>''

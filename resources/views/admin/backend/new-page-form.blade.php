@@ -51,6 +51,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="page_source" class="form-label">Page Source</label>
+                            <input type="text" class="form-control" name="page_source" placeholder="">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="page_category" class="form-label">Page Category (Only for resource page type)</label>
                             <select class="js-example-basic-single form-select select2-hidden-accessible" id="page_category" name="page_category"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
                                 <option value="none" selected>- None -</option>

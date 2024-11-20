@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('org_id')->nullable();
             $table->string('org_status')->nullable(); // active,inactive
             $table->string('org_title')->nullable(); // organization title
-            $table->text('org_description')->nullable(); // organization description
+            $table->longText('org_description')->nullable(); // organization description
             $table->text('org_image_path')->nullable(); // for the image
             $table->text('org_url')->nullable();//this can go to a page or third party site.
         });

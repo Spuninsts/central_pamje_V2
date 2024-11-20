@@ -147,6 +147,7 @@ class UserController extends Controller
             'password' => $user_password,
             'user_address' => "None",
             'user_type' => $request->user_type,
+            'role' => $request->user_type,
             'user_status' => $user_stat,
         ]);
 
@@ -167,6 +168,7 @@ class UserController extends Controller
         $this_user->mname = $request->user_middle_name;
         $this_user->lname = $request->user_last_name;
         $this_user->user_type = $request->user_type;
+        $this_user->role = $request->user_type;
         $this_user->org_id = $request->user_organization;
         $this_user->updated_at = now();
         $this_user->save();

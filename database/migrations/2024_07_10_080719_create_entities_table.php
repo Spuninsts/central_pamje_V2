@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ent_name')->nullable(); // name
             $table->string('ent_acro')->nullable(); // acronyum
             $table->string('ent_status')->nullable(); // status
-            $table->text('ent_description')->nullable(); // entity description
+            $table->longText('ent_description')->nullable(); // entity description
             $table->text('ent_url')->nullable(); // entity external site
         });
     }

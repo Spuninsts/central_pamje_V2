@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('page_title')->nullable(); // page title
             $table->string('page_category')->nullable();
             $table->string('page_subcategory')->nullable();
+            $table->string('page_source')->nullable(); // this is a new field as source
             $table->longText('page_tags')->nullable();
-            $table->text('page_description')->nullable(); // page description
+            $table->longText('page_description')->nullable(); // page description
             $table->text('page_image_path')->nullable(); // for the image
             $table->string('page_url')->nullable(); // third party url
         });

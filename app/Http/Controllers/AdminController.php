@@ -729,6 +729,7 @@ class AdminController extends Controller
             'page_id' => $request->page_id,
             'page_status' => $request->page_status,
             'page_type' => strtolower($request->page_type),
+            'page_source' => $request->page_source,
             'page_title' => $request->page_title,
             'page_description' => $request->page_description,
             'page_image_path' => $filename,
@@ -762,6 +763,7 @@ class AdminController extends Controller
         $this_page->page_image_path = $filename;
         $this_page->page_url = $request->page_url;
         $this_page->page_status = $page_stat;
+        $this_page->page_source = $request->page_source;
         $this_page->page_type = $request->page_type;
         $this_page->page_category = $request->page_category;
         $this_page->page_tags = $request->page_class;

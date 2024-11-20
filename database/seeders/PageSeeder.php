@@ -32,6 +32,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.news1.com',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //second entry
@@ -44,6 +45,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.announcement1.com',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //third entry
@@ -56,6 +58,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.news2.com',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //fourth entry
@@ -68,6 +71,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'http://www.announcement2.com',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //fifth entry
@@ -80,6 +84,7 @@ class PageSeeder extends Seeder
                 'page_url' => '/page/data/banner1',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //sixth entry
@@ -92,6 +97,7 @@ class PageSeeder extends Seeder
                 'page_url' => '/page/data/banner2',
                 'page_category' => 'none',
                 'page_subcategory' => 'none',
+                'page_source' => '',
                 'page_tags' => 'none'
             ],
             [   //sixth entry
@@ -104,6 +110,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/journals-following-the-icmje-recommendations/',
                 'page_category' => 'Editor',
                 'page_subcategory' => 'Peer Review Processes',
+                'page_source' => 'The Guardian',
                 'page_tags' => 'Guidelines'
             ],
             [   //sixth entry
@@ -116,6 +123,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/',
                 'page_category' => 'Researcher',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -128,6 +136,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -140,6 +149,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://publicationethics.org/',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -152,6 +162,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/page3.php?id=106',
                 'page_category' => 'Author',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -164,6 +175,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.doi.org/',
                 'page_category' => 'Author',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -176,6 +188,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.wame.org/manuscript-submission-checklist ',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -188,6 +201,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/recommendations-on-publication-ethics-policies-for-medical-journals',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -200,6 +214,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/syllabus-for-prospective-and-newly-appointed-editors',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -212,6 +227,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/journals-following-the-icmje-recommendations/',
                 'page_category' => 'Reviewer',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -224,6 +240,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/',
                 'page_category' => 'Reviewer',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -236,6 +253,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://wame.org/',
                 'page_category' => 'Reviewer',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -248,6 +266,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://publicationethics.org/',
                 'page_category' => 'Author',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -260,6 +279,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/',
                 'page_category' => 'Author',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -272,6 +292,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/recommendations/browse/roles-and-responsibilities/responsibilities-in-the-submission-and-peer-peview-process.html',
                 'page_category' => 'Author',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -284,6 +305,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.icmje.org/recommendations/browse/roles-and-responsibilities/',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -296,6 +318,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://icmje.org/recommendations/',
                 'page_category' => 'Editor',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -308,6 +331,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://www.equator-network.org/',
                 'page_category' => 'Reviewer',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
             [   //sixth entry
@@ -320,6 +344,7 @@ class PageSeeder extends Seeder
                 'page_url' => 'https://orcid.org/',
                 'page_category' => 'Researcher',
                 'page_subcategory' => '',
+                'page_source' => '',
                 'page_tags' => ''
             ],
 
