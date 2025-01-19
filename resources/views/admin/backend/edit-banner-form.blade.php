@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <form method="POST" action="{{ route('admin.banner.update') }}" class="forms-sample">
+            <form method="POST" action="{{ route('admin.banner.update') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="banner_title" class="form-label">Banner ID</label>
@@ -66,9 +66,13 @@
                 <div class="card-body">
 
                         <div class="mb-3">
-                            <label class="form-label" for="banner_image">Image upload</label>
-                            <input class="form-control" type="file" name="banner_image">
+                            <label class="form-label" for="banner_image">Banner image upload</label>
+                            <input class="form-control" type="file" name="banner_image" id="article_photo">
                         </div>
+
+                    <div class="mb-3">
+                        <img id="showImage" class="img-fluid" src="{{ (!empty($bannerData->banner_image_path)) ? url('upload/admin_images/'.$bannerData->banner_image_path) : url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
+                    </div>
                 </div>
             </div>
         </div>

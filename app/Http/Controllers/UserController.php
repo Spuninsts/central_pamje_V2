@@ -135,6 +135,13 @@ class UserController extends Controller
             $entry_orgid = $request->user_organization;
         }
 
+        if($request->file('user_photo')){
+            $file = $request->file('user_photo');
+            $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamephoto);
+        }else{$filenamephoto  = null;}
+
+
         User::insert([
             'user_id' => $request->user_id,
             'org_id' => $entry_orgid,
@@ -145,13 +152,13 @@ class UserController extends Controller
             'username' => $request->user_first_name.'.'.$request->user_last_name,
             'email' => $request->user_email,
             'password' => $user_password,
-            'user_address' => "None",
+            'user_address' => $filenamephoto,
             'user_type' => $request->user_type,
             'role' => $request->user_type,
             'user_status' => $user_stat,
         ]);
 
-        return redirect()->route('admin.active-users');
+        return redirect('admin/edit/user?val='.$request->user_id);
 
     }//ENd Method
 
@@ -161,6 +168,13 @@ class UserController extends Controller
         $this_user = User::where('user_id',$request->user_id)
                     ->first();
         //dd($this_user);
+
+        if($request->file('user_photo')){
+            $file = $request->file('user_photo');
+            $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamephoto);
+        }else{$filenamephoto  = null;}
+
         $this_user->user_status = $request->user_status;
         $this_user->title = $request->user_title;
         $this_user->fname = $request->user_first_name;
@@ -170,6 +184,7 @@ class UserController extends Controller
         $this_user->user_type = $request->user_type;
         $this_user->role = $request->user_type;
         $this_user->org_id = $request->user_organization;
+        $this_user->user_address = $filenamephoto;
         $this_user->updated_at = now();
         $this_user->save();
 

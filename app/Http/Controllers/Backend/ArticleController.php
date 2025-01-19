@@ -26,14 +26,21 @@ class ArticleController extends Controller
         //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
                                 ->orderBy('full_title')
-                                ->get(['journal_mid','full_title','short_title','about']);
+                                ->get(['journal_mid','full_title','short_title','about','photo']);
 
         for($x=0;$x < count($ArticleData); $x++){
             $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
         }
 
+        $NewsAnnounceData = page::where('page_type',"news")
+                                ->orWhere('page_type',"announcement")
+                                ->where('page_status',"active")
+                                ->orderBy('id','DESC')
+                                ->take(3)
+                                ->get(['page_id','page_title','page_image_path']);
+
         //dd($ArticleData);
-        return view('frontend.frontendmain', compact('ArticleData','BannerData'));
+        return view('frontend.frontendmain', compact('ArticleData','BannerData','NewsAnnounceData'));
 
     }// End Method
 
@@ -61,11 +68,11 @@ class ArticleController extends Controller
         $req = request()->val;
         // the prefix determines what page.
         if($req == 'all')
-            $ArticleData = Article::where('article_status','!=','inactive')
+            $ArticleData = Article::where('article_status','!=','draft')
                                     ->orderBy('full_title')
                                     ->get();
         else
-            $ArticleData = Article::where('article_status','!=','inactive')
+            $ArticleData = Article::where('article_status','!=','draft')
                                     ->where('full_title','LIKE',$req . '%' )
                                     ->orderBy('full_title')
                                     ->get();
@@ -194,12 +201,19 @@ class ArticleController extends Controller
     }// End Method
 
     public function LoadResearcherMain(){
-
+        $subcategory = array();
         $PageData = page::where('page_category','Researcher')
                         ->where('page_status','active')
                         ->orderBy('page_id')
                         ->get();
-        return view('frontend.frontendresearchers', compact('PageData'));
+        //dd($PageData);
+        foreach($PageData as $PageD){
+            array_push($subcategory, $PageD->page_subcategory);
+        }
+        $subcategory = array_values(array_unique($subcategory)); //unique
+        // dd($subcategory);
+
+        return view('frontend.frontendresearchers', compact('PageData','subcategory'));
 
     }// End Method
 
@@ -215,7 +229,7 @@ class ArticleController extends Controller
                             $query->where('page_type','News')
                                   ->orWhere('page_type','Announcement');
                         })
-                        ->orderBy('created_at')
+                        ->orderBydesc('created_at')
                         ->get();
         //dd($PageData);
         return view('frontend.frontendnewsannouncements', compact('PageData'));
@@ -255,9 +269,7 @@ class ArticleController extends Controller
 
         //dd($role_array);
         //dd($temp_array); // this has all the ID's needed for the other information.
-
         // * need to get indexes, publisher and users.  * //
-
         // * USERS
         $UserData = User::whereIn('user_id',$temp_array)
                         ->get();
@@ -295,5 +307,16 @@ class ArticleController extends Controller
 
     }// End Method
 
+    public function LoadAllPageData(Request $request){
+
+        //dd(request()->val);  // value from link parameter
+
+        // * ARTICLE Data
+        $PageData = page::where('page_id',request()->val)
+            ->get();
+
+        return view('frontend.frontendpagedata', compact('PageData'));
+
+    }
 
 }

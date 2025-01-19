@@ -14,7 +14,7 @@
 
             <!-- <h6 class="card-title">Basic Form</h6>  'ArticleData','AssociateData','UserData','EntityData','OrgData','role_array'-->
 
-            <form method="POST" action="{{ route('admin.article.update') }}" class="forms-sample">
+            <form method="POST" action="{{ route('admin.article.update') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                     @foreach($ArticleData as $item)
                         <div class="mb-3">
@@ -229,6 +229,11 @@
                                                         @php
                                                             $role_array = config('sitevariables.member_type')
                                                         @endphp
+                                                    @else
+                                                        @php
+                                                            $role_array = array_merge($role_array,config('sitevariables.member_type'));
+                                                            $role_array = array_unique($role_array);
+                                                        @endphp
                                                     @endif
                                                     @foreach($role_array as $role)
                                                         <option value="{{$role}}" >{{$role}}</option>
@@ -262,26 +267,19 @@
     </div>
 
     <div class="row">
-       <!--  <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
 
-                        <div class="mb-3">
-                            <label class="form-label" for="logo">Logo upload (60px x 160px, ~200 KB, PNG format)</label>
-                            <input class="form-control" type="file" name="article_logo">
-                        </div>
-                </div>
-            </div>
-        </div> -->
 
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="photo">Image upload</label>
+                        <input class="form-control" type="file" name="article_photo" id="article_photo">
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="photo">Image upload</label>
-                            <input class="form-control" type="file" name="article_photo">
-                        </div>
+                    <div class="mb-3">
+                        <img id="showImage" class="img-fluid" src="{{ (!empty($ArticleData[0]->photo)) ? url('upload/admin_images/'.$ArticleData[0]->photo) : url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
+                    </div>
                 </div>
             </div>
         </div>
@@ -295,8 +293,15 @@
                     <div class="mb-3">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input type="checkbox" name="article_featured" class="form-check-input">
-                                Featured
+                                @if($featuredIsFull)
+                                    <div class="alert alert-danger" role="alert">
+                                        Reached max of 4 featured Journals.
+                                        <input type="hidden" id="article_featured" name="article_featured" value="{{ $ArticleData[0]->article_status }}">
+                                    </div>
+                                @else
+                                    <input type="checkbox" name="article_featured" class="form-check-input">
+                                    Featured
+                                @endif
                             </label>
                         </div>
                     </div>

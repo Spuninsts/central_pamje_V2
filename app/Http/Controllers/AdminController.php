@@ -74,7 +74,7 @@ class AdminController extends Controller
         $data->email = $request->email;
         $data->user_address = $request->address;
 
-        if($request->file('photo')){
+        if($request->file('user_photo')){
             $file = $request->file('photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
@@ -204,11 +204,19 @@ class AdminController extends Controller
 
     public function InactiveArticles(){
 
-        $ArticleData = Article::where('article_status','inactive')
+        $ArticleData = Article::where('article_status','draft')
                         ->get();
         return view('admin.inactive-articles', compact('ArticleData'));
 
     }// End Method
+
+    public function CheckFeatured(){
+        $ArticleData = Article::where('article_status','featured')
+            ->get();
+       if (count($ArticleData) >= 4){
+           return true;
+       }else{return false;}
+    }
 
     public function NewArticle(){
         //resources-view-folder-filename
@@ -218,8 +226,9 @@ class AdminController extends Controller
         $EntityData = entity::whereIn("ent_type",array("index","publisher"))->get();
         //$PublisherData = entity::where("ent_type","publisher")->get();
         //dd($PublisherData);
+        $featuredIsFull = $this->CheckFeatured();
 
-        return view('admin.new-article',compact('organizationData','NewJournalID','EntityData'));
+        return view('admin.new-article',compact('organizationData','NewJournalID','EntityData','featuredIsFull'));
     }// End Method
 
     public function NewIndex(){
@@ -310,9 +319,9 @@ class AdminController extends Controller
                         array("org_title" => "No Organization")
                        );
         }*/
-
+        $featuredIsFull = $this->CheckFeatured();
         //dd(!$AssociateData);
-        return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','role_array','AllUserData','organizationData'));
+        return view('admin.edit-article', compact('ArticleData','AssociateData','UserData','EntityData','role_array','AllUserData','organizationData','featuredIsFull'));
 
 
     }// end edit function
@@ -320,13 +329,14 @@ class AdminController extends Controller
     public function AdminArticleStore(Request $request){
         $id = Auth::user()->fname;
 
+        //dd($request);
         //dd($request->journal_publishers);
        //dd($request->article_active);
         //validation
         /* $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         ]);*/
-        $image_path = '/frontend/img/';
+        /*$image_path = '/frontend/img/';
         $article_photo = $request->file('article_photo');
         //dd($request->file($article_photo[0]));
         if(!empty($article_photo)) {
@@ -339,18 +349,24 @@ class AdminController extends Controller
                     }
                 }
             }else{
-            $filename = "nologo";
-        }
-        /* if($request->file('article_logo')){
-            $file = $request->file('article_logo');
-            $filenamelogo = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'), $filenamelogo);
-        }else{$filenamelogo  = "nologo";} */
+            $filename = null;
+        }*/
+         if($request->file('article_photo')){
+            $file = $request->file('article_photo');
+            $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamephoto);
+        }else{$filenamephoto  = null;}
         //dd($filename);
 
         $article_stat = "active";
         if($request->article_featured){$article_stat = "featured";}
         if(is_null($request->article_active)){$article_stat = "draft";}
+
+        if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+            $indexingvar =  implode(",", $request->journal_indexes);
+            }else {
+            $indexingvar =  null;
+        }
 
         Article::insert([
             'created_by' => $id,
@@ -366,8 +382,8 @@ class AdminController extends Controller
             'aims_scope' => $request->aims_scope,
             'link' => $request->link,
             'policy' => $request->policy,
-            'photo' => $image_path.$filename,
-            'indexing' => implode(",",$request->journal_indexes),
+            'photo' => $filenamephoto,
+            'indexing' => $indexingvar,
             'publisher' => $request->journal_publisher,
         ]);
 
@@ -377,18 +393,17 @@ class AdminController extends Controller
 
 
     public function AdminArticleUpdate(Request $request){
-
-
         //dd($request);
-        $image_path = '/frontend/img/';
+        //dd($request->file('article_photo'));
         if($request->file('article_photo')){
             $file = $request->file('article_photo');
-            $filename = $request->article_id;
-            $file->move(public_path('/frontend/img/'), $filename);
-        }else{$filename = "nologo";}
+            $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamephoto);
+        }else{$filenamephoto  = null;}
 
+        //dd($filenamephoto);
         $article_stat = "active";
-        if($request->article_featured){$article_stat = "featured";}
+        if($request->article_featured == "featured"){$article_stat = "featured";}
         if(is_null($request->article_active)){$article_stat = "draft";}
 
 
@@ -408,8 +423,8 @@ class AdminController extends Controller
         $this_article->publisher = $request->journal_publisher;
         if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
             $this_article->indexing = implode(",", $request->journal_indexes);
-        }
-        $this_article->photo = $image_path.$filename;
+        }else {$this_article->indexing = null;}
+        $this_article->photo = $filenamephoto;
         $this_article->updated_at = now();
         $this_article->save();
 
@@ -441,11 +456,11 @@ class AdminController extends Controller
     }//End Organization data retrieval
     public function AdminOrganizationUpdate(Request $request){
         //dd($request);
-        if($request->file('organization_image')){
-            $file = $request->file('organization_image');
+        if($request->file('org_photo')){
+            $file = $request->file('org_photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = "nologo";}
+        }else{$filename = null;}
 
         $organization_stat = $request->organization_status;
         if(is_null($organization_stat)){$organization_stat = "draft";}
@@ -472,6 +487,13 @@ class AdminController extends Controller
 
     public function AdminOrganizationStore(Request $request){
         $id = Auth::user()->fname;
+
+        if($request->file('org_photo')){
+            $file = $request->file('org_photo');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('/upload/admin_images/'), $filename);
+        }else{$filename = null;}
+
         organization::insert([
             'org_created_by' => $id,
             'org_id' => $request->organization_id,
@@ -479,7 +501,7 @@ class AdminController extends Controller
             'org_description' => $request->organization_description,
             'org_url' => $request->organization_url,
             'org_status' => 'active',
-            'org_image_path' => '', // needs to update with images.
+            'org_image_path' => $filename,
             'created_at' => now()
         ]);
 
@@ -549,7 +571,7 @@ class AdminController extends Controller
             $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = "nologo";}
+        }else{$filename = null;}
 
         Banner::insert([
             'banner_created_by' => $id,
@@ -572,7 +594,7 @@ class AdminController extends Controller
             $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = "nologo";}
+        }else{$filename = null;}
 
             $banner_stat = $request->banner_status;
         if(is_null($banner_stat)){$banner_stat = "draft";}
@@ -709,6 +731,7 @@ class AdminController extends Controller
             return view('admin.new-page', compact('NewPageID'));
     }// End Method
 
+    // Saving pages (News and Announcements)
     public function AdminPageStore(Request $request){
         $id = Auth::user()->fname;
 
@@ -722,7 +745,11 @@ class AdminController extends Controller
             $file = $request->file('page_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = "noimage";}
+        }else{$filename = null;}
+
+        if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
+            $subcdata = implode(",", $request->page_subcategory);
+        }else {$subcdata = null;}
 
         page::insert([
             'page_created_by' => $id,
@@ -735,13 +762,14 @@ class AdminController extends Controller
             'page_image_path' => $filename,
             'page_url' => $request->page_url,
             'page_category' => strtolower($request->page_category),
-            'page_subcategory' => implode(",",$request->page_subcategory), //implode
+            'page_subcategory' => $subcdata,
             'page_tags' => $request->page_class, //this can be extended into multiple
             'created_at' => now()
 
         ]);
 
-        return redirect()->route('admin.active-pages');
+        //return redirect()->route('admin.active-pages');  changing to specific page of added data
+        return redirect('admin/page/edit?val='.$request->page_id);
 
     }//End Method
 
@@ -751,10 +779,14 @@ class AdminController extends Controller
             $file = $request->file('page_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = "nologo";}
+        }else{$filename = null;}
 
         $page_stat = $request->page_status;
         if(is_null($page_stat)){$page_stat = "draft";}
+
+        if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
+            $subcdata = implode(",", $request->page_subcategory);
+        }else {$subcdata = null;}
 
         $this_page = page::where('page_id',$request->page_id)->first();
         //dd($this_page);
@@ -767,7 +799,7 @@ class AdminController extends Controller
         $this_page->page_type = $request->page_type;
         $this_page->page_category = $request->page_category;
         $this_page->page_tags = $request->page_class;
-        $this_page->page_subcategory = implode(",",$request->page_subcategory);
+        $this_page->page_subcategory = $subcdata;
         $this_page->updated_at = now();
         $this_page->save();
 
@@ -780,23 +812,23 @@ class AdminController extends Controller
          switch ($page_category) {
              case 'Editor':
                  $subcategories = config('sitevariables.sub_editor');
-                 dd(json($subcategories));
+                 //dd(json($subcategories));
                  return response()->json($subcategories);
              case 'Author':
                  $subcategories = config('sitevariables.sub_author');
-                 dd(json($subcategories));
+                 //dd(json($subcategories));
                  return response()->json($subcategories);
              case 'Researcher':
                  $subcategories = config('sitevariables.sub_researcher');
-                 dd(json($subcategories));
+                 //dd(json($subcategories));
                  return response()->json($subcategories);
              case 'Reviewer':
                  $subcategories = config('sitevariables.sub_reviewer');
-                 dd(json($subcategories));
+                 //dd(json($subcategories));
                  return response()->json($subcategories);
              default:
                  $subcategories = array_merge(config('sitevariables.sub_editor'), config('sitevariables.sub_author'), config('sitevariables.sub_researcher'), config('sitevariables.sub_reviewer'));
-                 dd(json($subcategories));
+                 //dd(json($subcategories));
                  return response()->json($subcategories);
          }
     }// End Page SUbcategory

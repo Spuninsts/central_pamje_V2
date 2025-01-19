@@ -45,20 +45,26 @@
             @else
                 @foreach( $PageData as $key => $item )
                     <div class="cen-about">
-                        <div class="row my-4">
-                                <h5 class="text-danger fw-bold">{{$item->page_title}}</h5>
+                        <div class="row my-2">
+                            <a href="{{ url('/page/data?val='.$item->page_id) }}" target="_blank"><h5 class="text-danger fw-bold">{{$item->page_title}}</h5></a>
                         </div>
 
-                        <div class="col-sm-2">
-                            <img src="{{$item->page_image_path}}" alt="{{$item->page_title}}" class="w-200 h-100">
+                        <div class="col-md-2">
+                            <a href="{{ url('/page/data?val='.$item->page_id) }}" target="_blank">
+                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-50 h-50">
+                            </a>
+                        </div>
+                        <div class="col-xl-auto">
+                            <p>{{substr($item->page_description,0,100)}}...</p>
+                            <p><span class="fw-bold">External link: </span><a href="{{$item->page_url}}" target="_blank">{{$item->page_url}}</a></p>
                         </div>
 
-                        <div class="row my-4">
+                        <!--<div class="row my-2">
                             <p>{{$item->page_description}} </p>
                             <p><span class="fw-bold">Link:</span>
                             <a href="{{$item->page_url}}" target="_blank">{{$item->page_url}}</a> </p>
-                        </div>
-                        <div class="row  my-4">
+                        </div>-->
+                        <div class="row  my-2">
                             <hr/>
                         </div>
                     </div>

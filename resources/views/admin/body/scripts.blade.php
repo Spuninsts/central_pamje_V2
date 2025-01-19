@@ -1,4 +1,19 @@
-	<!-- core:js -->
+	<!--  image script  -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#article_photo').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0'])
+            });
+        });
+
+    </script>
+
+    <!-- core:js -->
 	<script src="{{ asset('backend/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
 
@@ -9,6 +24,7 @@
 
     <!-- Plugin css for FORM Wizard -->
     <script src="{{ asset('backend/assets/vendors/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<!-- End plugin css for this page -->
 
 	<!-- Plugin js for this page -->
