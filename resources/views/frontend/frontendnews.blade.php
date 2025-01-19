@@ -14,7 +14,7 @@
           @foreach( $NewsAnnounceData as $key => $item)
             <div class="col-12 col-md-4 d-flex justify-content-center mb-3 ">
               <div class="card bg-light rounded-0 " style="width: 25rem;">
-                <img src="/upload/admin_images/{{ $item->page_image_path }}" class="card-img-top rounded-0" alt="{{ $item->page_title }}">
+                <img src="/upload/admin_images/{{$item->page_image_path}}" class="card-img-top rounded-0" alt="{{$item->page_title}}">
                 <div class="card-body">
                   <h5 class="card-title cen-font-darkblue">{{ $item->page_title }}</h5>
                 </div>
