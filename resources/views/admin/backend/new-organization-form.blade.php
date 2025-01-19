@@ -36,6 +36,22 @@
                             <input type="text" class="form-control" name="organization_url" placeholder="">
                         </div>
 
+                    <!-- Add new image -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="photo">Org image upload</label>
+                                <input class="form-control" type="file" name="org_photo" id="article_photo">
+                            </div>
+
+                            <div class="mb-3">
+                                <img id="showImage" class="img-fluid" src="{{ url('upload/admin_images/placeholder.jpg') }}" alt="Organization Picture">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add new image -->
+
+
                 </div>
             </div>
         </div>

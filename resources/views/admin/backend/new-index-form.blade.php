@@ -17,7 +17,7 @@
             <form method="POST" action="{{ route('admin.entity.store') }}" class="forms-sample">
                 @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="entity_type" value="index">
+                            <input type="hidden" class="form-control" name="entity_type" value="index">
                         </div>
                         <div class="mb-3">
                             <label for="journal_id" class="form-label">Index ID</label>

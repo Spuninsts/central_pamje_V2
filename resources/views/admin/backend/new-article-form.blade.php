@@ -83,19 +83,19 @@
                                 <input type="text" class="form-control" name="policy" placeholder="">
                            </div>
 
-                                <div class="mb-3">
-                                    <label for="indexing" class="form-label">Indexing</label>
-                                        <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="journal_indexes[]" multiple="multiple" data-width="100%" data-select2-id="4" tabindex="-1" aria-hidden="true">
-                                            @foreach( $EntityData as $key => $item)
-                                                @if ($item->ent_type == 'index')
-                                                    <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                </div>
-
-
                             <div class="mb-3">
+                                <label for="indexing" class="form-label">Indexing</label>
+                                <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="journal_indexes[]" multiple="multiple" data-width="100%" data-select2-id="4" tabindex="-1" aria-hidden="true">
+                                    @foreach( $EntityData as $key => $item)
+                                        @if ($item->ent_type == 'index')
+                                            <option value="{{$item->ent_id}}" >{{$item->ent_name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                        <div class="mb-3">
                                 <label for="publisher" class="form-label">Publisher</label>
                                 <select class="form-select mb-3" name="journal_publisher" data-width="50%" aria-hidden="true">
                                     <option>Select Publisher...</option>
@@ -119,10 +119,13 @@
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
                         <div class="mb-3">
                             <label class="form-label" for="photo">Image upload</label>
-                            <input class="form-control" type="file" name="article_photo[]">
+                            <input class="form-control" type="file" name="article_photo" id="article_photo">
+                        </div>
+
+                        <div class="mb-3">
+                            <img id="showImage" class="img-fluid" src="{{ url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
                         </div>
                 </div>
             </div>
@@ -137,8 +140,14 @@
                     <div class="mb-3">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input type="checkbox" name="article_featured" class="form-check-input">
-                                Featured
+                                @if($featuredIsFull)
+                                    <div class="alert alert-danger" role="alert">
+                                        Reached max of 4 featured Journals.
+                                    </div>
+                                @else
+                                    <input type="checkbox" name="article_featured" class="form-check-input">
+                                    Set Featured
+                                @endif
                             </label>
                         </div>
                     </div>

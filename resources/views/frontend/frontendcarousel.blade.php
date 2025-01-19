@@ -14,7 +14,9 @@
                 @else
                             <div class="carousel-item ">
                 @endif
-                    <img src="{{ asset('frontend/img/carousel-'.$carousel_no.'.jpg') }}" class="d-block  custom-car-img-height-sm" alt="carousel {{$carousel_no}}">
+
+                        <img src="{{ url('upload/admin_images/'.$bd->banner_image_path) }}" class="d-flex content-center w-auto" alt="carousel {{$carousel_no}}" style="max-height: 60vh;">
+
                     <div class="carousel-caption text-center">
                         <div class="mt-sm-5 py-3">
                             <h2 class="text-white display-4 m-4 cen-hero-title">
@@ -43,3 +45,4 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+</div>

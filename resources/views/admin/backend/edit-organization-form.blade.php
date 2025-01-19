@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <form method="POST" action="{{ route('admin.organization.update') }}" class="forms-sample">
+            <form method="POST" action="{{ route('admin.organization.update') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="organization_title" class="form-label">Organization ID</label>
@@ -49,15 +49,20 @@
 
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
+            <!-- Add new image -->
             <div class="card">
                 <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="photo">Organization image upload</label>
+                        <input class="form-control" type="file" name="org_photo" id="article_photo">
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="organization_image">Image upload</label>
-                            <input class="form-control" type="file" name="organization_image">
-                        </div>
+                    <div class="mb-3">
+                        <img id="showImage" class="img-fluid" src="{{ (!empty($organizationData->org_image_path)) ? url('upload/admin_images/'.$organizationData->org_image_path) : url('upload/admin_images/placeholder.jpg') }}" alt="Organization Picture">
+                    </div>
                 </div>
             </div>
+            <!-- Add new image -->
         </div>
     </div>
 

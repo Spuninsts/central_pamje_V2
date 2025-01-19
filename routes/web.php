@@ -47,20 +47,21 @@ Route::get('/', [UserController::class, 'Index']);
     Route::get('/contactus', [ArticleController::class, 'LoadContactUsMain'])->name('main.contact.us');
     //Route::get('/journals/ulist', [ArticleController::class, 'LoadAllArticlesMainU'])->name('main.journals.ulist');
     Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
+    Route::get('/page/data', [ArticleController::class, 'LoadAllPageData'])->name('main.page.data'); // displaying news specific
+
 
     //SEARCH FUNCTION
     //Route::get('/search', [SearchController::class, 'index'])->name('search');
 
     // SEARCH
     //return view('welcome');
-//});
+    //});
 
-/* Route::get('{any}', [UserController::class, 'Index'])->where('any','/*', '.*');
-
-Route::get('/', function () {
-    return view('frontend/frontendmain');
-})->middleware(['auth', 'verified'])->name('dashboard');
-*/
+    /* Route::get('{any}', [UserController::class, 'Index'])->where('any','/*', '.*');
+        Route::get('/', function () {
+            return view('frontend/frontendmain');
+        })->middleware(['auth', 'verified'])->name('dashboard');
+    */
 
 Route::middleware(['auth','verified'])->group(function () {
     //Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main'); //home main page
@@ -92,7 +93,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/inactive/articles', [AdminController::class, 'InactiveArticles'])->name('admin.inactive-articles');
     Route::get('/admin/new/article', [AdminController::class, 'NewArticle'])->name('admin.new-article');//loads the form page
     //Route::get('/admin/new-article/wizard', [AdminController::class, 'NewArticleWizard'])->name('admin.new-article-wizard');//loads the form page
-    // Route::get('/admin/article/data', [AdminController::class, 'LoadArticleData'])->name('admin.article.data'); // loads all article data in console
+    //Route::get('/admin/article/data', [AdminController::class, 'LoadArticleData'])->name('admin.article.data'); // loads all article data in console
     Route::get('/admin/article/edit', [AdminController::class, 'EditArticleData'])->name('admin.article.edit'); // allows edit of data.
 
     //Articles - these are the pages for news, announcement and additional single page articles.
@@ -101,10 +102,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/active/resources', [AdminController::class, 'ActiveResources'])->name('admin.active-resources');
     Route::get('/admin/active/news', [AdminController::class, 'ActiveNews'])->name('admin.active-news');
 
-    Route::get('/admin/new/banner', [AdminController::class, 'NewBanner'])->name('admin.new-banner');
+    Route::get('/admin/new/banner', [AdminController::class, 'NewBanner'])->name('admin.new-banner'); // create new banner
     Route::get('/admin/active/pages', [AdminController::class, 'ActivePages'])->name('admin.active-pages');
-    Route::get('/admin/new/page', [AdminController::class, 'NewPage'])->name('admin.new-page');
-    Route::get('/admin/banner/edit', [AdminController::class, 'EditBannerData'])->name('admin.banner.edit');
+    Route::get('/admin/new/page', [AdminController::class, 'NewPage'])->name('admin.new-page'); //new News and Announcmeents
+    Route::get('/admin/banner/edit', [AdminController::class, 'EditBannerData'])->name('admin.banner.edit'); //edit banner
     Route::get('/admin/page/edit', [AdminController::class, 'EditPageData'])->name('admin.page.edit');
     //Route::get('/admim/page/subcategories/{page_category}', [AdminController::class, 'GetPageSubcategories']);
 
@@ -129,7 +130,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/page/update', [AdminController::class, 'AdminPageUpdate'])->name('admin.page.update');
     Route::post('/admin/entity/store', [AdminController::class, 'AdminEntityStore'])->name('admin.entity.store');
     Route::post('/admin/entity/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.entity.update');
-    Route::post('/admin/page/store', [AdminController::class, 'AdminPageStore'])->name('admin.page.store');
+    Route::post('/admin/page/store', [AdminController::class, 'AdminPageStore'])->name('admin.page.store'); // saving pages
     Route::post('/admin/organization/store', [AdminController::class, 'AdminOrganizationStore'])->name('admin.organization.store');
     Route::post('/admin/organization/update', [AdminController::class, 'AdminOrganizationUpdate'])->name('admin.organization.update');
     Route::post('/admin/user/store', [UserController::class, 'AdminUserStore'])->name('admin.user.store');

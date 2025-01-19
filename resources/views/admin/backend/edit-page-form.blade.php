@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <form method="POST" action="{{ route('admin.page.update') }}" class="forms-sample">
+            <form method="POST" action="{{ route('admin.page.update') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="page_title" class="form-label">Page ID</label>
@@ -102,11 +102,18 @@
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="photo">Image upload</label>
+                        @if(!empty($pageData->page_image_path))
+                            <input class="form-control" type="file" name="page_image" id="article_photo" value="{{url('upload/admin_images/'.$pageData->page_image_path)}}">
+                        @else
+                            <input class="form-control" type="file" name="page_image" id="article_photo">
+                        @endif
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="page_image">Image upload</label>
-                            <input class="form-control" type="file" name="page_image">
-                        </div>
+                    <div class="mb-3">
+                        <img id="showImage" class="wd-xl-100" src="{{ (!empty($pageData->page_image_path)) ? url('upload/admin_images/'.$pageData->page_image_path) : url('upload/admin_images/placeholder.jpg')}}" alt="Page Image">
+                    </div>
                 </div>
             </div>
         </div>

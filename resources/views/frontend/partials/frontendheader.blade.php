@@ -58,7 +58,7 @@
 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/journals/alphabet?val=all">By Alphabetical</a></li>
-                  <li><a class="dropdown-item" href="/journals/category?va=all">By Category</a></li>
+                  {{--<li><a class="dropdown-item" href="/journals/category?va=all">By Category</a></li>--}}
 
 
                 </ul>

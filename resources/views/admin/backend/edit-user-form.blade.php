@@ -11,7 +11,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                <form method="POST" action="{{ route('admin.user.update') }}" class="forms-sample">
+                <form method="POST" action="{{ route('admin.user.update') }}" class="forms-sample" enctype="multipart/form-data">
                             @csrf
                                     <div class="mb-3">
                                         <label for="user_id" class="form-label">user ID</label>
@@ -70,6 +70,23 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                        <!--  Image Edit  -->
+                                        <div class="col-md-6 grid-margin stretch-card">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="photo">Update Image</label>
+                                                        <input class="form-control" type="file" name="user_photo" id="article_photo">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <img id="showImage" class="wd-xl-100" src="{{ (!empty($userData->user_address)) ? url('upload/admin_images/'.$userData->user_address) : url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                             </div>
                         </div>
                     </div>

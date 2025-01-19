@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <form method="POST" action="{{ route('admin.page.store') }}" class="forms-sample">
+            <form method="POST" action="{{ route('admin.page.store') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="page_id" class="form-label">Page ID</label>
@@ -87,7 +87,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                 </div>
             </div>
         </div>
@@ -98,10 +97,18 @@
             <div class="card">
                 <div class="card-body">
 
-                        <div class="mb-3">
-                            <label class="form-label" for="page_image">Image upload</label>
-                            <input class="form-control" type="file" name="page_image">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="photo">Image upload</label>
+                                <input class="form-control" type="file" name="page_image" id="article_photo">
+                            </div>
+
+                            <div class="mb-3">
+                                <img id="showImage" class="wd-xl-100" src="{{ url('upload/admin_images/placeholder.jpg') }}" alt="Page Image">
+                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
