@@ -121,8 +121,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     //Record Creator
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
-    Route::post('/admin/article/store', [AdminController::class, 'AdminArticleStore'])->name('admin.article.store');
-    Route::post('/admin/article/update', [AdminController::class, 'AdminArticleUpdate'])->name('admin.article.update');
+    Route::post('/admin/article/store', [AdminController::class, 'AdminArticleStore'])->name('admin.article.store'); // add journal
+    Route::post('/admin/article/update', [AdminController::class, 'AdminArticleUpdate'])->name('admin.article.update'); //edit journal
     Route::post('/admin/publisher/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.publisher.update');
     Route::post('/admin/index/update', [AdminController::class, 'AdminEntityUpdate'])->name('admin.index.update');
     Route::post('/admin/banner/store', [AdminController::class, 'AdminBannerStore'])->name('admin.banner.store');
