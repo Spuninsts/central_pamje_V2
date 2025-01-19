@@ -403,7 +403,7 @@ class AdminController extends Controller
 
         //dd($filenamephoto);
         $article_stat = "active";
-        if($request->article_featured == "featured"){$article_stat = "featured";}
+        if($request->article_featured == "on"){$article_stat = "featured";}
         if(is_null($request->article_active)){$article_stat = "draft";}
 
 
