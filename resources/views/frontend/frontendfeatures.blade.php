@@ -12,9 +12,9 @@
         @foreach( $ArticleData as $key => $item)
         <!-- Card 1 -->
         <div class="col">
-          <div class="card rounded-0" style="height: 30rem;">
+          <div class="card rounded-0" style="height: 32rem;">
               <a href="/journals/data?val={{$item->journal_mid}}" >
-                  <img class="card-img-top rounded-0" src="/upload/admin_images/{{ $item->photo }}" alt="{{ $item->short_title }}">
+                  <img class="card-img-top rounded-0" src="/upload/admin_images/{{ $item->photo }}" alt="{{ $item->short_title }}" style="height: 15rem;">
               </a>
             <div class="card-body">
               <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
