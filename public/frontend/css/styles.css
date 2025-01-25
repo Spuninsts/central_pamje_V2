@@ -32,7 +32,7 @@ h5 {
     line-height: .5rem;
 }
 .cen-hr{
-    border: none;             
+    border: none;
     height: 5px;
     background-color: #1e3a8a;
 }
@@ -66,7 +66,7 @@ h5 {
 }
 
 .cen-hero-blurb{
-    letter-spacing: .5rem;
+    letter-spacing: .2rem;
 }
 /*--------------------------------------------------------------
 # NAV
@@ -120,7 +120,7 @@ h5 {
 .dropdown-menu a.dropdown-item:hover {
     background-color: #0d6efd;
     border-radius: 0;
-  }
+}
 
 .dropdown-toggle[aria-expanded="true"] {
     background-color: #0d6efd ;
@@ -154,40 +154,40 @@ h5 {
 # Counts
 --------------------------------------------------------------*/
 
-  
+
 .cen-counts  {
     padding: 20px ;
     width: 80%;
     justify-content: space-around;
     text-align: center;
     background: #1E429B;
-  }
-  
+}
 
-  
-  .cen-counts  span {
+
+
+.cen-counts  span {
     font-size: 36px;
     display: block;
     font-weight: 600;
     color: #F9D01A;
-  }
-  
-  .cen-counts  p {
+}
+
+.cen-counts  p {
     padding: 0;
     margin: 0;
     font-family: "Raleway", sans-serif;
     font-size: 14px;
-  }
+}
 
 
 /*--------------------------------------------------------------
 # Page header
 --------------------------------------------------------------*/
-  
+
 
 .cen-page-header{
     background-image: url('../img/page-header-bg.jpg');
-   
+
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -215,17 +215,17 @@ h5 {
 option {
     font-size: .8rem; /* Adjust this value as needed */
     font-family: "Libre Baskerville", serif;
-  }
+}
 
 
 /*--------------------------------------------------------------
 # BREAK POINTS
 --------------------------------------------------------------*/
 
-  @media (max-width: 576px) { /* Bootstrap's breakpoint for small devices */
+@media (max-width: 576px) { /* Bootstrap's breakpoint for small devices */
     .custom-car-img-height-sm {
-      height: 50%;
+        height: 50%;
     }
-  }
+}
 
 

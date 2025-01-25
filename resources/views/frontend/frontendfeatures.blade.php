@@ -24,35 +24,6 @@
           </div>
         </div>
         @endforeach
-        <!-- < !-- Card 2 -- >
-        <div class="col">
-          <div class="card rounded-0">
-            <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 2">
-            <div class="card-body">
-              <h5 class="card-title cen-font-darkblue">Card 2</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-        < !-- Card 3 -- >
-        <div class="col">
-          <div class="card rounded-0">
-            <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 3">
-            <div class="card-body">
-              <h5 class="card-title cen-font-darkblue">Card 3</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-        < -- Card 4 -- >
-        <div class="col">
-          <div class="card rounded-0">
-            <img class="card-img-top rounded-0" src="https://via.placeholder.com/268x161" alt="Card 4">
-            <div class="card-body">
-              <h5 class="card-title cen-font-darkblue">Card 4</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div> -->
+
       </div>
     </div>

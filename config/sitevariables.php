@@ -28,13 +28,17 @@ return array(
     'sub_researcher' => array(
         "Research Methodologies",
         "Other Useful Educational Resources",
-        "Blogs",
-        "Report",
-        "Articles",
+        "Blogs/Report/Articles",
         "Essential Readings",
         "Toolkits"
     ),
 
+    'sub_category' => array(
+        "Blogs/Report/Articles",
+        "Courses",
+        "Essential Readings",
+        "Toolkits"
+    ),
     'sub_classification' => array(
         "Course",
         "Blog",

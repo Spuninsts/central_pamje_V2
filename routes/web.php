@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PeerEditorController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\ArticleController;
@@ -49,9 +49,8 @@ Route::get('/', [UserController::class, 'Index']);
     Route::get('/journals/data', [ArticleController::class, 'LoadAllArticleData'])->name('main.journals.data');
     Route::get('/page/data', [ArticleController::class, 'LoadAllPageData'])->name('main.page.data'); // displaying news specific
 
-
-    //SEARCH FUNCTION
-    //Route::get('/search', [SearchController::class, 'index'])->name('search');
+    //Top SEARCH FUNCTION
+    Route::get('/search', [SearchController::class, 'SearchContents'])->name('main.search');
 
     // SEARCH
     //return view('welcome');

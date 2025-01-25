@@ -5,8 +5,8 @@
           </a>
 
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 align-self-end " >
-            <input type="search" class="form-control mb-2" placeholder="Search..." aria-label="Search">
+          <form method="GET" action="{{ route('main.search') }}" class="col-12 col-lg-auto mb-3 mb-lg-0 align-self-end " >
+            <input type="search" class="form-control mb-2" placeholder="Search..." id="query"  name="query" aria-label="Search">
           </form>
 
           <ul class="nav align-self-end mb-2">

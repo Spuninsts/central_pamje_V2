@@ -41,24 +41,147 @@
                     </div>
 
             <!-- Load editor pages from database -->
-            @if (empty($PageData) || count($PageData) == 0)
-            <p>No Data on this section.</p>
-            @else
-                @foreach( $PageData as $key => $item )
-                    <div class="cen-about">
-                        <div class="row my-4">
-                                <h5 class="text-danger fw-bold">{{$item->page_title}}</h5>
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="essential-readings-tab" data-bs-toggle="pill" data-bs-target="#essential-readings" type="button" role="tab" aria-controls="essential-readings" aria-selected="true">Essential Readings</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="blogs-report-articles-tab" data-bs-toggle="pill" data-bs-target="#blogs-report-articles" type="button" role="tab" aria-controls="blogs-report-articles" aria-selected="false">Blogs/Report/Articles</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="courses-tab" data-bs-toggle="pill" data-bs-target="#courses" type="button" role="tab" aria-controls="courses" aria-selected="false">Courses</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="toolkits-tab" data-bs-toggle="pill" data-bs-target="#toolkits" type="button" role="tab" aria-controls="toolkits" aria-selected="false">Toolkits</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="essential-readings" role="tabpanel" aria-labelledby="essential-readings-tab">
+
+                            <!--Start Essential Readings cards  -->
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                                <!-- Load editor pages from database -->
+                                @if (empty($PageData) || count($PageData) == 0)
+                                    <p>No Data on this section.</p>
+                                @else
+                                    @foreach( $PageData as $key => $item )
+                                        @if($item->page_subcategory == "Essential Readings")
+                                            <div class="col">
+                                                <div class="card h-100">
+                                                    <!-- <img src="{{ url('upload/pages/'.$item->page_image_path) }}" class="card-img-top" alt="{{$item->page_title}}"> -->
+                                                    <div class="card-header cen-bg-darkblue pt-3">
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                            </div> <!-- end of main container for cards -->
+
+                        </div> <!--Start Essential Readings cards  -->
+
+                        <div class="tab-pane fade" id="blogs-report-articles" role="tabpanel" aria-labelledby="blogs-report-articles-tab">
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <!-- Load editor pages from database -->
+                                @if (empty($PageData) || count($PageData) == 0)
+                                    <p>No Data on this section.</p>
+                                @else
+                                    @foreach( $PageData as $key => $item )
+                                        @if($item->page_subcategory == "Blogs/Reports/Articles")
+                                            <div class="col">
+                                                <div class="card h-100">
+                                                    <div class="card-header cen-bg-darkblue pt-3">
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                            </div> <!-- end of main container for cards -->
+
+
                         </div>
-                        <div class="row  my-4">
-                            <p>{{$item->page_description}} </p>
-                            <p><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">{{$item->page_url}}</a> </p>
+                        <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <!-- Load editor pages from database -->
+                                @if (empty($PageData) || count($PageData) == 0)
+                                    <p>No Data on this section.</p>
+                                @else
+                                    @foreach( $PageData as $key => $item )
+                                        @if($item->page_subcategory == "Courses")
+                                            <div class="col">
+                                                <div class="card h-100">
+                                                    <div class="card-header cen-bg-darkblue pt-3">
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                            </div> <!-- end of main container for cards -->
+
                         </div>
-                        <div class="row  my-4">
-                            <hr/>
+
+                        <div class="tab-pane fade" id="toolkits" role="tabpanel" aria-labelledby="toolkits-tab">
+
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <!-- Load editor pages from database -->
+                                @if (empty($PageData) || count($PageData) == 0)
+                                    <p>No Data on this section.</p>
+                                @else
+                                    @foreach( $PageData as $key => $item )
+                                        @if($item->page_subcategory == "Toolkits")
+                                            <div class="col">
+                                                <div class="card h-100">
+                                                    <div class="card-header cen-bg-darkblue pt-3">
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                            </div> <!-- end of main container for cards -->
+
+
                         </div>
                     </div>
-                @endforeach
-            @endif
+
                 </div>
             </div>
             </div>

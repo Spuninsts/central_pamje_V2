@@ -15,7 +15,7 @@
                             <div class="carousel-item ">
                 @endif
 
-                        <img src="{{ url('upload/admin_images/'.$bd->banner_image_path) }}" class="d-flex content-center w-auto" alt="carousel {{$carousel_no}}" style="max-height: 60vh;">
+                        <img src="{{ url('upload/admin_images/'.$bd->banner_image_path) }}" class="img-fluid" alt="carousel {{$carousel_no}}" style="max-height: 60vh;">
 
                     <div class="carousel-caption text-center">
                         <div class="mt-sm-5 py-3">
