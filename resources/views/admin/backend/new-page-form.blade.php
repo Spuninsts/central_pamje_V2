@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <form method="POST" action="{{ route('admin.page.store') }}" class="forms-sample" enctype="multipart/form-data">
+            <div method="POST" action="{{ route('admin.page.store') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="page_id" class="form-label">Page ID</label>
@@ -50,11 +50,19 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="page_source" class="form-label">Page Source</label>
                             <input type="text" class="form-control" name="page_source" placeholder="">
+                        </div> -->
                         </div>
+                    </div>
+                </div>
+            </div> <!--end  12  sizing-->
+        </div> <!-- end row -->
 
+
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
                         <div class="mb-3">
                             <label for="page_category" class="form-label">Page Category (Only for resource page type)</label>
                             <select class="js-example-basic-single form-select select2-hidden-accessible" id="page_category" name="page_category"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
@@ -69,8 +77,7 @@
                             <select class="js-example-basic-multiple form-select select2-hidden-accessible" id="page_subcategory" name="page_subcategory[]" multiple="multiple" data-width="100%" data-select2-id="5" tabindex="-1" aria-hidden="true">
                                 <option value="none">- None -</option>
                                 @php
-                                    $subcategories = array_merge(config('sitevariables.sub_editor'), config('sitevariables.sub_author'), config('sitevariables.sub_researcher'), config('sitevariables.sub_reviewer'));
-                                    $subcategories = array_unique($subcategories);
+                                    $subcategories = array_merge(config('sitevariables.sub_category'));
                                     sort($subcategories);
                                 @endphp
                                 @foreach($subcategories as $sub)
@@ -87,40 +94,40 @@
                                 @endforeach
                             </select>
                         </div>
+                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
 
     <div class="row">
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label class="form-label" for="photo">Image upload</label>
-                                <input class="form-control" type="file" name="page_image" id="article_photo">
-                            </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label" for="photo">Image upload</label>
+                                    <input class="form-control" type="file" name="page_image" id="article_photo">
+                                </div>
 
-                            <div class="mb-3">
-                                <img id="showImage" class="wd-xl-100" src="{{ url('upload/admin_images/placeholder.jpg') }}" alt="Page Image">
+                                <div class="mb-3">
+                                    <img id="showImage" class="wd-xl-100" src="{{ url('upload/admin_images/placeholder.jpg') }}" alt="Page Image">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="mb-3">
-                          <button class="btn btn-primary" type="submit">Create Page</button>
-                        </form>
+
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                              <button class="btn btn-primary" type="submit">Create Page</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

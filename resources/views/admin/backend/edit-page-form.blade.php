@@ -51,10 +51,10 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="page_source" class="form-label">Page Source</label>
                             <input type="text" class="form-control" name="page_source" value="{{ $pageData->page_source }}" >
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="page_category" class="form-label">Page Category (Only for resource page type)</label>
@@ -70,8 +70,7 @@
                             <select class="js-example-basic-multiple form-select select2-hidden-accessible" id="page_subcategory" name="page_subcategory[]" multiple="multiple" data-width="100%" data-select2-id="5" tabindex="-1" aria-hidden="true">
 
                                 @php
-                                    $subcategories = array_merge(config('sitevariables.sub_editor'), config('sitevariables.sub_author'), config('sitevariables.sub_researcher'), config('sitevariables.sub_reviewer'));
-                                    $subcategories = array_unique($subcategories);
+                                    $subcategories = array_merge(config('sitevariables.sub_category'));
                                     sort($subcategories);
                                     $user_subcategories = explode(",",$pageData->page_subcategory)
                                 @endphp
