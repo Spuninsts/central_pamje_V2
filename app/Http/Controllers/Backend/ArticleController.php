@@ -52,14 +52,21 @@ class ArticleController extends Controller
         //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
             ->orderBy('full_title')
-            ->get(['journal_mid','full_title','short_title','about']);
+            ->get(['journal_mid','full_title','short_title','about','photo']);
 
         for($x=0;$x < count($ArticleData); $x++){
             $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
         }
 
+        $NewsAnnounceData = page::where('page_type',"news")
+            ->orWhere('page_type',"announcement")
+            ->where('page_status',"active")
+            ->orderBy('id','DESC')
+            ->take(3)
+            ->get(['page_id','page_title','page_image_path']);
+
         //dd($ArticleData);
-        return view('frontend.frontendmainauth', compact('ArticleData','BannerData'));
+        return view('frontend.frontendmainauth', compact('ArticleData','BannerData','NewsAnnounceData'));
 
     }// End Method
 

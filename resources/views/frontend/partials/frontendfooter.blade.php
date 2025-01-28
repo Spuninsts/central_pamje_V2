@@ -102,6 +102,18 @@
     {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>--}}
     <script src="{{ asset('frontend/asset/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+    <!-- plugin js for data tables -->
+    <!-- plugin js -->
+    <script src="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net/jquery.dataTables.js"></script>
+    <script src="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js"></script>
+    <!-- end plugin js -->
+
+    <!-- common js -->
+    <script src="https://www.nobleui.com/laravel/template/demo1/assets/js/template.js"></script>
+    <!-- end common js -->
+
+    <script src="https://www.nobleui.com/laravel/template/demo1/assets/js/data-table.js"></script>
+    <!-- end plugin js for datatables -->
 
     <!-- JS File -->
     <script src="{{ asset('frontend/js/main.js') }}"></script>

@@ -231,4 +231,15 @@ class UserController extends Controller
 
     }// end edit function
 
+    public function AuthorReviewer(){
+        $UserData = User::where('user_status','active')
+            ->where(function($query) {
+                $query->where('user_type', 'reviewer')
+                    ->orWhere('user_type', 'author');
+            })
+            ->get();
+
+        return view('frontend.frontendauthorreviewer',compact('UserData'));
+    }// end Author Reviewer
+
 }
