@@ -15,17 +15,13 @@
                             <div class="carousel-item ">
                 @endif
 
-                        <img src="{{ url('upload/admin_images/'.$bd->banner_image_path) }}" class="img-fluid" alt="carousel {{$carousel_no}}" style="max-height: 60vh;">
+                        <img src="{{ url('upload/admin_images/'.$bd->banner_image_path) }}" class="d-block custom-car-img-height-sm" alt="carousel {{$carousel_no}}" >
 
                     <div class="carousel-caption text-center">
                         <div class="mt-sm-5 py-3">
                             <h4 class="text-white display-4 m-4 cen-hero-title">
                                 <span class="cen-bg-darkblue-opacity p-2 "> {{$bd->banner_title}} </span>
                             </h4>
-                                <!--p class="text-white m-4 cen-hero-blurb">
-                                <span class="cen-bg-darkblue-opacity p-2"> Sub Header </span>
-                                </!--p-->
-
                         </div>
                         <div class="button">
                             <a href="{{$bd->banner_url}}" class="btn btn-primary cen-btn-darkblue py-2 px-3" role="button">Learn more</a>
