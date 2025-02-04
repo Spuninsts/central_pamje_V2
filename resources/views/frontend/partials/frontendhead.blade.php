@@ -18,6 +18,10 @@
     <link href="{{ asset('frontend/asset/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/styles.css') }}">
 
+    <!-- Data Tables  -->
+    <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" />
+    <!-- Data Tables  -->
+
     <!-- Bootstrap Icons Library -->
     <title>Central -PAMJE</title>
 </head>
