@@ -4,7 +4,10 @@
 
             <div class="col my-3 ">
               <img src="{{ asset('frontend/img/logo1-2-white1.svg') }}" alt="Central Logo" width="150" height="150">
-              <p class="text-white lh-sm ms-3">Mailing Address:</p>
+              <p class="text-white lh-sm ms-3">Philippine Association of Medical Journal Editors, Inc.
+                An Affiliate Society of the Philippine Medical Association
+                G/F Administrative Office, Philippine Nurses Association Bldg.
+                1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines</p>
               <p class="text-white lh-sm ms-3">Telephone:</p>
               <p class="text-white lh-sm ms-3">Email:</p>
             </div>
