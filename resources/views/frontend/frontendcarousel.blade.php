@@ -19,9 +19,9 @@
 
                     <div class="carousel-caption text-center">
                         <div class="mt-sm-5 py-3">
-                            <h5 class="text-white m-4 cen-hero-title">
+                            <h1 class="text-white m-4 cen-hero-title">
                                 <span class="cen-bg-darkblue-opacity p-2 "> {{$bd->banner_title}} </span>
-                            </h5>
+                            </h1>
                         </div>
                         <div class="button">
                             <a href="{{$bd->banner_url}}" class="btn btn-primary cen-btn-darkblue py-2 px-3" role="button">Learn more</a>
