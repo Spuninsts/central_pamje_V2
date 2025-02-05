@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills mb-3 mx-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="essential-readings-tab" data-bs-toggle="pill" data-bs-target="#essential-readings" type="button" role="tab" aria-controls="essential-readings" aria-selected="true">Essential Readings</button>
                         </li>
@@ -77,7 +77,7 @@
                                                         <p class="card-text">{{$item->page_description}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                                         <p class="card-text">{{$item->page_description}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                                         <p class="card-text">{{$item->page_description}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
