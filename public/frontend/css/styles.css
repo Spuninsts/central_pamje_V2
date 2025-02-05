@@ -227,4 +227,21 @@ option {
     }
 }
 
+@media (max-width: 990px) {
+    .mobile-left-align {
+      text-align: left !important;  /* Force left alignment */
+      width: 100%;                  /* Make the list item take full width */
+    }
+  
+    .mobile-left-align .dropdown-toggle {
+      display: block;               /* Ensure the dropdown button is block-level */
+      width: 100%;                  /* Full width for better alignment */
+      text-align: left;             /* Align text to the left inside the button */
+      padding-left: 1rem;           /* Add padding to match other items */
+    }
+    
+    .mobile-left-align .dropdown-menu {
+      width: 100%;                  /* Ensure the dropdown itself is full width */
+    }
+  }
 
