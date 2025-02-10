@@ -55,7 +55,7 @@
             <li class="nav-item px-3">
               <a class="nav-link text-white" href="http://www.pamje.org/">PAMJE</a>
             </li>
-            <li class="nav-item px-3">
+            <li class="nav-item px-3 mobile-left-align">
               <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">JOURNALS</a>
 
@@ -67,7 +67,7 @@
                 </ul>
             </div>
             </li>
-            <li class="nav-item px-3">
+            <li class="nav-item px-3 mobile-left-align">
               <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  RESOURCES

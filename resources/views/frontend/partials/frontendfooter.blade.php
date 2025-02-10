@@ -4,17 +4,16 @@
 
             <div class="col my-3 ">
               <img src="{{ asset('frontend/img/logo1-2-white1.svg') }}" alt="Central Logo" width="150" height="150">
-              <p class="text-white lh-sm ms-3">Philippine Association of Medical Journal Editors, Inc.
-                An Affiliate Society of the Philippine Medical Association
+              <p class="text-white lh-sm ms-3">
                 G/F Administrative Office, Philippine Nurses Association Bldg.
                 1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines</p>
-              <p class="text-white lh-sm ms-3">Telephone:</p>
-              <p class="text-white lh-sm ms-3">Email:</p>
+              <p class="text-white lh-sm ms-3">Telephone: 521-0937, 400-4430</p>
+              <p class="text-white lh-sm ms-3">Mobile No: +639552652324 TM/Globe</p>
+              <p class="text-white lh-sm ms-3">Telefax: 525-1596</p>
+              <p class="text-white lh-sm ms-3">Email: secretariat@pamje.org</p>
             </div>
 
-            <div class="col my-4 w-20">
 
-            </div>
 
             <div class="col mt-5 ">
               <h5 class="text-white">About Us</h5>
@@ -29,7 +28,6 @@
               <h5 class="text-white">Journals</h5>
               <ul class="nav flex-column">
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">By Alphabetical</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">By Category</a></li>
 
               </ul>
             </div>

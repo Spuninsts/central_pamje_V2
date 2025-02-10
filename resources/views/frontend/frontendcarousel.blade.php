@@ -1,4 +1,4 @@
-<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="3000">
+<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="6000">
         <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -19,9 +19,9 @@
 
                     <div class="carousel-caption text-center">
                         <div class="mt-sm-5 py-3">
-                            <h4 class="text-white display-4 m-4 cen-hero-title">
+                            <h1 class="text-white m-4 cen-hero-title">
                                 <span class="cen-bg-darkblue-opacity p-2 "> {{$bd->banner_title}} </span>
-                            </h4>
+                            </h1>
                         </div>
                         <div class="button">
                             <a href="{{$bd->banner_url}}" class="btn btn-primary cen-btn-darkblue py-2 px-3" role="button">Learn more</a>
