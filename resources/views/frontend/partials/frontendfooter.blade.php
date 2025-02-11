@@ -13,7 +13,7 @@
               <p class="text-white lh-sm ms-3">Email: secretariat@pamje.org</p>
             </div>
 
-
+            <div class="col mt-5 "></div>
 
             <div class="col mt-5 ">
               <h5 class="text-white">About Us</h5>

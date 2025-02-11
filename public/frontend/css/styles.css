@@ -58,6 +58,7 @@ h5 {
 
 .cen-hero-title{
     letter-spacing: .2rem;
+    line-height: 3rem;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -228,6 +229,8 @@ option {
 }
 
 @media (max-width: 990px) {
+
+
     .mobile-left-align {
       text-align: left !important;  /* Force left alignment */
       width: 100%;                  /* Make the list item take full width */
