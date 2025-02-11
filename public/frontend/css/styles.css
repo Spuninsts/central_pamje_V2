@@ -58,7 +58,7 @@ h5 {
 
 .cen-hero-title{
     letter-spacing: .2rem;
-    line-height: 2.5rem;
+    line-height: 3rem;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -230,13 +230,6 @@ option {
 
 @media (max-width: 990px) {
 
-    .cen-hero-title{
-        letter-spacing: .2rem;
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-    }
 
     .mobile-left-align {
       text-align: left !important;  /* Force left alignment */
