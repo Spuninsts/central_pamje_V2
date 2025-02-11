@@ -22,6 +22,17 @@
     <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" />
     <!-- Data Tables  -->
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0412X1ZVH"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-S0412X1ZVH');
+    </script>
+
     <!-- Bootstrap Icons Library -->
     <title>Central -PAMJE</title>
 </head>
+
