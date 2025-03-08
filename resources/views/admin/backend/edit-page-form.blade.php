@@ -102,7 +102,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="form-label" for="photo">Image upload</label>
+                        <label class="form-label" for="photo">Image upload <> </label>
                         @if(!empty($pageData->page_image_path))
                             <input class="form-control" type="file" name="page_image" id="article_photo" value="{{url('upload/admin_images/'.$pageData->page_image_path)}}">
                         @else

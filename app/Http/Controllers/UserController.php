@@ -145,14 +145,15 @@ class UserController extends Controller
         User::insert([
             'user_id' => $request->user_id,
             'org_id' => $entry_orgid,
-            'title' => $request->user_title,
+            'title' => "Dr.",
             'fname' => $request->user_first_name,
             'lname' => $request->user_last_name,
             'mname' => $request->user_middle_name,
             'username' => $request->user_first_name.'.'.$request->user_last_name,
             'email' => $request->user_email,
             'password' => $user_password,
-            'user_address' => $filenamephoto,
+            'user_photo' => $filenamephoto,
+            'user_address' => $request->user_title,
             'user_type' => $request->user_type,
             'role' => $request->user_type,
             'user_status' => $user_stat,
@@ -176,7 +177,7 @@ class UserController extends Controller
         }else{$filenamephoto  = null;}
 
         $this_user->user_status = $request->user_status;
-        $this_user->title = $request->user_title;
+        $this_user->title = "Dr.";
         $this_user->fname = $request->user_first_name;
         $this_user->email = $request->user_email;
         $this_user->mname = $request->user_middle_name;
@@ -184,7 +185,8 @@ class UserController extends Controller
         $this_user->user_type = $request->user_type;
         $this_user->role = $request->user_type;
         $this_user->org_id = $request->user_organization;
-        $this_user->user_address = $filenamephoto;
+        $this_user->user_address = $request->user_title;
+        $this_user->user_photo = $filenamephoto;
         $this_user->updated_at = now();
         $this_user->save();
 
@@ -227,6 +229,39 @@ class UserController extends Controller
 
         //dd($role_array);
         return view('admin.edit-members', compact('AssociateData','UserData','role_array','AllUserData'));
+
+
+    }// end edit function
+
+    public function AddUserMembership(Request $request){
+
+        //This loads the first page for adding users into membership. this has the inserts using journal ID
+        //joournalID is in request()->val, userID and aassociation_role
+
+        $JournalID = request()->val;
+        $AssociateData = Association::where('association_source','user')
+                        ->get();
+
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        //dd($role_array);
+        //dd($temp_array); // this has all the ID's needed for the other information.
+
+        // * need to get indexes, publisher and users.  * //
+
+        //dd($UserData);
+        $AllUserData = User::where('user_status','active') // all contacts that can be added
+        ->where('user_type','contact')
+            ->get();
+
+        //dd($role_array);
+        return view('admin.add-members',compact('AssociateData','JournalID','role_array','AllUserData'));
 
 
     }// end edit function
