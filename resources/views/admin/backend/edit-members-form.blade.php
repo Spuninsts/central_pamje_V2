@@ -19,7 +19,7 @@
 
                             @foreach($role_array as $role) <!-- start for each role-->
                                     <!-- this is for the member type -->
-                                    <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="new_role{{$ctr}}"  data-width="100%" data-select2-id="{{$ctr}}" tabindex="-1" aria-hidden="true">
+                                    <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelection" name="new_role{{$ctr}}"  data-width="100%" data-select2-id="{{$ctr}}" tabindex="-1" aria-hidden="true">
                                         <option value="{{$role}}" selected>{{$role}}</option>
                                         @foreach($role_array as $rolein)
                                             @if($rolein != $role)
@@ -51,7 +51,7 @@
                         <div class="container mt-5">
                             <label class="h4">Add new group and users</label>
                             <div class="mb-3">
-                                <label for="publisher" class="form-label">Member Type</label>
+                                <label for="publisher" class="form-label pt-2">Member Type</label>
                                 <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="new_role{{$ctr}}"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
                                     <option value="" selected>Select an option</option>
                                     @if($role_array == null)
@@ -86,7 +86,7 @@
                             </select>
                         </div>
 
-                        <div class="container mt-5">
+                        <div class="container mt-5 pb-5">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="btn btn-primary" type="submit">Save</button>
                                 <a class="btn btn-danger" href="/admin/article/edit?val={{$AssociateData[0]->association_journal}}" role="button">Back to Journal</a>
