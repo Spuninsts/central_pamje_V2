@@ -14,7 +14,7 @@
 
                                 <!-- <h6 class="card-title">Basic Form</h6> -->
 
-            <div method="POST" action="{{ route('admin.page.store') }}" class="forms-sample" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.page.store') }}" class="forms-sample" enctype="multipart/form-data">
                 @csrf
                         <div class="mb-3">
                             <label for="page_id" class="form-label">Page ID</label>
@@ -53,8 +53,8 @@
                         <!-- <div class="mb-3">
                             <label for="page_source" class="form-label">Page Source</label>
                             <input type="text" class="form-control" name="page_source" placeholder="">
-                        </div> -->
                         </div>
+                        </form>-->
                     </div>
                 </div>
             </div> <!--end  12  sizing-->

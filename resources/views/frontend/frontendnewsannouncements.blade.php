@@ -51,7 +51,7 @@
 
                         <div class="col-md-2">
                             <a href="{{ url('/page/data?val='.$item->page_id) }}" target="_blank">
-                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-50 h-50">
+                                    <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-50 h-50">
                             </a>
                         </div>
                         <div class="col-xl-auto">

@@ -84,7 +84,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/active/users', [UserController::class, 'ActiveUsers'])->name('admin.active-users');
     Route::get('/admin/new/user', [UserController::class, 'NewUser'])->name('admin.new-user');
     Route::get('/admin/edit/user', [AdminController::class, 'EditUserData'])->name('admin.user.edit'); // allows edit of data.
-    Route::get('/admin/edit/members', [UserController::class, 'EditUserMembership'])->name('admin.edit.members');
+    Route::get('/admin/edit/members', [UserController::class, 'EditUserMembership'])->name('admin.edit.members'); //edit existing members
+    Route::get('/admin/add/members', [UserController::class, 'AddUserMembership'])->name('admin.add.members'); //add new members
 
 
     //Journals - don't get confused with the term article here.
@@ -136,6 +137,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/user/store', [UserController::class, 'AdminUserStore'])->name('admin.user.store');
     Route::post('/admin/user/update', [UserController::class, 'AdminUserUpdate'])->name('admin.user.update');
     Route::post('/admin/members/update', [AdminController::class, 'UserMembershipUpdate'])->name('admin.members.update');
+    Route::post('/admin/members/add', [AdminController::class, 'UserMembershipAdd'])->name('admin.members.add');
+
 
 }); // end group
 

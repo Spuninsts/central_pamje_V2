@@ -32,14 +32,16 @@ class ArticleController extends Controller
             $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
         }
 
-        $NewsAnnounceData = page::where('page_type',"news")
-                                ->orWhere('page_type',"announcement")
-                                ->where('page_status',"active")
+        $NewsAnnounceData = page::where('page_status',"active")
+                                ->where(function($query) {
+                                    $query->where('page_type','News')
+                                        ->orWhere('page_type','Announcement');
+                                })
                                 ->orderBy('id','DESC')
                                 ->take(3)
-                                ->get(['page_id','page_title','page_image_path']);
+                                ->get(['page_id','page_title','page_image_path','page_url']);
 
-        //dd($ArticleData);
+        //dd($NewsAnnounceData);
         return view('frontend.frontendmain', compact('ArticleData','BannerData','NewsAnnounceData'));
 
     }// End Method
@@ -61,7 +63,8 @@ class ArticleController extends Controller
         $NewsAnnounceData = page::where('page_type',"news")
             ->orWhere('page_type',"announcement")
             ->where('page_status',"active")
-            ->orderBy('id','DESC')
+            //->orderBy('id','DESC')
+            ->orderBy('updated_at','DESC')
             ->take(3)
             ->get(['page_id','page_title','page_image_path']);
 
@@ -236,7 +239,7 @@ class ArticleController extends Controller
                             $query->where('page_type','News')
                                   ->orWhere('page_type','Announcement');
                         })
-                        ->orderBydesc('created_at')
+                        ->orderBydesc('updated_at')
                         ->get();
         //dd($PageData);
         return view('frontend.frontendnewsannouncements', compact('PageData'));
