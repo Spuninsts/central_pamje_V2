@@ -77,15 +77,15 @@
               <div class="row my-2">
                 <ul class="my-4 space-y-4">
                     <li>
-                        <h3 class="text-xl font-semibold">Partnership Expansion</h3>
+                        <p class="font-semibold">Partnership Expansion</p>
                         <p class="text-gray-700">We aim to expand partnerships with professional medical societies and training institutions that publish health journals, encouraging their inclusion on CENTRAL to create a comprehensive resource for Philippine medical literature.</p>
                     </li>
                     <li>
-                        <h3 class="text-xl font-semibold">Resource Development for Research and Quality Standards</h3>
+                        <p class="font-semibold">Resource Development for Research and Quality Standards</p>
                         <p class="text-gray-700">CENTRAL aspires to be a valuable resource for researchers, authors, and journal editors by creating a shared database of peer reviewers and supporting high editorial standards for Philippine medical journals.</p>
                     </li>
                     <li>
-                        <h3 class="text-xl font-semibold">Platform Promotion and Utilization</h3>
+                        <p class=" font-semibold">Platform Promotion and Utilization</p>
                         <p class="text-gray-700">Through targeted dissemination, we seek to introduce CENTRAL to health research creators and consumers, fostering its use in developing insights and solutions for the Philippines' health challenges and beyond.</p>
                     </li>
                 </ul>
