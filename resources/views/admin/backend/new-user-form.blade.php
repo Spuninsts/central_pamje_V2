@@ -13,11 +13,11 @@
                     <div class="card-body">
                 <form method="POST" action="{{ route('admin.user.store') }}" class="forms-sample" enctype="multipart/form-data">
                             @csrf
-                                    <div class="mb-3">
+                                    <div class="mb-3 col-xs-2">
                                         <label for="journal_id" class="form-label">user ID</label>
                                         <input type="text" class="form-control" name="user_id" value="{{$NewUserID}}" readonly>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 col-xs-2">
                                         <label for="user_status" class="form-label">User Status</label>
                                         <select name="user_status" >
                                             <option value="inactive">Inactive</option>
@@ -37,6 +37,8 @@
                                     <div class="mb-3">
                                         <label for="user_title" class="form-label">Title</label>
                                         <input type="text" class="form-control" name="user_title"  >
+                                        <label for="user_title" class="form-label">Designation</label>
+                                        <input type="text" class="form-control" name="user_designation"  >
                                     </div>
                                         <div class="mb-3">
                                             <label for="user_first_name" class="form-label">First Name</label>
@@ -102,6 +104,67 @@
                         </div>
                     </div>
                 </div>
+
+    <div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Form Grid</h6>
+                <!--     <form>-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" placeholder="Enter first name">
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Enter last name">
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Row -->
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" placeholder="Enter city">
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label class="form-label">State</label>
+                                <input type="text" class="form-control" placeholder="Enter state">
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label class="form-label">Zip</label>
+                                <input type="text" class="form-control" placeholder="Enter zip code">
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Row -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Email address</label>
+                                <input type="email" class="form-control" placeholder="Enter email">
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" autocomplete="off" placeholder="Password">
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Row -->
+                    <!--      </form>
+       <button type="button" class="btn btn-primary submit">Submit form</button>-->
+            </div>
+        </div>
+    </div>
+</div>
 
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">

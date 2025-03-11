@@ -57,6 +57,13 @@ return array(
         "Banner"
     ),
 
+    'user_title' => array(
+        "Resource",
+        "News",
+        "Announcement",
+        "Banner"
+    ),
+
     'res_category' => array(
         "Editor",
         "Researcher",

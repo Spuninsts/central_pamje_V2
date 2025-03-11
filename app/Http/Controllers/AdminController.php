@@ -90,8 +90,21 @@ class AdminController extends Controller
 
     /**
      * This section is for Articles
+     * "association_journal" => "JOURNAL04"
+     * "new_role1" => "Associate Editor"
+     * "journal_users1" => array:2 [▼
+     * 0 => "USER04"
+     * 1 => "USER42"
+     * ]
+     * "new_role" => "Managing Editor"
+     * "new_users" => array:2 [▼
+     * 0 => "USER08"
+     * 1 => "USER09"
+     * ]
+     * ]
      */
     public function UserMembershipUpdate(Request $request){
+        //dd($request->all());
         $this_association = Association::where('association_journal',$request->association_journal)
             ->where('association_source',"user")
             ->get();
@@ -180,10 +193,140 @@ class AdminController extends Controller
         $this_association->updated_at = now();
         $this_association->save();*/
 
-        return redirect()->route('admin.active-articles');
+        //return redirect()->route('admin.active-articles');
+
+        // gather all information for the edit page.
+        $AssociateData = Association::where('association_journal',$request->association_journal)
+            ->get();
+        //dd("Associate Data for edit page ".$AssociateData);
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_id);
+            if($assoc_id->association_source == 'user')
+                array_push($role_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        // * USERS
+        $UserData = User::whereIn('user_id',$temp_array) // associated users
+        ->get();
+        //dd("[".implode(',',$temp_array)."]");
+        $AllUserData = User::whereNotin('user_id',$temp_array)
+                            ->where(function($query) {
+                            $query->where('user_status','active') // all contacts that can be added
+                                ->where('user_type','contact');
+                            })
+                            ->get();
+//        $AllUserData = User::where(function($query) {
+//                        $query->where('user_status','active') // all contacts that can be added
+//                                ->where('user_type','contact');
+//                            })
+//                            ->get();
+
+        //dd(implode(',',$temp_array)." all users ".$SelectedUserData);
+        if(is_null($AssociateData) || $AssociateData == "" || !$AssociateData  || count($AssociateData) === 0){
+            return redirect('admin/article/edit?val='.$request->association_journal);
+        } else {
+            return view('admin.edit-members', compact('AssociateData','UserData','role_array','AllUserData'));
+        }
+
+
 
     }//ENd Method
 
+
+    public function UserMembershipAdd(Request $request){
+        //dd($request);
+
+        $this_association = Association::where('association_journal',$request->association_journal)
+            ->where('association_source',"user")
+            ->get();
+
+        //dd($this_association);
+
+        //drop all records with the journal ID and the association source = user
+        if($this_association){
+            $this_association->each(function ($model) {
+                $model->delete();
+            });
+        }
+
+        //insert new data into association table
+        foreach ($request as $value) { //just the parameter
+            //dd($request);
+            //dd($value);
+            foreach($value as $key1 => $item){
+                //dd(substr("New Role ".$key1,0,-1),$item);//first iteam in the array
+                //print(":".$key1.":");
+                if($key1 == "new_role"){
+                    //$number = substr($key1,-1);
+                    $myrole = $item;
+                    //print(":".$myrole.":");
+                }
+                if($key1 == "new_users"){
+                    //dd($myrole);
+                    if(is_array($item)){
+                        foreach($item as $item2){
+                            //dd(" ARRAY ".$myrole,$item2,$request->association_journal);
+                            Association::insert([
+                                'association_journal' => $request->association_journal,
+                                'association_source' => 'user',
+                                'association_id' => $item2,
+                                'association_role' => $myrole,
+                                'updated_at' => now(),
+                                'created_at' => now(),
+
+                            ]);
+                        }
+                    }
+                    else{
+                        //dd(" Not ARRAY ".$myrole,$item,$request->association_journal);
+                        Association::insert([
+                            'association_journal' => $request->association_journal,
+                            'association_source' => 'user',
+                            'association_id' => $item,
+                            'association_role' => $myrole,
+                            'updated_at' => now(),
+                            'created_at' => now(),
+
+                        ]);
+                    }
+
+                }
+            }
+
+        }
+
+        // gather all information for the edit page.
+        $AssociateData = Association::where('association_journal',$request->association_journal)
+            ->get();
+        //dd("Associate Data for edit page ".$AssociateData);
+        //Just getting the IDS on association table
+        $temp_array = $role_array = array();
+        $associate_userid_array=[];
+        foreach($AssociateData as $assoc_id){
+            array_push($temp_array,$assoc_id->association_id);
+            if($assoc_id->association_source == 'user')
+                array_push($role_array,$assoc_id->association_role);
+        }
+        $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
+        // * USERS
+        $UserData = User::whereIn('user_id',$temp_array) // associated users
+        ->get();
+        //dd($UserData);
+        $AllUserData = User::where('user_status','active') // all contacts that can be added
+        ->where('user_type','contact')
+            ->get();
+
+        return view('admin.edit-members', compact('AssociateData','UserData','role_array','AllUserData'));
+        //return redirect('/admin/edit/members?val='.$request->association_journal);
+
+        // gather all information for the edit page.
+
+    } // end add new user
 
     public function ActiveArticles(){
 

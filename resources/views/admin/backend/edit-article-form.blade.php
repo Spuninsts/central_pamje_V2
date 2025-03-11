@@ -170,10 +170,12 @@
 
                                         <!-- Button trigger modal -->
                                         @if($role_array == null )
-                                            <button type="button" class="btn btn-primary" readonly>
-                                                Membership needs to be added first
+                                            @php $loadhtml = '/admin/add/members?val=' @endphp
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Add Membership
                                             </button>
                                         @else
+                                            @php $loadhtml = '/admin/edit/members?val=' @endphp
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                 Modify Membership
                                             </button>
@@ -195,7 +197,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <a class="btn btn-primary" href="/admin/edit/members?val={{$ArticleData[0]->journal_mid}}" >Continue</a>
+                                                        <a class="btn btn-primary" href="{{$loadhtml.$ArticleData[0]->journal_mid}}" >Continue</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -209,55 +211,7 @@
                             </div>
 
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Add new group and users
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-
-                                <div class="accordion-body">
-                                    <!-- THis section is for select type of users -->
-
-                                    <div class="container mt-5">
-                                        <div class="mb-3">
-                                            <label for="publisher" class="form-label">Member Type</label>
-                                                <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="new_role"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
-                                                    <option value="" selected>Select an option</option>
-                                                    @if($role_array == null)
-                                                        @php
-                                                            $role_array = config('sitevariables.member_type')
-                                                        @endphp
-                                                    @else
-                                                        @php
-                                                            $role_array = array_merge($role_array,config('sitevariables.member_type'));
-                                                            $role_array = array_unique($role_array);
-                                                        @endphp
-                                                    @endif
-                                                    @foreach($role_array as $role)
-                                                        <option value="{{$role}}" >{{$role}}</option>
-                                                    @endforeach
-                                                </select>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="New Member Type" id="newItemInput">
-                                            <button class="btn btn-primary" type="button" id="addNewItem">Add new membership</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- THis section is for select type of users -->
-
-                                    <label for="publisher" class="form-label">Users</label>
-                                    <select class="js-example-basic-multiple form-select select2-hidden-accessible" name="new_users[]" multiple="multiple" data-width="100%" data-select2-id="5" tabindex="-1" aria-hidden="true">
-                                        @foreach( $AllUserData as $key => $item)
-                                            <option value="{{$item->user_id}}" >{{$item->title}}&nbsp;{{$item->fname}}&nbsp;{{$item->lname}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- this is where the new object used to be. removing so that we can focus on one edit/add page only-->
                     </div>
                     <!--ACCORDION  -->
 
