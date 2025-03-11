@@ -19,8 +19,8 @@
               <h5 class="text-white">About Us</h5>
               <ul class="nav flex-column">
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">PAMJE</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">Team Central</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">Sponsors</a></li>
+                <li class="nav-item mb-2"><a href="team-central" class="nav-link p-2 text-white">Team Central</a></li>
+                <li class="nav-item mb-2"><a href="/sponsor" class="nav-link p-2 text-white">Sponsor</a></li>
               </ul>
             </div>
 
