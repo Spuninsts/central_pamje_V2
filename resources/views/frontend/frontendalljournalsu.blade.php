@@ -25,7 +25,7 @@
       <div class="row my-3">
         <span><a href="#" class="cen-breadcrumbs"> Home</a> »
                 <a href="#" class="cen-breadcrumbs">Journals</a> »
-                <a href="#" class="cen-breadcrumbs">By Alphabetical</a></span>
+                <a href="#" class="cen-breadcrumbs">Alphabetical</a></span>
       </div>
       </div>
     </div>
