@@ -27,7 +27,7 @@
             <div class="col mt-5 ">
               <h5 class="text-white">Journals</h5>
               <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">By Alphabetical</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">Alphabetical</a></li>
 
               </ul>
             </div>
