@@ -3,7 +3,7 @@
       <div class="row my-4 ">
         <div class="col d-flex justify-content-between align-items-center">
           <h2 class="cen-font-darkblue">Central Features</h2>
-          <a href="#" class="btn btn-primary">View all</a>
+          <a href="http://central.pamje.org/journals/alphabet?val=all" class="btn btn-primary">View all</a>
         </div>
       </div>
       <!-- Second Row: Cards -->
@@ -19,7 +19,7 @@
             <div class="card-body">
               <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
               <p class="card-text">{{ substr($item->about,0) }}</p>
-              <p><a href="/journals/data?val={{$item->journal_mid}}" >View more Information</a></p>
+              <p><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-link-hover-blue">View more Information</a></p>
             </div>
           </div>
         </div>
