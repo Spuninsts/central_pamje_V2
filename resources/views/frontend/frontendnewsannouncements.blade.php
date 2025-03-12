@@ -46,16 +46,18 @@
                 @foreach( $PageData as $key => $item )
                     <div class="cen-about">
 
-                        <div class="card mb-3" >
+                        <div class="card mb-3 rounded-0" >
                             <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-50 h-50">
+                              <div class="col-md-2">
+                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-100">
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-10">
                                 <div class="card-body">
-                                  <h5 class="text-danger fw-bold"> <a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_title}} </a></h5>
+                                  <h5 class="fw-bold"> <a href="{{$item->page_url}}" class=" cen-font-darkblue text-decoration-none" target="_blank">{{$item->page_title}} </a></h5>
+
                                   <p class="card-text">{{substr($item->page_description,0,100)}}...</p>
-                                  <p class="card-text"><span class="fw-bold">Link: </span><a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_url}}</a></p>
+
+                                  <p class="card-text"><span class="fw-bold text-muted">Link: </span><a href="{{$item->page_url}}" class=" text-danger text-decoration-none" target="_blank">{{$item->page_url}}</a></p>
                                   
                                 </div>
                               </div>
