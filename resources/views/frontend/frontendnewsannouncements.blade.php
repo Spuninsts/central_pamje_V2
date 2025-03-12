@@ -53,11 +53,11 @@
                               </div>
                               <div class="col-md-10">
                                 <div class="card-body">
-                                  <h5 class="fw-bold"> <a href="{{$item->page_url}}" class=" cen-font-darkblue text-decoration-none" target="_blank">{{$item->page_title}} </a></h5>
+                                  <h5 class="fw-bold"> <a href="{{$item->page_url}}" class="cen-font-darkblue text-decoration-none cen-link-hover-blue" target="_blank">{{$item->page_title}} </a></h5>
 
                                   <p class="card-text">{{substr($item->page_description,0,100)}}...</p>
 
-                                  <p class="card-text"><span class="fw-bold text-muted">Link: </span><a href="{{$item->page_url}}" class=" text-danger text-decoration-none" target="_blank">{{$item->page_url}}</a></p>
+                                  <p class="card-text"><span class="fw-bold text-muted">Link: </span><a href="{{$item->page_url}}" class=" text-danger text-decoration-none cen-link-hover-blue" target="_blank">{{$item->page_url}}</a></p>
                                   
                                 </div>
                               </div>
