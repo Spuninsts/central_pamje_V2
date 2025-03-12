@@ -1,5 +1,5 @@
 <div class="container-fluid cen-bg-darkblue  ">
-        <div class="container d-flex ">
+        <div class="container d-flex py-5">
           <footer class="row cols-1 w-100">
 
             <div class="col my-3 ">
