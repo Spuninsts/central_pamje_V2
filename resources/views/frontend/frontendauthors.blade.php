@@ -70,12 +70,12 @@
                                         @if($item->page_subcategory == "Essential Readings")
                                             <div class="col">
                                                 <div class="card h-100">
-                                                    <!-- <img src="{{ url('upload/pages/'.$item->page_image_path) }}" class="card-img-top" alt="{{$item->page_title}}"> -->
+                                                    <!-- <img src="{{ url('upload/pages/'.$item->page_image_path) }}" class="card-img-top" alt="{{substr($item->page_title, 0, 60) . "..."}}"> -->
                                                     <div class="card-header cen-bg-darkblue pt-3">
-                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{substr($item->page_title, 0, 60) . "..."}}</a></h5>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                        <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
                                                         <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
@@ -102,10 +102,10 @@
                                             <div class="col">
                                                 <div class="card h-100">
                                                     <div class="card-header cen-bg-darkblue pt-3">
-                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{substr($item->page_title, 0, 60) . "..."}}</a></h5>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                        <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
                                                         <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
@@ -132,10 +132,10 @@
                                             <div class="col">
                                                 <div class="card h-100">
                                                     <div class="card-header cen-bg-darkblue pt-3">
-                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{substr($item->page_title, 0, 60) . "..."}}</a></h5>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                        <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
                                                         <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
@@ -162,10 +162,10 @@
                                             <div class="col">
                                                 <div class="card h-100">
                                                     <div class="card-header cen-bg-darkblue pt-3">
-                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{$item->page_title}}</a></h5>
+                                                        <h5 class="card-title fs-5 text-white"><a href="/page/data?val={{$item->page_id}}" class="text-decoration-none text-white">{{substr($item->page_title, 0, 60) . "..."}}</a></h5>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text">{{$item->page_description}}</p>
+                                                        <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
                                                         <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>

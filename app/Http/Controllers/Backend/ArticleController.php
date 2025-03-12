@@ -129,6 +129,18 @@ class ArticleController extends Controller
 
     }// End Method
 
+    public function LoadAllTeamCentralMain(){
+
+        return view('frontend.frontendteamcentral');
+
+    }// End Method
+
+    public function LoadAllSponsorMain(){
+
+        return view('frontend.frontendsponsor');
+
+    }// End Method
+
     public function LoadAllArticlesMain(){
 
         $ArticleData = Article::where('article_status','featured')

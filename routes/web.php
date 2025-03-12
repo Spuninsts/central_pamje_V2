@@ -36,6 +36,8 @@ Route::get('/', [UserController::class, 'Index']);
     // - NOT LOGGED IN VIEW --//
     Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main'); //home main page
     Route::get('/aboutus', [ArticleController::class, 'LoadAllAboutUsMain'])->name('main.aboutus');
+    Route::get('/teamcentral', [ArticleController::class, 'LoadAllTeamCentralMain'])->name('main.teamcentral');
+    Route::get('/sponsor', [ArticleController::class, 'LoadAllSponsorMain'])->name('main.sponsor');
     Route::get('/journals', [ArticleController::class, 'LoadAllArticlesMain'])->name('main.journals');
     Route::get('/journals/alphabet', [ArticleController::class, 'LoadArticleAlphabeticalMain'])->name('main.journals.alphabet');
     Route::get('/journals/category', [ArticleController::class, 'LoadArticleCategoryMain'])->name('main.journals.category');
