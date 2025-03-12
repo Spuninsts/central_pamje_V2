@@ -46,7 +46,7 @@
                 <a class="btn btn-secondary dropdown-toggle nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">JOURNALS</a>
 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/journals/alphabet?val=all">By Alphabetical</a></li>
+                  <li><a class="dropdown-item" href="/journals/alphabet?val=all">Alphabetical</a></li>
              <!-- <li><a class="dropdown-item" href="/journals/category?va=all">By Category</a></li> -->
 
 
