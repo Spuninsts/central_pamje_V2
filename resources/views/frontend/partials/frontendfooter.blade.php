@@ -3,7 +3,7 @@
           <footer class="row cols-1 w-100">
 
             <div class="col my-3 ">
-              <img src="{{ asset('frontend/img/logo1-2-white1.svg') }}" alt="Central Logo" width="150" height="150">
+              <img src="{{ asset('frontend/img/white-centralized-electronic-roster.png') }}" alt="Central Logo" width="200" height="200">
             </div>
 
             <div class="col mt-5 "></div>
