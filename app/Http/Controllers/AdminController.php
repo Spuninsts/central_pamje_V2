@@ -995,25 +995,32 @@ class AdminController extends Controller
         switch ($record) {
             case 'banner':
                 $ID = banner::latest('id')->first('id');
-                return("BANNER0".$ID['id']+1);
+                if(is_null($ID)){return("BANNER01");}
+                else{return("BANNER0".$ID['id']+1);}
             case 'page':
                 $ID = page::latest('id')->first('id');
-                return("PAGE0".$ID['id']+1);
+                if(is_null($ID)){return("PAGE01");}
+                else{return("PAGE0".$ID['id']+1);}
             case 'user': //user
                 $ID = User::latest('id')->first('id');
-                return("USER0".$ID['id']+1);
+                if(is_null($ID)){return("USER01");}
+                else{return("USER0".$ID['id']+1);}
             case 'index': //entity
                 $ID = entity::latest('id')->first('id');
-                return("INDEX0".$ID['id']+1);
+                if(is_null($ID)){return("INDEX01");}
+                else{return("INDEX0".$ID['id']+1);}
             case 'publisher': //entity
                 $ID = entity::latest('id')->first('id');
-                return("PUB0".$ID['id']+1);
+                if(is_null($ID)){return("PUB01");}
+                else{return("PUB0".$ID['id']+1);}
             case 'organization': //entity
                 $ID = organization::latest('id')->first('id');
-                return("ORG0".$ID['id']+1);
+                if(is_null($ID)){return("ORG01");}
+                else{return("ORG0".$ID['id']+1);}
             default:
                 $ID = Article::latest('id')->first('id');
-                return("JOURNAL0".$ID['id']+1);
+                if(is_null($ID)){return("JOURNAL01");}
+                else{return("JOURNAL0".$ID['id']+1);}
 
         }
     }
