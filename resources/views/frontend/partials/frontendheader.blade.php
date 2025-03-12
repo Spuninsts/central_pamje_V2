@@ -1,7 +1,7 @@
 <header class="pt-3 ">
         <div class="container d-flex flex-wrap align-self-center mb-1 w-100">
           <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-            <img src="{{ asset('frontend/img/central-logo-full.svg') }}" alt="Central Logo" width="150" height="150">
+            <img src="{{ asset('frontend/img/central-logo.svg') }}" alt="Central Logo" width="150" height="150">
           </a>
 
 
