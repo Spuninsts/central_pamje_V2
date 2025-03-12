@@ -40,25 +40,25 @@
 
                         <div class="row my-4">
                             <div class="col-sm-8">
-                                <h5 class="fw-bold">Postal Address:</h5>
-                                <p>
-                                    G/F Administrative Office, Philippine Nurses Association Bldg. 1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines
-                                </p>
-                                <h5 class="fw-bold">Telephone:</h5>
-                                <p>
-                                    +632 852 109 37 <br>
-                                    +632 840 044 30 <br>
-                                    +63 955 2652324
-                                </p>
-                                <h5 class="fw-bold">Fax:</h5>
-                                <p>
-                                    +632 852 515 96
-                                </p>
-                                <h5 class="fw-bold">Email:</h5>
-                                <p>
-                                    <a href="mailto:secretariat@pamje.org">secretariat@pamje.org</a>
-                                </p>
-  
+                              <p class="fw-bold cen-font-darkblue">Postal Address:</p>
+                              <p >
+                                  G/F Administrative Office, Philippine Nurses Association Bldg.  
+                                  1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines
+                              </p>
+                              
+                              <p class="fw-bold cen-font-darkblue ">Telephone:</p>
+                              <p >
+                                  +632 852 109 37 <br>
+                                  +632 840 044 30 <br>
+                                  +63 955 2652324
+                              </p>
+                              
+                              <p><span class="fw-bold cen-font-darkblue">Fax:</span>  +632 852 515 96</p>
+
+                              
+                              <p><span class="fw-bold cen-font-darkblue">Email:</span> <a href="mailto:secretariat@pamje.org" >secretariat@pamje.org</a></p>
+
+                              
                             </div>
                         </div>
                     </div>
