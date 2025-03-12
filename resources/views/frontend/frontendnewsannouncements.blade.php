@@ -48,19 +48,19 @@
 
                         <div class="card mb-3" >
                             <div class="row g-0">
-                                <div class="col-md-4">
-                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}">
-                                </div>
-                                <div class="col-md-8">
+                              <div class="col-md-4">
+                                <img src="{{ url('upload/admin_images/'.$item->page_image_path) }}" alt="{{$item->page_title}}" class="w-50 h-50">
+                              </div>
+                              <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title"> <a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_title}} </a></h5>
-                                    <p class="card-text">{{substr($item->page_description,0,100)}}...</p>
-                                    <p class="card-text"><span class="fw-bold">Link: </span><a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_url}}</a></p>
-                                    
+                                  <h5 class="text-danger fw-bold"> <a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_title}} </a></h5>
+                                  <p class="card-text">{{substr($item->page_description,0,100)}}...</p>
+                                  <p class="card-text"><span class="fw-bold">Link: </span><a href="{{$item->page_url}}" class="text-decoration-none" target="_blank">{{$item->page_url}}</a></p>
+                                  
                                 </div>
-                                </div>
+                              </div>
                             </div>
-                        </div>
+                          </div>
                     </div>
                 @endforeach
             @endif
