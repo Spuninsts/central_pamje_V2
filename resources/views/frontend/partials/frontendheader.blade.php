@@ -52,12 +52,6 @@
             <li class="nav-item px-3">
               <a class="nav-link text-white" href="/aboutus">ABOUT US</a>
             </li>
-              <li class="nav-item px-3">
-                  <a class="nav-link text-white" href="/teamcentral">TEAM-CENTRAL</a>
-              </li>
-              <li class="nav-item px-3">
-                  <a class="nav-link text-white" href="/sponsor">SPONSOR</a>
-              </li>
             <li class="nav-item px-3">
               <a class="nav-link text-white" href="http://www.pamje.org/">PAMJE</a>
             </li>
