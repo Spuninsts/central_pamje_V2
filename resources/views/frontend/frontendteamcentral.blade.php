@@ -23,7 +23,7 @@
       <div class="container">
       <div class="row my-3">
         <span><a href="/" class="cen-breadcrumbs"> Home</a>&nbsp;»
-                <a href="/team-central" class="cen-breadcrumbs">Team Central</a>&nbsp;»&nbsp;
+                <a href="/team-central" class="cen-breadcrumbs">Team Central</a>
 
       </span></div>
       </div>
@@ -31,7 +31,7 @@
 
     <div class="container-fluid">
       <div class="container">
-        <div class="row my-5">
+        <div class="row my-5 text-center">
             <h2>Meet the Team</h2>
         </div>
 
