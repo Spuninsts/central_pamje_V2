@@ -4,13 +4,6 @@
 
             <div class="col my-3 ">
               <img src="{{ asset('frontend/img/logo1-2-white1.svg') }}" alt="Central Logo" width="150" height="150">
-              <p class="text-white lh-sm ms-3">
-                G/F Administrative Office, Philippine Nurses Association Bldg.
-                1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines</p>
-              <p class="text-white lh-sm ms-3">Telephone: 521-0937, 400-4430</p>
-              <p class="text-white lh-sm ms-3">Mobile No: +639552652324 TM/Globe</p>
-              <p class="text-white lh-sm ms-3">Telefax: 525-1596</p>
-              <p class="text-white lh-sm ms-3">Email: secretariat@pamje.org</p>
             </div>
 
             <div class="col mt-5 "></div>
@@ -63,7 +56,18 @@
 
         <!-- Private Policy-->
         <div class="container">
-          <div class="row border-top py-3 d-flex flex-column flex-sm-row">
+          <div class="row border-top py-3 d-flex flex-column text-center">
+            <p class="text-white lh-1 mx-auto small mb-1">
+              G/F Administrative Office, Philippine Nurses Association Bldg.  
+              1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines
+            </p>
+            <p class="text-white lh-1 mx-auto small mb-1">Telephone: 521-0937, 400-4430</p>
+            <p class="text-white lh-1 mx-auto small mb-1">Mobile No: +639552652324 TM/Globe</p>
+            <p class="text-white lh-1 mx-auto small mb-1">Telefax: 525-1596</p>
+            <p class="text-white lh-1 mx-auto small mb-1">Email: secretariat@pamje.org</p>
+          </div>
+
+          <div class="row py-3 d-flex flex-column flex-sm-row">
             <div class="col-sm-12 col-md-5 col-lg-3 mt-2 ">
               <ul class="list-unstyled d-flex justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
               <li><a href="#" class="nav-link text-white"><small>Privacy Policy</small>  </a></li>

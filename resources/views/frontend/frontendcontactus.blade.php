@@ -58,10 +58,7 @@
                                 <p>
                                     <a href="mailto:secretariat@pamje.org">secretariat@pamje.org</a>
                                 </p>
-                                <h5 class="fw-bold">URL:</h5>
-                                <p>
-                                    <a href="https://central.pamje.org/" target="_blank">https://central.pamje.org/</a>
-                                </p>
+  
                             </div>
                         </div>
                     </div>
