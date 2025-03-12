@@ -39,27 +39,27 @@
               <div class="row">
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="{{ asset('frontend/img/team-central/dr-cecile.webp') }}" alt="Dr. Cecilia Maramba-Lazarte" class="rounded-circle" >
+                        <h5>Dr. Cecilia Nelia C. Maramba-Lazarte</h5>
+                        <p class="role">Role</p>
+                       
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="{{ asset('frontend/img/team-central/dr-lawag.webp') }}" alt="Dr. Ivan Lawag" class="rounded-circle">
+                        <h5>Dr. Ivan Lawag, MRSC, MSc, PhD</h5>
+                        <p class="role">Role</p>
+                        
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="https://via.placeholder.com/150" alt="Dr Julie" class="rounded-circle">
+                        <h5>Dr. Julie</h5>
+                        <p class="role">Role</p>
+                        
                     </div>
                 </div>
               </div>
@@ -67,28 +67,28 @@
               <div class="row my-2">
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="{{ asset('frontend/img/team-central/jaymie-tan.webp') }}" alt="Jaymie Tan" class="rounded-circle">
+                        <h5>Jaymie Tan</h5>
+                        <p class="role">Web Developer</p>
+                       
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="https://via.placeholder.com/150" alt="Salvador Alcantara" class="rounded-circle">
+                        <h5>Salvador Alcantara</h5>
+                        <p class="role">Web Developer</p>
+                        
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://via.placeholder.com/150" alt="Marry Hudson">
-                        <h5>Marry Hudson</h5>
-                        <p class="role">Director of Marketing</p>
-                        <div class="divider"></div>
+                        <img src="https://via.placeholder.com/150" alt="Rea Epistola" class="rounded-circle">
+                        <h5>Rea Epistola</h5>
+                        <p class="role">Role</p>
+                        
                     </div>
                 </div>
              </div>
