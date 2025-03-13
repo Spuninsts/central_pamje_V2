@@ -135,29 +135,51 @@ class UserController extends Controller
             $entry_orgid = $request->user_organization;
         }
 
-        if($request->file('user_photo')){
+        if($request->hasFile('user_photo')){
             $file = $request->file('user_photo');
             $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filenamephoto);
-        }else{$filenamephoto  = null;}
 
 
-        User::insert([
-            'user_id' => $request->user_id,
-            'org_id' => $entry_orgid,
-            'title' => "Dr.",
-            'fname' => $request->user_first_name,
-            'lname' => $request->user_last_name,
-            'mname' => $request->user_middle_name,
-            'username' => $request->user_first_name.'.'.$request->user_last_name,
-            'email' => $request->user_email,
-            'password' => $user_password,
-            'user_photo' => $filenamephoto,
-            'user_address' => $request->user_title,
-            'user_type' => $request->user_type,
-            'role' => $request->user_type,
-            'user_status' => $user_stat,
-        ]);
+            User::insert([
+                'user_id' => $request->user_id,
+                'org_id' => $entry_orgid,
+                'title' => "Dr.",
+                'fname' => $request->user_first_name,
+                'lname' => $request->user_last_name,
+                'mname' => $request->user_middle_name,
+                'username' => $request->user_first_name.'.'.$request->user_last_name,
+                'email' => $request->user_email,
+                'password' => $user_password,
+                'user_photo' => $filenamephoto,
+                'user_address' => $request->user_title,
+                'user_type' => $request->user_type,
+                'role' => $request->user_type,
+                'user_status' => $user_stat,
+            ]);
+
+        }else{
+
+
+            User::insert([
+                'user_id' => $request->user_id,
+                'org_id' => $entry_orgid,
+                'title' => "Dr.",
+                'fname' => $request->user_first_name,
+                'lname' => $request->user_last_name,
+                'mname' => $request->user_middle_name,
+                'username' => $request->user_first_name.'.'.$request->user_last_name,
+                'email' => $request->user_email,
+                'password' => $user_password,
+                'user_address' => $request->user_title,
+                'user_type' => $request->user_type,
+                'role' => $request->user_type,
+                'user_status' => $user_stat,
+            ]);
+
+        }
+
+
 
         return redirect('admin/edit/user?val='.$request->user_id);
 
@@ -170,25 +192,43 @@ class UserController extends Controller
                     ->first();
         //dd($this_user);
 
-        if($request->file('user_photo')){
+        if($request->hasFile('user_photo')){
             $file = $request->file('user_photo');
             $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filenamephoto);
-        }else{$filenamephoto  = null;}
 
-        $this_user->user_status = $request->user_status;
-        $this_user->title = "Dr.";
-        $this_user->fname = $request->user_first_name;
-        $this_user->email = $request->user_email;
-        $this_user->mname = $request->user_middle_name;
-        $this_user->lname = $request->user_last_name;
-        $this_user->user_type = $request->user_type;
-        $this_user->role = $request->user_type;
-        $this_user->org_id = $request->user_organization;
-        $this_user->user_address = $request->user_title;
-        $this_user->user_photo = $filenamephoto;
-        $this_user->updated_at = now();
-        $this_user->save();
+
+            $this_user->user_status = $request->user_status;
+            $this_user->title = "Dr.";
+            $this_user->fname = $request->user_first_name;
+            $this_user->email = $request->user_email;
+            $this_user->mname = $request->user_middle_name;
+            $this_user->lname = $request->user_last_name;
+            $this_user->user_type = $request->user_type;
+            $this_user->role = $request->user_type;
+            $this_user->org_id = $request->user_organization;
+            $this_user->user_address = $request->user_title;
+            $this_user->user_photo = $filenamephoto;
+            $this_user->updated_at = now();
+            $this_user->save();
+
+        }else{
+
+            $this_user->user_status = $request->user_status;
+            $this_user->title = "Dr.";
+            $this_user->fname = $request->user_first_name;
+            $this_user->email = $request->user_email;
+            $this_user->mname = $request->user_middle_name;
+            $this_user->lname = $request->user_last_name;
+            $this_user->user_type = $request->user_type;
+            $this_user->role = $request->user_type;
+            $this_user->org_id = $request->user_organization;
+            $this_user->user_address = $request->user_title;
+            $this_user->updated_at = now();
+            $this_user->save();
+
+        }
+
 
         return redirect('admin/active/users?val=active');
 
