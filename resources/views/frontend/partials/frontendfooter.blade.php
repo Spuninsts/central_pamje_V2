@@ -22,7 +22,7 @@
             <div class="col mt-5 ">
               <h5 class="text-white">Journals</h5>
               <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">Alphabetical</a></li>
+                <li class="nav-item mb-2"><a href="http://central.pamje.org/journals/alphabet?val=all" class="nav-link p-2 text-white">Alphabetical</a></li>
 
               </ul>
             </div>
@@ -30,9 +30,9 @@
             <div class="col mt-5 ">
               <h5 class="text-white">Resources</h5>
               <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">For Editors</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">For Researchers</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">For Authors</a></li>
+                <li class="nav-item mb-2"><a href="/resources/editors" class="nav-link p-2 text-white">For Editors</a></li>
+                <li class="nav-item mb-2"><a href="/resources/researchers" class="nav-link p-2 text-white">For Researchers</a></li>
+                <li class="nav-item mb-2"><a href="/resources/authors" class="nav-link p-2 text-white">For Authors</a></li>
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">for Peer Reviewers</a></li>
 
               </ul>
@@ -50,7 +50,7 @@
             <div class="col mt-5 " >
               <h5 class="text-white">Contact</h5>
               <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-2 text-white">Fb messenger</a></li>
+                <li class="nav-item mb-2"><a href="https://www.facebook.com/PAMJE2011" class="nav-link p-2 text-white">Fb messenger</a></li>
               </ul>
             </div>
           </footer>

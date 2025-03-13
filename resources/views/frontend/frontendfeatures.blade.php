@@ -17,7 +17,8 @@
                   <img class="card-img-top rounded-0" src="/upload/admin_images/{{ $item->photo }}" alt="{{ $item->short_title }}" style="height: 15rem;">
               </a>
             <div class="card-body">
-              <h5 class="card-title cen-font-darkblue">{{ $item->full_title }} | {{ $item->short_title }}</h5>
+              <h5 class="card-title cen-font-darkblue"><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-link-hover-blue">{{ $item->full_title }} | {{ $item->short_title }}
+              </a></h5>
               <p class="card-text">{{ substr($item->about,0) }}</p>
               <p><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-link-hover-blue">View more Information</a></p>
             </div>
