@@ -494,41 +494,73 @@ class AdminController extends Controller
             }else{
             $filename = null;
         }*/
-         if($request->file('article_photo')){
+         if($request->hasFile('article_photo')){
             $file = $request->file('article_photo');
             $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filenamephoto);
-        }else{$filenamephoto  = null;}
+
+             $article_stat = "active";
+             if($request->article_featured){$article_stat = "featured";}
+             if(is_null($request->article_active)){$article_stat = "draft";}
+
+             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                 $indexingvar =  implode(",", $request->journal_indexes);
+             }else {
+                 $indexingvar =  null;
+             }
+
+             Article::insert([
+                 'created_by' => $id,
+                 'journal_mid' => $request->journal_id,
+                 'article_status' => $article_stat,
+                 'full_title' => $request->full_title,
+                 'short_title' => $request->short_title,
+                 'org_society' => $request->org_society,
+                 'email' => $request->email,
+                 'article_contact' => $request->journal_contact,
+                 'contact_number' => $request->contact_number,
+                 'about' => $request->about,
+                 'aims_scope' => $request->aims_scope,
+                 'link' => $request->link,
+                 'policy' => $request->policy,
+                 'photo' => $filenamephoto,
+                 'indexing' => $indexingvar,
+                 'publisher' => $request->journal_publisher,
+             ]);
+
+
+         }else{
+
+             $article_stat = "active";
+             if($request->article_featured){$article_stat = "featured";}
+             if(is_null($request->article_active)){$article_stat = "draft";}
+
+             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                 $indexingvar =  implode(",", $request->journal_indexes);
+             }else {
+                 $indexingvar =  null;
+             }
+
+             Article::insert([
+                 'created_by' => $id,
+                 'journal_mid' => $request->journal_id,
+                 'article_status' => $article_stat,
+                 'full_title' => $request->full_title,
+                 'short_title' => $request->short_title,
+                 'org_society' => $request->org_society,
+                 'email' => $request->email,
+                 'article_contact' => $request->journal_contact,
+                 'contact_number' => $request->contact_number,
+                 'about' => $request->about,
+                 'aims_scope' => $request->aims_scope,
+                 'link' => $request->link,
+                 'policy' => $request->policy,
+                 'indexing' => $indexingvar,
+                 'publisher' => $request->journal_publisher,
+             ]);
+
+         }
         //dd($filename);
-
-        $article_stat = "active";
-        if($request->article_featured){$article_stat = "featured";}
-        if(is_null($request->article_active)){$article_stat = "draft";}
-
-        if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
-            $indexingvar =  implode(",", $request->journal_indexes);
-            }else {
-            $indexingvar =  null;
-        }
-
-        Article::insert([
-            'created_by' => $id,
-            'journal_mid' => $request->journal_id,
-            'article_status' => $article_stat,
-            'full_title' => $request->full_title,
-            'short_title' => $request->short_title,
-            'org_society' => $request->org_society,
-            'email' => $request->email,
-            'article_contact' => $request->journal_contact,
-            'contact_number' => $request->contact_number,
-            'about' => $request->about,
-            'aims_scope' => $request->aims_scope,
-            'link' => $request->link,
-            'policy' => $request->policy,
-            'photo' => $filenamephoto,
-            'indexing' => $indexingvar,
-            'publisher' => $request->journal_publisher,
-        ]);
 
         return redirect()->route('admin.active-articles');
 
@@ -538,40 +570,40 @@ class AdminController extends Controller
     public function AdminArticleUpdate(Request $request){
         //dd($request);
         //dd($request->file('article_photo'));
-        if($request->file('article_photo')){
+        if($request->hasFile('article_photo')){
             $file = $request->file('article_photo');
             $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filenamephoto);
-        }else{$filenamephoto  = null;}
-
-        //dd($filenamephoto);
-        $article_stat = "active";
-        if($request->article_featured == "on"){$article_stat = "featured";}
-        if(is_null($request->article_active)){$article_stat = "draft";}
 
 
-        $this_article = Article::find($request->article_id);
-        //dd($this_article);
-        $this_article->article_status = $article_stat;
-        $this_article->full_title = $request->full_title;
-        $this_article->short_title = $request->short_title;
-        $this_article->org_society = $request->org_society;
-        $this_article->email = $request->email;
-        $this_article->article_contact = $request->journal_contact;
-        $this_article->contact_number = $request->contact_number;
-        $this_article->about = $request->about;
-        $this_article->aims_scope = $request->aims_scope;
-        $this_article->link = $request->link;
-        $this_article->policy = $request->policy;
-        $this_article->publisher = $request->journal_publisher;
-        if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
-            $this_article->indexing = implode(",", $request->journal_indexes);
-        }else {$this_article->indexing = null;}
-        $this_article->photo = $filenamephoto;
-        $this_article->updated_at = now();
-        $this_article->save();
+            //dd($filenamephoto);
+            $article_stat = "active";
+            if($request->article_featured == "on"){$article_stat = "featured";}
+            if(is_null($request->article_active)){$article_stat = "draft";}
 
-        if($request->new_role){
+
+            $this_article = Article::find($request->article_id);
+            //dd($this_article);
+            $this_article->article_status = $article_stat;
+            $this_article->full_title = $request->full_title;
+            $this_article->short_title = $request->short_title;
+            $this_article->org_society = $request->org_society;
+            $this_article->email = $request->email;
+            $this_article->article_contact = $request->journal_contact;
+            $this_article->contact_number = $request->contact_number;
+            $this_article->about = $request->about;
+            $this_article->aims_scope = $request->aims_scope;
+            $this_article->link = $request->link;
+            $this_article->policy = $request->policy;
+            $this_article->publisher = $request->journal_publisher;
+            if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                $this_article->indexing = implode(",", $request->journal_indexes);
+            }else {$this_article->indexing = null;}
+            $this_article->photo = $filenamephoto;
+            $this_article->updated_at = now();
+            $this_article->save();
+
+            if($request->new_role){
                 foreach($request->new_users as $item){
                     //dd($myrole,$item2,$request->association_journal);
                     Association::insert([
@@ -583,7 +615,53 @@ class AdminController extends Controller
 
                     ]);
                 }
+            }
+        }else{
+
+            $article_stat = "active";
+            if($request->article_featured == "on"){$article_stat = "featured";}
+            if(is_null($request->article_active)){$article_stat = "draft";}
+
+
+            $this_article = Article::find($request->article_id);
+            //dd($this_article);
+            $this_article->article_status = $article_stat;
+            $this_article->full_title = $request->full_title;
+            $this_article->short_title = $request->short_title;
+            $this_article->org_society = $request->org_society;
+            $this_article->email = $request->email;
+            $this_article->article_contact = $request->journal_contact;
+            $this_article->contact_number = $request->contact_number;
+            $this_article->about = $request->about;
+            $this_article->aims_scope = $request->aims_scope;
+            $this_article->link = $request->link;
+            $this_article->policy = $request->policy;
+            $this_article->publisher = $request->journal_publisher;
+            if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                $this_article->indexing = implode(",", $request->journal_indexes);
+            }else {$this_article->indexing = null;}
+            $this_article->updated_at = now();
+            $this_article->save();
+
+            if($request->new_role){
+                foreach($request->new_users as $item){
+                    //dd($myrole,$item2,$request->association_journal);
+                    Association::insert([
+                        'association_journal' => $request->journal_id,
+                        'association_source' => 'user',
+                        'association_id' => $item,
+                        'association_role' => $request->new_role,
+                        'created_at' => now(),
+
+                    ]);
+                }
+            }
+
+
+
         }
+
+
 
         return redirect()->route('admin.active-articles');
 
@@ -599,24 +677,44 @@ class AdminController extends Controller
     }//End Organization data retrieval
     public function AdminOrganizationUpdate(Request $request){
         //dd($request);
-        if($request->file('org_photo')){
+        if($request->hasFile('org_photo')){
             $file = $request->file('org_photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
 
-        $organization_stat = $request->organization_status;
-        if(is_null($organization_stat)){$organization_stat = "draft";}
+            $organization_stat = $request->organization_status;
+            if(is_null($organization_stat)){$organization_stat = "draft";}
 
-        $this_organization = organization::where('org_id',$request->organization_id)->first();
-        //dd($this_banner);
-        $this_organization->org_description = $request->organization_description;
-        $this_organization->org_title = $request->organization_title;
-        $this_organization->org_image_path = $filename;
-        $this_organization->org_url = $request->organization_url;
-        $this_organization->org_status = $organization_stat;
-        $this_organization->updated_at = now();
-        $this_organization->save();
+            $this_organization = organization::where('org_id',$request->organization_id)->first();
+            //dd($this_banner);
+            $this_organization->org_description = $request->organization_description;
+            $this_organization->org_title = $request->organization_title;
+            $this_organization->org_image_path = $filename;
+            $this_organization->org_url = $request->organization_url;
+            $this_organization->org_status = $organization_stat;
+            $this_organization->updated_at = now();
+            $this_organization->save();
+
+
+        }else{
+
+
+            $organization_stat = $request->organization_status;
+            if(is_null($organization_stat)){$organization_stat = "draft";}
+
+            $this_organization = organization::where('org_id',$request->organization_id)->first();
+            //dd($this_banner);
+            $this_organization->org_description = $request->organization_description;
+            $this_organization->org_title = $request->organization_title;
+            $this_organization->org_url = $request->organization_url;
+            $this_organization->org_status = $organization_stat;
+            $this_organization->updated_at = now();
+            $this_organization->save();
+
+
+        }
+
+
 
         return redirect()->route('admin.active-organizations');
     }
@@ -631,22 +729,41 @@ class AdminController extends Controller
     public function AdminOrganizationStore(Request $request){
         $id = Auth::user()->fname;
 
-        if($request->file('org_photo')){
+        if($request->hasFile('org_photo')){
             $file = $request->file('org_photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
 
-        organization::insert([
-            'org_created_by' => $id,
-            'org_id' => $request->organization_id,
-            'org_title' => $request->organization_name,
-            'org_description' => $request->organization_description,
-            'org_url' => $request->organization_url,
-            'org_status' => 'active',
-            'org_image_path' => $filename,
-            'created_at' => now()
-        ]);
+
+            organization::insert([
+                'org_created_by' => $id,
+                'org_id' => $request->organization_id,
+                'org_title' => $request->organization_name,
+                'org_description' => $request->organization_description,
+                'org_url' => $request->organization_url,
+                'org_status' => 'active',
+                'org_image_path' => $filename,
+                'created_at' => now()
+            ]);
+
+
+
+
+        }else{
+
+            organization::insert([
+                'org_created_by' => $id,
+                'org_id' => $request->organization_id,
+                'org_title' => $request->organization_name,
+                'org_description' => $request->organization_description,
+                'org_url' => $request->organization_url,
+                'org_status' => 'active',
+                'created_at' => now()
+            ]);
+
+
+        }
+
 
         return redirect()->route('admin.active-organizations');
 
@@ -711,21 +828,39 @@ class AdminController extends Controller
         //dd($request->file('banner_image'));
 
         if($request->file('banner_image')){
-            $file = $request->file('banner_image');
+            $file = $request->hasFile('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
 
-        Banner::insert([
-            'banner_created_by' => $id,
-            'banner_id' => $request->banner_id,
-            'banner_title' => $request->banner_title,
-            'banner_description' => $request->banner_description,
-            'banner_image_path' => $filename,
-            'banner_url' => $request->banner_url,
-            'banner_status' => $request->banner_status,
-            'created_at' => now()
-        ]);
+
+
+
+            Banner::insert([
+                'banner_created_by' => $id,
+                'banner_id' => $request->banner_id,
+                'banner_title' => $request->banner_title,
+                'banner_description' => $request->banner_description,
+                'banner_image_path' => $filename,
+                'banner_url' => $request->banner_url,
+                'banner_status' => $request->banner_status,
+                'created_at' => now()
+            ]);
+
+
+        }else{
+
+            Banner::insert([
+                'banner_created_by' => $id,
+                'banner_id' => $request->banner_id,
+                'banner_title' => $request->banner_title,
+                'banner_description' => $request->banner_description,
+                'banner_url' => $request->banner_url,
+                'banner_status' => $request->banner_status,
+                'created_at' => now()
+            ]);
+        }
+
+
 
         return redirect()->route('admin.active-banners');
 
@@ -734,13 +869,13 @@ class AdminController extends Controller
     public function AdminBannerUpdate(Request $request){
          //dd($request);
         if($request->file('banner_image')){
-            $file = $request->file('banner_image');
+            $file = $request->hasFile('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
+
 
             $banner_stat = $request->banner_status;
-        if(is_null($banner_stat)){$banner_stat = "draft";}
+            if(is_null($banner_stat)){$banner_stat = "draft";}
 
             $this_banner = banner::where('banner_id',$request->banner_id)->first();
             //dd($this_banner);
@@ -751,6 +886,21 @@ class AdminController extends Controller
             $this_banner->banner_status = $banner_stat;
             $this_banner->updated_at = now();
             $this_banner->save();
+
+        }else{
+            $banner_stat = $request->banner_status;
+            if(is_null($banner_stat)){$banner_stat = "draft";}
+
+            $this_banner = banner::where('banner_id',$request->banner_id)->first();
+            //dd($this_banner);
+            $this_banner->banner_description = $request->banner_description;
+            $this_banner->banner_title = $request->banner_title;
+            $this_banner->banner_url = $request->banner_url;
+            $this_banner->banner_status = $banner_stat;
+            $this_banner->updated_at = now();
+            $this_banner->save();
+        }
+
 
         return redirect()->route('admin.active-banners');
 
@@ -884,32 +1034,51 @@ class AdminController extends Controller
         ]);*/
         //dd($request);
 
-        if($request->file('page_image')){
-            $file = $request->file('page_image');
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
-
         if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
             $subcdata = implode(",", $request->page_subcategory);
         }else {$subcdata = null;}
 
-        page::insert([
-            'page_created_by' => $id,
-            'page_id' => $request->page_id,
-            'page_status' => $request->page_status,
-            'page_type' => strtolower($request->page_type),
-            'page_source' => $request->page_source,
-            'page_title' => $request->page_title,
-            'page_description' => $request->page_description,
-            'page_image_path' => $filename,
-            'page_url' => $request->page_url,
-            'page_category' => strtolower($request->page_category),
-            'page_subcategory' => $subcdata,
-            'page_tags' => $request->page_class, //this can be extended into multiple
-            'created_at' => now()
+        if($request->hasFile('page_image')){
+            $file = $request->file('page_image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('/upload/admin_images/'), $filename);
 
-        ]);
+
+            page::insert([
+                'page_created_by' => $id,
+                'page_id' => $request->page_id,
+                'page_status' => $request->page_status,
+                'page_type' => strtolower($request->page_type),
+                'page_source' => $request->page_source,
+                'page_title' => $request->page_title,
+                'page_description' => $request->page_description,
+                'page_image_path' => $filename,
+                'page_url' => $request->page_url,
+                'page_category' => strtolower($request->page_category),
+                'page_subcategory' => $subcdata,
+                'page_tags' => $request->page_class, //this can be extended into multiple
+                'created_at' => now()
+
+            ]);
+
+        }else{
+            page::insert([
+                'page_created_by' => $id,
+                'page_id' => $request->page_id,
+                'page_status' => $request->page_status,
+                'page_type' => strtolower($request->page_type),
+                'page_source' => $request->page_source,
+                'page_title' => $request->page_title,
+                'page_description' => $request->page_description,
+                'page_url' => $request->page_url,
+                'page_category' => strtolower($request->page_category),
+                'page_subcategory' => $subcdata,
+                'page_tags' => $request->page_class, //this can be extended into multiple
+                'created_at' => now()
+
+            ]);
+        }
+
 
         //return redirect()->route('admin.active-pages');  changing to specific page of added data
         return redirect('admin/page/edit?val='.$request->page_id);
@@ -918,33 +1087,59 @@ class AdminController extends Controller
 
     public function AdminPageUpdate(Request $request){
         //dd($request);
-        if($request->file('page_image')){
+        if($request->hasFile('page_image')){
             $file = $request->file('page_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
-        }else{$filename = null;}
 
-        $page_stat = $request->page_status;
-        if(is_null($page_stat)){$page_stat = "draft";}
+            $page_stat = $request->page_status;
+            if(is_null($page_stat)){$page_stat = "draft";}
 
-        if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
-            $subcdata = implode(",", $request->page_subcategory);
-        }else {$subcdata = null;}
+            if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
+                $subcdata = implode(",", $request->page_subcategory);
+            }else {$subcdata = null;}
 
-        $this_page = page::where('page_id',$request->page_id)->first();
-        //dd($this_page);
-        $this_page->page_description = $request->page_description;
-        $this_page->page_title = $request->page_title;
-        $this_page->page_image_path = $filename;
-        $this_page->page_url = $request->page_url;
-        $this_page->page_status = $page_stat;
-        $this_page->page_source = $request->page_source;
-        $this_page->page_type = $request->page_type;
-        $this_page->page_category = $request->page_category;
-        $this_page->page_tags = $request->page_class;
-        $this_page->page_subcategory = $subcdata;
-        $this_page->updated_at = now();
-        $this_page->save();
+            $this_page = page::where('page_id',$request->page_id)->first();
+            //dd($this_page);
+            $this_page->page_description = $request->page_description;
+            $this_page->page_title = $request->page_title;
+            $this_page->page_image_path = $filename;
+            $this_page->page_url = $request->page_url;
+            $this_page->page_status = $page_stat;
+            $this_page->page_source = $request->page_source;
+            $this_page->page_type = $request->page_type;
+            $this_page->page_category = $request->page_category;
+            $this_page->page_tags = $request->page_class;
+            $this_page->page_subcategory = $subcdata;
+            $this_page->updated_at = now();
+            $this_page->save();
+
+
+        }else{
+
+            $page_stat = $request->page_status;
+            if(is_null($page_stat)){$page_stat = "draft";}
+
+            if(($request->page_subcategory) || !is_null($request->page_subcategory) || $request->page_subcategory != "") {
+                $subcdata = implode(",", $request->page_subcategory);
+            }else {$subcdata = null;}
+
+            $this_page = page::where('page_id',$request->page_id)->first();
+            //dd($this_page);
+            $this_page->page_description = $request->page_description;
+            $this_page->page_title = $request->page_title;
+            $this_page->page_url = $request->page_url;
+            $this_page->page_status = $page_stat;
+            $this_page->page_source = $request->page_source;
+            $this_page->page_type = $request->page_type;
+            $this_page->page_category = $request->page_category;
+            $this_page->page_tags = $request->page_class;
+            $this_page->page_subcategory = $subcdata;
+            $this_page->updated_at = now();
+            $this_page->save();
+        }
+
+
 
         return redirect()->route('admin.active-pages');
 
