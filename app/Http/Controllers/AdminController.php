@@ -827,8 +827,8 @@ class AdminController extends Controller
         ]);*/
         //dd($request->file('banner_image'));
 
-        if($request->file('banner_image')){
-            $file = $request->hasFile('banner_image');
+        if($request->hasFile('banner_image')){
+            $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
 
@@ -868,8 +868,8 @@ class AdminController extends Controller
 
     public function AdminBannerUpdate(Request $request){
          //dd($request);
-        if($request->file('banner_image')){
-            $file = $request->hasFile('banner_image');
+        if($request->hasFile('banner_image')){
+            $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
 
