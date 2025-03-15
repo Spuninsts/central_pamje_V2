@@ -37,11 +37,14 @@
 
         <div class="cen-about">
               <div class="row">
-                    <h5 class="text-danger fw-bold"> CENTRAL Is funded by the Phlippine Council for Health Research and Development (PCHRD)</h5>
+                    <h5 class="text-danger fw-bold"> CENTRAL is funded by the Phlippine Council for Health Research and Development (PCHRD)</h5>
               </div>
 
               <div class="row my-2">
-                <img src="{{ asset('frontend/img/sponsor_logo/DOST-PCHRD-LOGOx800.png') }}" alt="Phlippine Council for Health Research and Developmen" width="150" height="150">
+                <div class="col-auto">
+                  <img src="{{ asset('frontend/img/sponsor_logo/DOST-PCHRD-LOGOx800.png') }}" alt="Phlippine Council for Health Research and Development" class="img-fluid" width="150" height="150">
+               </div>
+
              </div>
 
         </div>
