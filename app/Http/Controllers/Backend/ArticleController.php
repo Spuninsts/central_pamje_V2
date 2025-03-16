@@ -72,9 +72,32 @@ class ArticleController extends Controller
 
     public function LoadFeaturedArticlesMainAuth(){
 
+        $assetCount = array();
         $BannerData = banner::where('banner_status',"active")
             ->orderBy('id','DESC')
             ->get();
+
+        $resourceCount = page::where('page_status',"active")
+            ->Where('page_type','Resource')
+            ->get(['page_id']);
+
+        $reviewerCount = User::Where('user_status',"active")
+            ->where(function($query) {
+                $query->where('user_type','reviewer')
+                    ->orWhere('user_type','editor');
+            })
+            ->get('user_id');
+
+        $ArticleData = Article::where(function($query) {
+            $query->Where('article_status','active')
+                ->orWhere('article_status','featured');
+        })
+            ->get('journal_mid');
+
+        array_push($assetCount,count($ArticleData));
+        array_push($assetCount,count($resourceCount));
+        array_push($assetCount,count($reviewerCount));
+
         //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
             ->orderBy('full_title')
@@ -84,16 +107,17 @@ class ArticleController extends Controller
             $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
         }
 
-        $NewsAnnounceData = page::where('page_type',"news")
-            ->orWhere('page_type',"announcement")
-            ->where('page_status',"active")
-            //->orderBy('id','DESC')
+        $NewsAnnounceData = page::where('page_status',"active")
+            ->where(function($query) {
+                $query->where('page_type','News')
+                    ->orWhere('page_type','Announcement');
+            })
             ->orderBy('updated_at','DESC')
             ->take(3)
-            ->get(['page_id','page_title','page_image_path']);
+            ->get(['page_id','page_title','page_image_path','page_url']);
 
         //dd($ArticleData);
-        return view('frontend.frontendmainauth', compact('ArticleData','BannerData','NewsAnnounceData'));
+        return view('frontend.frontendmainauth', compact('ArticleData','BannerData','NewsAnnounceData','assetCount'));
 
     }// End Method
 
