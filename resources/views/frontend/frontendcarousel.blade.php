@@ -24,11 +24,13 @@
                             </h1>
                         </div>
                         <div class="button">
-                            <a href="{{$bd->banner_url}}" class="btn btn-primary cen-btn-darkblue py-2 px-3" role="button">Learn more</a>
+                            @if($bd->banner_url)
+                                <a href="{{$bd->banner_url}}" class="btn btn-primary cen-btn-darkblue py-2 px-3" role="button">Learn more</a>
+                            @endif
                         </div>
                     </div>
                 </div>
-        @php $carousel_no +=1 @endphp
+                @php $carousel_no +=1 @endphp
         @endforeach
 
         </div>

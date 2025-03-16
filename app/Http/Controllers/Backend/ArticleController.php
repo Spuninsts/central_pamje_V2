@@ -312,7 +312,7 @@ class ArticleController extends Controller
                 dd($assoc_user_array); */
 
         // * Publisher and Indexes
-        $EntityData = entity::whereIn('ent_id',$temp_array)
+            $EntityData = entity::whereIn('ent_id',$temp_array)
                         ->get();
 
         //dd($EntityData);

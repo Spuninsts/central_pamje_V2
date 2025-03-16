@@ -39,7 +39,7 @@
             @foreach( $ArticleData as $key => $item)
                 <div class="row my-4 ">
                     <div class="col-sm-2">
-                        <a href="#"><img src="/upload/admin_images/{{ $item->photo }}"  alt="{{ $item->full_title }}"  class="w-100"></a>
+                        <a href="#"><img src="/upload/admin_images/{{ $item->photo }}"  alt="{{ $item->full_title }}"  class="w-100 h-100"></a>
                     </div>
                     <div class="col-sm-10 my-2" >
                         <h2 class="fw-bold fs-1">{{ $item->full_title }}</h2>
