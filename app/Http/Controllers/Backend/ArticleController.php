@@ -321,26 +321,38 @@ class ArticleController extends Controller
         //dd(request()->val);  // value from link parameter
 
         // * ARTICLE Data
-        $ArticleData = Article::where('journal_mid',request()->val)
+        $requestJournalID = request()->val;
+        $ArticleData = Article::where('journal_mid',$requestJournalID)
                         ->get();
 
-        $AssociateData = Association::where('association_journal',$ArticleData[0]->journal_mid)
+        //dd($ArticleData);
+        $AssociateData = Association::where('association_journal',$requestJournalID)
                         ->get();
 
+        //dd($AssociateData);
         //Just getting the IDS on association table
-        $temp_array = $role_array = array();
+        $temp_array = array();
+        $role_array = config('sitevariables.member_type');
         $associate_userid_array=[];
+        //dd($role_array);
+        //This checks if record is a user and will ectract the role in this record.
         foreach($AssociateData as $assoc_id){
             array_push($temp_array,$assoc_id->association_id);
             if($assoc_id->association_source == 'user')
                 array_push($role_array,$assoc_id->association_role);
         }
+
+
+
         $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
 
         //dd($role_array);
         //dd($temp_array); // this has all the ID's needed for the other information.
         // * need to get indexes, publisher and users.  * //
         // * USERS
+
+
         $UserData = User::whereIn('user_id',$temp_array)
                         ->get();
         //dd($UserData);
