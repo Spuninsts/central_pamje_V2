@@ -52,13 +52,13 @@
                         </div>
                         <div class="col-sm-10" >
                         <p>
-                        <span class="p-bold"> Website: </span>
-                        <a href="{{ $item->link }}" target="_blank">{{ $item->link }}</a>
+                        <span class="fw-bold"> Website: </span>
+                        <a href="{{ $item->link }}" target="_blank"  class="text-decoration-none cen-font-darkblue cen-link-hover-blue">{{ $item->link }}</a>
                         </p>
-                        <p><span class="p-bold">Primary Contact:</span> {{ $item->article_contact }}</p>
-                        <p> <span class="p-bold"> Contact Number:</span> {{ $item->contact_number }} </p>
-                        <p><span class="p-bold">Email:</span> {{ $item->email }}</p>
-                        <p><a href="/journals/data?val={{$item->journal_mid}}" >View more Information</a></p>
+                        <p><span class="fw-bold">Primary Contact:</span> {{ $item->article_contact }}</p>
+                        <p> <span class="fw-bold"> Contact Number:</span> {{ $item->contact_number }} </p>
+                        <p><span class="fw-bold">Email:</span> {{ $item->email }}</p>
+                        <p><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-font-darkblue cen-link-hover-blue">View more information</a></p>
                         </div>
                     </div>
                     <hr>

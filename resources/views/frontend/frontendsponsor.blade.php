@@ -42,7 +42,7 @@
 
               <div class="row my-2">
                 <div class="col-auto">
-                  <a href="https://www.pchrd.dost.gov.ph/" target="blank"><img src="{{ asset('frontend/img/sponsor_logo/DOST-PCHRD-LOGOx800.png') }}" alt="Phlippine Council for Health Research and Development" class="img-fluid w-25" > </a>
+                  <a href="https://www.pchrd.dost.gov.ph/" target="_blank"><img src="{{ asset('frontend/img/sponsor_logo/DOST-PCHRD-LOGOx800.png') }}" alt="Phlippine Council for Health Research and Development" class="img-fluid w-25" > </a>
                </div>
 
              </div>
