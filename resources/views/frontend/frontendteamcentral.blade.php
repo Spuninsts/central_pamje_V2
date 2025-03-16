@@ -37,7 +37,7 @@
 
         <div class="cen-about">
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="text-center">
                         <img src="{{ asset('frontend/img/team-central/dr-cecile.webp') }}" alt="Dr. Cecilia Maramba-Lazarte" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Cecilia Nelia C. Maramba-Lazarte</h5>
@@ -45,8 +45,16 @@
                        
                     </div>
                 </div>
+                <div class="col-md-3">
+                  <div class="text-center">
+                      <img src="{{ asset('frontend/img/team-central/dr-palaganas.webp') }}" alt="Dr. Erlinda C. Palaganas" class="rounded-circle" width="140" height="140">
+                      <h5>Dr. Erlinda C. Palaganas, PhD, RN</h5>
+                      <p class="role">Role</p>
+                     
+                  </div>
+              </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="text-center">
                         <img src="{{ asset('frontend/img/team-central/dr-lawag.webp') }}" alt="Dr. Ivan Lawag" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Ivan Lawag, MRSC, MSc, PhD</h5>
@@ -54,7 +62,7 @@
                         
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="text-center">
                         <img src="{{ asset('frontend/img/team-central/user-profile.webp') }}" alt="Dr. Julie Caguiat" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Julie Caguiat</h5>
