@@ -469,6 +469,36 @@ class AdminController extends Controller
 
     }// end edit function
 
+    // This will DEstroy the record
+    public function ArticleDestroy($journal_mid){
+
+        try {
+            // Find the article by ID
+            $article = Article::where('journal_mid',$journal_mid)->first();
+            //dd($article);
+
+            // Optional: Check if current user has permission to delete this article
+            // if (auth()->user()->cannot('delete', $article)) {
+            //     return redirect()->route('articles.index')->with('error', 'You do not have permission to delete this article.');
+            // }
+            // Delete the article
+            if($article){
+                $article->delete();
+            }
+
+
+            // Redirect with success message
+            return redirect()->route('admin.active-articles')->with('success', 'Article deleted successfully.');
+
+        } catch (ModelNotFoundException $e) {
+            // Handle case where article doesn't exist
+            return redirect()->route('admin.active-articles')->with('error', 'Article not found.');
+        } catch (\Exception $e) {
+            // Handle any other exceptions
+            return redirect()->route('admin.active-articles')->with('error', 'An error occurred while deleting the article.');
+        }
+
+    }
     public function AdminArticleStore(Request $request){
         $id = Auth::user()->fname;
 
@@ -827,8 +857,8 @@ class AdminController extends Controller
         ]);*/
         //dd($request->file('banner_image'));
 
-        if($request->file('banner_image')){
-            $file = $request->hasFile('banner_image');
+        if($request->hasFile('banner_image')){
+            $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
 
@@ -868,8 +898,8 @@ class AdminController extends Controller
 
     public function AdminBannerUpdate(Request $request){
          //dd($request);
-        if($request->file('banner_image')){
-            $file = $request->hasFile('banner_image');
+        if($request->hasFile('banner_image')){
+            $file = $request->file('banner_image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/upload/admin_images/'), $filename);
 

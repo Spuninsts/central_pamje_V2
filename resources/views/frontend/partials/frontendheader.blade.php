@@ -19,7 +19,7 @@
               &nbsp;
               Log in</button>
             </a></li>
-            <li class="nav-item mx-1">
+            <!-- <li class="nav-item mx-1">
             <a href="/register" >
                 <button type="button" class="btn btn-primary ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -28,7 +28,7 @@
               &nbsp;
               Register</button>
             </a>
-            </li>
+            </li>-->
           </ul>
 
         </div>

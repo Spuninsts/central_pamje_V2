@@ -13,9 +13,15 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                         <div class="container mt-5">
-                                <label class="h4">Editorial Team for {{$AssociateData[0]->association_journal}}</label>
+                            @if(empty($AssociateData) || isset($AssociateData[0]))
+                                @php $message=$AssociateData[0]->association_journal @endphp
+                            @else
+                                @php $message="" @endphp
+                            @endif
+
+                                <label class="h4">Editorial Team for {{$message}}</label>
                                 @php $ctr = 1 @endphp
-                                <input type="hidden" class="form-control" name="association_journal" value="{{$AssociateData[0]->association_journal}}">
+                                <input type="hidden" class="form-control" name="association_journal" value="{{$message}}">
 
                             @foreach($role_array as $role) <!-- start for each role-->
                                     <!-- this is for the member type -->
@@ -89,7 +95,7 @@
                         <div class="container mt-5 pb-5">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <a class="btn btn-danger" href="/admin/article/edit?val={{$AssociateData[0]->association_journal}}" role="button">Back to Journal</a>
+                                <a class="btn btn-danger" href="/admin/article/edit?val={{$message}}" role="button">Back to Journal</a>
                             </h2>
                         </div>
                 </div> <!-- card body -->

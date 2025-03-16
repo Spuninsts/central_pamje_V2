@@ -53,7 +53,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Journal eContact </label>
-                            <input type="email" class="form-control" name="email" placeholder="" value="{{ $item->email }}">
+                            <input type="text" class="form-control" name="email" placeholder="" value="{{ $item->email }}">
                         </div>
                         <div class="mb-3">
                             <label for="journal_contact" class="form-label">Journal Contact Person</label>
@@ -269,6 +269,48 @@
                         </div>
                         </form>
                     </div>
+
+                    <div class="mb-3 pt-5">
+                        <div class="form-check form-check-inline">
+                            <div class="mb-3">
+
+                                <!-- Delete Button that triggers the modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $ArticleData[0]->journal_mid }}">
+                                    Delete
+                                </button>
+
+                                <!-- Delete Confirmation Modal -->
+                                <div class="modal fade" id="deleteModal{{ $ArticleData[0]->journal_mid }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete "{{ $ArticleData[0]->short_title }}"? This action cannot be undone.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                                                <!-- Delete Form -->
+                                                <form action="{{ route('admin.article.destroy', $ArticleData[0]->journal_mid) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
