@@ -283,7 +283,7 @@ class UserController extends Controller
         }
         $role_array = array_values(array_unique($role_array)); //unique roles for users.
 
-        dd($role_array);
+        //dd($role_array);
         //dd($temp_array); // this has all the ID's needed for the other information.
 
         // * need to get indexes, publisher and users.  * //
