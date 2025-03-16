@@ -76,7 +76,8 @@ return array(
         "Editor in Chief",
         "Associate Editor",
         "Managing Editor",
-        "Editorial Assistant"
+        "Editorial Assistant",
+        "Editorial Board"
     ),
 
     'resource_sources' => array(

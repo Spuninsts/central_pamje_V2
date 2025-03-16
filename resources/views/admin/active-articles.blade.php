@@ -41,6 +41,21 @@
 							<div class="mt-3">
 							<a href="{{ route('admin.new-article') }}" class="btn btn-info active" role="button" aria-pressed="true">Add Journal</a>
 							</div>
+                            <div class="mt-3">
+
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
+                            </div>
 						</div>
 					</div>
 					</div>

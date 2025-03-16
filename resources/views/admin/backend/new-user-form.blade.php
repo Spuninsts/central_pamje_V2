@@ -18,7 +18,7 @@
                         <div class="col-sm-3">
                             <div class="mb-3">
                                 <label for="journal_id" class="form-label">user ID</label>
-                                <input type="text" class="form-control bg-gray-200 w-25" name="user_id" value="{{$NewUserID}}" readonly>
+                                <input type="text" class="form-control bg-gray-200 w-60" name="user_id" value="{{$NewUserID}}" readonly>
                             </div>
                         </div><!-- Col -->
                         <div class="col-sm-2">

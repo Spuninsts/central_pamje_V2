@@ -99,6 +99,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
     //Route::get('/admin/article/data', [AdminController::class, 'LoadArticleData'])->name('admin.article.data'); // loads all article data in console
     Route::get('/admin/article/edit', [AdminController::class, 'EditArticleData'])->name('admin.article.edit'); // allows edit of data.
 
+
+
+    //  DELETE records
+    Route::delete('/admin/articles/{journal_mid}', [AdminController::class, 'ArticleDestroy'])->name('admin.article.destroy'); // removed article record
+    Route::delete('/admin/user/{user_id}', [UserController::class, 'UserDestroy'])->name('admin.user.destroy'); // Removes user
+
     //Articles - these are the pages for news, announcement and additional single page articles.
     Route::get('/admin/active/banners', [AdminController::class, 'ActiveBanners'])->name('admin.active-banners');
     Route::get('/admin/active/announcements', [AdminController::class, 'ActiveAnnouncements'])->name('admin.active-announcements');

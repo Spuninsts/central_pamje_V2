@@ -93,6 +93,36 @@ class UserController extends Controller
         return view('admin.new-user',compact('NewUserID','organizationData'));
     }// End Method
 
+    public function UserDestroy($user_id){
+            $return_html = "/admin/active/users?val=active";
+
+        try {
+            // Find the article by ID
+            $article = User::where('user_id',$user_id)->first();
+            //dd($article);
+
+            // Optional: Check if current user has permission to delete this article
+            // if (auth()->user()->cannot('delete', $article)) {
+            //     return redirect()->route('articles.index')->with('error', 'You do not have permission to delete this article.');
+            // }
+            // Delete the article
+            if($article){
+                $article->delete();
+            }
+
+
+            // Redirect with success message
+            return redirect($return_html)->with('success', 'User deleted successfully.');
+
+        } catch (ModelNotFoundException $e) {
+            // Handle case where article doesn't exist
+            return redirect($return_html)->with('error', 'User not found.');
+        } catch (\Exception $e) {
+            // Handle any other exceptions
+            return redirect($return_html)->with('error', 'An error occurred while deleting the user.');
+        }
+
+    }
     public function UserIDGen(){
         $UserID = User::latest('id')->first('id');
         return($UserID['id']);
@@ -253,7 +283,7 @@ class UserController extends Controller
         }
         $role_array = array_values(array_unique($role_array)); //unique roles for users.
 
-        //dd($role_array);
+        dd($role_array);
         //dd($temp_array); // this has all the ID's needed for the other information.
 
         // * need to get indexes, publisher and users.  * //
