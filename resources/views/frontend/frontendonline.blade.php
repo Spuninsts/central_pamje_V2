@@ -2,7 +2,7 @@
 
 <div class="card-body">
   <h2 class="card-title my-3 text-center cen-font-darkblue">Medical Journal Online</h2>
-  <p class="card-text text-left px-5">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
+  <p class="card-text text-left px-5"></p>
 
   <div class="container">
         <!-- ======= Counts Section ======= -->
