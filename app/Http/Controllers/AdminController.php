@@ -1087,7 +1087,8 @@ class AdminController extends Controller
                 'page_category' => strtolower($request->page_category),
                 'page_subcategory' => $subcdata,
                 'page_tags' => $request->page_class, //this can be extended into multiple
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now()
 
             ]);
 
@@ -1104,7 +1105,8 @@ class AdminController extends Controller
                 'page_category' => strtolower($request->page_category),
                 'page_subcategory' => $subcdata,
                 'page_tags' => $request->page_class, //this can be extended into multiple
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now()
 
             ]);
         }
