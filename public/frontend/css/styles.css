@@ -68,6 +68,12 @@ h5 {
 .cen-hero-blurb{
     letter-spacing: .1rem;
 }
+
+
+.cen-link-hover-blue:hover {
+    text-decoration: underline !important;
+
+}
 /*--------------------------------------------------------------
 # NAV
 --------------------------------------------------------------*/
