@@ -558,6 +558,16 @@ class AdminController extends Controller
                  'publisher' => $request->journal_publisher,
              ]);
 
+             foreach($request->journal_indexes as $index){
+                 Association::insert([
+                     'created_at' => now(),
+                     'updated_at'=> now(),
+                     'association_journal' => $request->journal_id,
+                     'association_source' => 'entity',
+                     'association_id' => $index,
+                     'association_role' => 'ref',
+                 ]);
+             }
 
          }else{
 
@@ -588,6 +598,17 @@ class AdminController extends Controller
                  'indexing' => $indexingvar,
                  'publisher' => $request->journal_publisher,
              ]);
+
+             foreach($request->journal_indexes as $index){
+                 Association::insert([
+                     'created_at' => now(),
+                     'updated_at'=> now(),
+                     'association_journal' => $request->journal_id,
+                     'association_source' => 'entity',
+                     'association_id' => $index,
+                     'association_role' => 'ref',
+                 ]);
+             }
 
          }
         //dd($filename);
@@ -627,7 +648,7 @@ class AdminController extends Controller
             $this_article->policy = $request->policy;
             $this_article->publisher = $request->journal_publisher;
             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
-                $this_article->indexing = implode(",", $request->journal_indexes);
+                $this_article->indexing = implode(",", $request->journal_indexes); //Converts the array to string
             }else {$this_article->indexing = null;}
             $this_article->photo = $filenamephoto;
             $this_article->updated_at = now();
@@ -672,6 +693,8 @@ class AdminController extends Controller
             }else {$this_article->indexing = null;}
             $this_article->updated_at = now();
             $this_article->save();
+
+            
 
             if($request->new_role){
                 foreach($request->new_users as $item){
