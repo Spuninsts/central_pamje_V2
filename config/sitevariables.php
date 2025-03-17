@@ -74,10 +74,11 @@ return array(
 
     'member_type' => array(
         "Editor in Chief",
-        "Associate Editor",
-        "Managing Editor",
+        "Associate Editors",
+        "Managing Editors",
         "Editorial Assistant",
-        "Editorial Board"
+        "Editorial Board",
+        "Editorial Staffs"
     ),
 
     'resource_sources' => array(
