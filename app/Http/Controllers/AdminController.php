@@ -694,7 +694,7 @@ class AdminController extends Controller
             $this_article->updated_at = now();
             $this_article->save();
 
-            
+
 
             if($request->new_role){
                 foreach($request->new_users as $item){
