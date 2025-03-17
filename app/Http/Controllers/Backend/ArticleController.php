@@ -332,7 +332,7 @@ class ArticleController extends Controller
         //dd($AssociateData);
         //Just getting the IDS on association table
         $temp_array = array();
-        $role_array = config('sitevariables.member_type');
+        $role_array = array();//config('sitevariables.member_type');
         $associate_userid_array=[];
         //dd($role_array);
         //This checks if record is a user and will ectract the role in this record.

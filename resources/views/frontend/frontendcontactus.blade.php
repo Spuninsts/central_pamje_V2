@@ -42,28 +42,28 @@
                             <div class="col-sm-8">
                               <p class="fw-bold cen-font-darkblue">Postal Address:</p>
                               <p >
-                                  G/F Administrative Office, Philippine Nurses Association Bldg.  
+                                  G/F Administrative Office, Philippine Nurses Association Bldg.
                                   1663 F.T. Benitez St., Brgy. 695, Zone 75, Malate, Manila 1004 Philippines
                               </p>
-                              
+
                               <p class="fw-bold cen-font-darkblue ">Telephone:</p>
                               <p >
                                   +632 852 109 37 <br>
                                   +632 840 044 30 <br>
                                   +63 955 2652324
                               </p>
-                              
+
                               <p><span class="fw-bold cen-font-darkblue">Fax:</span>  +632 852 515 96</p>
 
-                              
+
                               <p><span class="fw-bold cen-font-darkblue">Email:</span> <a href="mailto:secretariat@pamje.org" >secretariat@pamje.org</a></p>
 
-                              
+
                             </div>
                         </div>
                     </div>
 
-                    <!-- Form -->
+                    <!-- Form -- >
                     <div class="cen-contact-form">
                         <div class="row my-4">
                             <div class="col-sm-8 ">
@@ -100,10 +100,10 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    
-                    
+
+
 
                 </div>
             </div>
