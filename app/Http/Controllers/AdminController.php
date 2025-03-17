@@ -558,15 +558,17 @@ class AdminController extends Controller
                  'publisher' => $request->journal_publisher,
              ]);
 
-             foreach($request->journal_indexes as $index){
-                 Association::insert([
-                     'created_at' => now(),
-                     'updated_at'=> now(),
-                     'association_journal' => $request->journal_id,
-                     'association_source' => 'entity',
-                     'association_id' => $index,
-                     'association_role' => 'ref',
-                 ]);
+             if(!is_null($request->journal_indexes) or $request->journal_indexes != null or $request->journal_indexes != "") {
+                 foreach ($request->journal_indexes as $index) {
+                     Association::insert([
+                         'created_at' => now(),
+                         'updated_at' => now(),
+                         'association_journal' => $request->journal_id,
+                         'association_source' => 'entity',
+                         'association_id' => $index,
+                         'association_role' => 'ref',
+                     ]);
+                 }
              }
 
          }else{
@@ -599,17 +601,18 @@ class AdminController extends Controller
                  'publisher' => $request->journal_publisher,
              ]);
 
-             foreach($request->journal_indexes as $index){
-                 Association::insert([
-                     'created_at' => now(),
-                     'updated_at'=> now(),
-                     'association_journal' => $request->journal_id,
-                     'association_source' => 'entity',
-                     'association_id' => $index,
-                     'association_role' => 'ref',
-                 ]);
+             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                 foreach ($request->journal_indexes as $index) {
+                     Association::insert([
+                         'created_at' => now(),
+                         'updated_at' => now(),
+                         'association_journal' => $request->journal_id,
+                         'association_source' => 'entity',
+                         'association_id' => $index,
+                         'association_role' => 'ref',
+                     ]);
+                 }
              }
-
          }
         //dd($filename);
 
