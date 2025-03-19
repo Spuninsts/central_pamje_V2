@@ -20,7 +20,7 @@
               <h5 class="card-title cen-font-darkblue"><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-font-darkblue cen-link-hover-blue">{{ $item->full_title }} | {{ $item->short_title }}
               </a></h5>
               <p class="card-text">{{ substr($item->about,0) }}</p>
-              <p><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-font-darkblue cen-link-hover-blue">View more information</a></p>
+              <p><a href="/journals/data?val={{$item->journal_mid}}" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View more information</a></p>
             </div>
           </div>
         </div>
