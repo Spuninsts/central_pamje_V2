@@ -3,7 +3,7 @@
       <div class="row my-4">
         <div class="col d-flex justify-content-between align-items-center">
           <h2 class="cen-font-darkblue">News and Announcement</h2>
-          <a href="/newsannouncements" class="btn btn-primary">View all</a>
+          <a href="/newsannouncements" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View All</a>
         </div>
       </div>
 

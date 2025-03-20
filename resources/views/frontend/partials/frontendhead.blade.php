@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/styles.css') }}">
 
     <!-- Data Tables  -->
-    <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" />
+    <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" >
     <!-- Data Tables  -->
 
     <!-- Google tag (gtag.js) -->
