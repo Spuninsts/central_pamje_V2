@@ -71,7 +71,7 @@
 
           <div class="row py-3 d-flex flex-column flex-sm-row">
             <div class="col-sm-12 col-md-5 col-lg-3 mt-2 ">
-              <ul class="list-unstyled d-flex justify-content-sm-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
+              <ul class="list-unstyled d-flex justify-content-center  justify-content-md-start justify-content-lg-start justify-content-xl-start">
               <li><a href="#" class="nav-link text-white"><small>Privacy Policy</small>  </a></li>
               <li><span class="text-white"> &nbsp; |   &nbsp; </span> </li>
               <li><a href="#" class="nav-link text-white"><small> Terms and of Use </small></a></li>
@@ -94,7 +94,7 @@
             </div>
 
             <div class="col-sm-12 col-md-3 col-lg-3 mt-2">
-              <ul class="list-unstyled d-flex  justify-content-sm-center justify-content-md-start justify-content-lg-end justify-content-xl-end">
+              <ul class="list-unstyled d-flex  justify-content-center  justify-content-md-start justify-content-lg-end justify-content-xl-end">
               <a href="#" class="nav-link text-white"> <small> @2024 Copyright </small></a>
               </ul>
             </div>
