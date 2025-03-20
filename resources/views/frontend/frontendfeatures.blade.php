@@ -7,7 +7,7 @@
         </div>
       </div>
       <!-- Second Row: Cards -->
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
         @foreach( $ArticleData as $key => $item)
         <!-- Card 1 -->
