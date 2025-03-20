@@ -22,7 +22,7 @@
               <p class="card-text">{{ substr($item->about,0) }}</p>
             </div>
               <div class="card-footer bg-white border-top-0">
-                  <p><a href="/journals/data?val={{$item->journal_mid}}" >View more Information</a></p>
+                  <p><a href="/journals/data?val={{$item->journal_mid}}" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View more Information</a></p>
               </div>
           </div>
         </div>
