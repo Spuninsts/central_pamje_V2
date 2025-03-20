@@ -31,7 +31,7 @@
                                             <option value="{{$userData->user_type}}" selected>{{$userData->user_type}}</option>
                                             <option value="editor">Editor</option>
                                             <option value="reviewer">Reviewer</option>
-                                            <option value="organization">Org Contact</option>
+                                            <option value="contact">Contact</option>
                                             <option value="standard">Standard</option>
                                             <option value="admin">Admin</option>
                                         </select>

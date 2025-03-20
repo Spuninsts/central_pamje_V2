@@ -20,9 +20,32 @@ class ArticleController extends Controller
     //Loads main page
     public function LoadFeaturedArticlesMain(){
 
+        $assetCount = array();
         $BannerData = banner::where('banner_status',"active")
                             ->orderBy('id','DESC')
                             ->get();
+
+        $resourceCount = page::where('page_status',"active")
+                            ->Where('page_type','Resource')
+                            ->get(['page_id']);
+
+        $reviewerCount = User::Where('user_status',"active")
+                            ->where(function($query) {
+                                $query->where('user_type','reviewer')
+                                    ->orWhere('user_type','editor');
+                            })
+                            ->get('user_id');
+
+        $ArticleData = Article::where(function($query) {
+            $query->Where('article_status','active')
+                ->orWhere('article_status','featured');
+        })
+            ->get('journal_mid');
+
+        array_push($assetCount,count($ArticleData));
+        array_push($assetCount,count($resourceCount));
+        array_push($assetCount,count($reviewerCount));
+
         //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
                                 ->orderBy('full_title')
@@ -37,20 +60,44 @@ class ArticleController extends Controller
                                     $query->where('page_type','News')
                                         ->orWhere('page_type','Announcement');
                                 })
-                                ->orderBy('id','DESC')
+                                ->orderBy('updated_at','DESC')
                                 ->take(3)
                                 ->get(['page_id','page_title','page_image_path','page_url']);
 
+
         //dd($NewsAnnounceData);
-        return view('frontend.frontendmain', compact('ArticleData','BannerData','NewsAnnounceData'));
+        return view('frontend.frontendmain', compact('ArticleData','BannerData','NewsAnnounceData','assetCount'));
 
     }// End Method
 
     public function LoadFeaturedArticlesMainAuth(){
 
+        $assetCount = array();
         $BannerData = banner::where('banner_status',"active")
             ->orderBy('id','DESC')
             ->get();
+
+        $resourceCount = page::where('page_status',"active")
+            ->Where('page_type','Resource')
+            ->get(['page_id']);
+
+        $reviewerCount = User::Where('user_status',"active")
+            ->where(function($query) {
+                $query->where('user_type','reviewer')
+                    ->orWhere('user_type','editor');
+            })
+            ->get('user_id');
+
+        $ArticleData = Article::where(function($query) {
+            $query->Where('article_status','active')
+                ->orWhere('article_status','featured');
+        })
+            ->get('journal_mid');
+
+        array_push($assetCount,count($ArticleData));
+        array_push($assetCount,count($resourceCount));
+        array_push($assetCount,count($reviewerCount));
+
         //dd($BannerData);
         $ArticleData = Article::where('article_status','featured')
             ->orderBy('full_title')
@@ -60,16 +107,17 @@ class ArticleController extends Controller
             $ArticleData[$x]->about = $this->getContextSummary($ArticleData[$x]->about)."...";
         }
 
-        $NewsAnnounceData = page::where('page_type',"news")
-            ->orWhere('page_type',"announcement")
-            ->where('page_status',"active")
-            //->orderBy('id','DESC')
+        $NewsAnnounceData = page::where('page_status',"active")
+            ->where(function($query) {
+                $query->where('page_type','News')
+                    ->orWhere('page_type','Announcement');
+            })
             ->orderBy('updated_at','DESC')
             ->take(3)
-            ->get(['page_id','page_title','page_image_path']);
+            ->get(['page_id','page_title','page_image_path','page_url']);
 
         //dd($ArticleData);
-        return view('frontend.frontendmainauth', compact('ArticleData','BannerData','NewsAnnounceData'));
+        return view('frontend.frontendmainauth', compact('ArticleData','BannerData','NewsAnnounceData','assetCount'));
 
     }// End Method
 
@@ -273,26 +321,38 @@ class ArticleController extends Controller
         //dd(request()->val);  // value from link parameter
 
         // * ARTICLE Data
-        $ArticleData = Article::where('journal_mid',request()->val)
+        $requestJournalID = request()->val;
+        $ArticleData = Article::where('journal_mid',$requestJournalID)
                         ->get();
 
-        $AssociateData = Association::where('association_journal',$ArticleData[0]->journal_mid)
+        //dd($ArticleData);
+        $AssociateData = Association::where('association_journal',$requestJournalID)
                         ->get();
 
+        //dd($AssociateData);
         //Just getting the IDS on association table
-        $temp_array = $role_array = array();
+        $temp_array = array();
+        $role_array = array();//config('sitevariables.member_type');
         $associate_userid_array=[];
+        //dd($role_array);
+        //This checks if record is a user and will ectract the role in this record.
         foreach($AssociateData as $assoc_id){
             array_push($temp_array,$assoc_id->association_id);
             if($assoc_id->association_source == 'user')
                 array_push($role_array,$assoc_id->association_role);
         }
+
+
+
         $role_array = array_values(array_unique($role_array)); //unique roles for users.
+
 
         //dd($role_array);
         //dd($temp_array); // this has all the ID's needed for the other information.
         // * need to get indexes, publisher and users.  * //
         // * USERS
+
+
         $UserData = User::whereIn('user_id',$temp_array)
                         ->get();
         //dd($UserData);

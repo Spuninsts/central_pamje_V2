@@ -48,7 +48,7 @@
 
                     <div class="row  my-4">
                         <div class="col-sm-2 ">
-                            <a href="/journals/data?val={{$item->journal_mid}}"><img src="{{ (!empty($item->photo)) ? url('upload/admin_images/'.$item->photo) : url('upload/admin_images/placeholder.jpg') }}"  alt="{{ $item->short_title }}"  class="w-100 h-100"></a>
+                            <a href="/journals/data?val={{$item->journal_mid}}"><img src="{{ (!empty($item->photo)) ? url('upload/admin_images/'.$item->photo) : url('upload/admin_images/placeholder.jpg') }}"  alt="{{ $item->short_title }}"  class="w-100"></a>
                         </div>
                         <div class="col-sm-10" >
                         <p>

@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\organization;
 use JetBrains\PhpStorm\NoReturn;
+use function PHPUnit\Framework\isNull;
 
 
 class UserController extends Controller
@@ -145,7 +146,10 @@ class UserController extends Controller
 
         //dd($request);
         // this line checks if its a new org, it will retrieve an org id for adition.
-        $orgid = $this->IsNewOrgId($request->user_organization);
+        $orgid = false;
+        if(!isNull($request->user_organization or $request->user_organization != null or $request->user_organization != "" )){
+            $orgid = $this->IsNewOrgId($request->user_organization);
+        }
 
         $user_stat = "active";
         if($request->user_status == "approval"){$user_stat = "approval";}
@@ -162,7 +166,7 @@ class UserController extends Controller
             ]);
             $entry_orgid = $orgid;
         } else {
-            $entry_orgid = $request->user_organization;
+            $entry_orgid = $request->user_organization; //this means its null
         }
 
         if($request->hasFile('user_photo')){

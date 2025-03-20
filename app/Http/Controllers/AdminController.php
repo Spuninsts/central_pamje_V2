@@ -558,6 +558,18 @@ class AdminController extends Controller
                  'publisher' => $request->journal_publisher,
              ]);
 
+             if(!is_null($request->journal_indexes) or $request->journal_indexes != null or $request->journal_indexes != "") {
+                 foreach ($request->journal_indexes as $index) {
+                     Association::insert([
+                         'created_at' => now(),
+                         'updated_at' => now(),
+                         'association_journal' => $request->journal_id,
+                         'association_source' => 'entity',
+                         'association_id' => $index,
+                         'association_role' => 'ref',
+                     ]);
+                 }
+             }
 
          }else{
 
@@ -589,6 +601,18 @@ class AdminController extends Controller
                  'publisher' => $request->journal_publisher,
              ]);
 
+             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
+                 foreach ($request->journal_indexes as $index) {
+                     Association::insert([
+                         'created_at' => now(),
+                         'updated_at' => now(),
+                         'association_journal' => $request->journal_id,
+                         'association_source' => 'entity',
+                         'association_id' => $index,
+                         'association_role' => 'ref',
+                     ]);
+                 }
+             }
          }
         //dd($filename);
 
@@ -627,7 +651,7 @@ class AdminController extends Controller
             $this_article->policy = $request->policy;
             $this_article->publisher = $request->journal_publisher;
             if(($request->journal_indexes) || !is_null($request->journal_indexes) || $request->journal_indexes != "") {
-                $this_article->indexing = implode(",", $request->journal_indexes);
+                $this_article->indexing = implode(",", $request->journal_indexes); //Converts the array to string
             }else {$this_article->indexing = null;}
             $this_article->photo = $filenamephoto;
             $this_article->updated_at = now();
@@ -672,6 +696,8 @@ class AdminController extends Controller
             }else {$this_article->indexing = null;}
             $this_article->updated_at = now();
             $this_article->save();
+
+
 
             if($request->new_role){
                 foreach($request->new_users as $item){
@@ -1087,7 +1113,8 @@ class AdminController extends Controller
                 'page_category' => strtolower($request->page_category),
                 'page_subcategory' => $subcdata,
                 'page_tags' => $request->page_class, //this can be extended into multiple
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now()
 
             ]);
 
@@ -1104,7 +1131,8 @@ class AdminController extends Controller
                 'page_category' => strtolower($request->page_category),
                 'page_subcategory' => $subcdata,
                 'page_tags' => $request->page_class, //this can be extended into multiple
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now()
 
             ]);
         }
