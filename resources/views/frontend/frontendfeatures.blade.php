@@ -3,7 +3,7 @@
       <div class="row my-4 ">
         <div class="col d-flex justify-content-between align-items-center">
           <h2 class="cen-font-darkblue">Central Features</h2>
-          <a href="http://central.pamje.org/journals/alphabet?val=all" class="btn btn-primary">View all</a>
+          <a href="http://central.pamje.org/journals/alphabet?val=all" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View All</a>
         </div>
       </div>
       <!-- Second Row: Cards -->
