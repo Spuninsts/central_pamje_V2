@@ -3,11 +3,11 @@
       <div class="row my-4 ">
         <div class="col d-flex justify-content-between align-items-center">
           <h2 class="cen-font-darkblue">Central Features</h2>
-          <a href="http://central.pamje.org/journals/alphabet?val=all" class="btn btn-primary">View all</a>
+          <a href="http://central.pamje.org/journals/alphabet?val=all" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View All</a>
         </div>
       </div>
       <!-- Second Row: Cards -->
-      <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
         @foreach( $ArticleData as $key => $item)
         <!-- Card 1 -->
@@ -22,7 +22,7 @@
               <p class="card-text">{{ substr($item->about,0) }}</p>
             </div>
               <div class="card-footer bg-white border-top-0">
-                  <p><a href="/journals/data?val={{$item->journal_mid}}" >View more Information</a></p>
+                  <p><a href="/journals/data?val={{$item->journal_mid}}" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View more Information</a></p>
               </div>
           </div>
         </div>

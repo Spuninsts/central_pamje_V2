@@ -54,7 +54,9 @@ h5 {
     background-color: #EDEEEF;
 }
 
-
+.cen-font-yellow{
+    color: #F9D01A;
+}
 
 .cen-hero-title{
     letter-spacing: .2rem;
@@ -73,6 +75,13 @@ h5 {
 .cen-link-hover-blue:hover {
     text-decoration: underline !important;
 
+}
+
+.cen-btn-yellow-hover:hover {
+    color: #F9D01A !important;  /* Change text color to yellow on hover */
+    background-color: #002968;
+    transition: color 0.3s ease-in-out; /* Smooth transition effect */
+   
 }
 /*--------------------------------------------------------------
 # NAV

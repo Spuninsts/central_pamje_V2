@@ -58,7 +58,7 @@
                         <p><span class="fw-bold">Primary Contact:</span> {{ $item->article_contact }}</p>
                         <p> <span class="fw-bold"> Contact Number:</span> {{ $item->contact_number }} </p>
                         <p><span class="fw-bold">Email:</span> {{ $item->email }}</p>
-                        <p><a href="/journals/data?val={{$item->journal_mid}}" class="text-decoration-none cen-font-darkblue cen-link-hover-blue">View more information</a></p>
+                        <p><a href="/journals/data?val={{$item->journal_mid}}" class="btn cen-bg-darkblue text-white cen-btn-yellow-hover">View more information</a></p>
                         </div>
                     </div>
                     <hr>

@@ -77,7 +77,7 @@
                                                         <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                                         <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank" >More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                                         <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +167,7 @@
                                                         <p class="card-text">{{substr($item->page_description, 0, 150) . "..."}}</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" target="_blank">More Information</a></small>
+                                                        <small class="text-muted"><span class="fw-bold">Link:</span> <a href="{{$item->page_url}}" class="text-danger" target="_blank">{{$item->page_url}}</a></small>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,11 +1,14 @@
 <head>
+    <title>Central -PAMJE</title>
     <!-- Required Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Additional Meta Tags -->
-    <meta name="author" content="Jaymie Tan">
-    <meta name="description" content="Central - PAMJE">
+    <meta name="author" content="Philippine Association of Medical Journal Editors (PAMJE)">
+    <meta name="description" content="a pioneering online platform dedicated to enhancing the reach and impact of Philippine medical research. Managed by the Philippine Association of Medical Journal Editors (PAMJE)  ">
+
+	<meta name="keywords" content="Centralized Electronic Roster of Philippine Medical Journals, CENTRAL,Philippine Medical Journals, Philippines, PAMJE, Philippine health research, Peer-reviewed Journals, Medical Journal Editors, Medical journal resources, Peer-reviewed Journals">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/styles.css') }}">
 
     <!-- Data Tables  -->
-    <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" />
+    <link href="https://www.nobleui.com/laravel/template/demo1/assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css" rel="stylesheet" >
     <!-- Data Tables  -->
 
     <!-- Google tag (gtag.js) -->
@@ -33,6 +36,6 @@
     </script>
 
     <!-- Bootstrap Icons Library -->
-    <title>Central -PAMJE</title>
+    
 </head>
 
