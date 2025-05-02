@@ -41,7 +41,7 @@
                     <div class="text-center">
                         <img src="{{ asset('frontend/img/team-central/dr-cecile.webp') }}" alt="Dr. Cecilia Maramba-Lazarte" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Cecilia Nelia C. Maramba-Lazarte</h5>
-                        <p class="role">Role</p>
+                        <p class="role">Project Leader</p>
                        
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                   <div class="text-center">
                       <img src="{{ asset('frontend/img/team-central/dr-palaganas.webp') }}" alt="Dr. Erlinda C. Palaganas" class="rounded-circle" width="140" height="140">
                       <h5>Dr. Erlinda C. Palaganas, PhD, RN</h5>
-                      <p class="role">Role</p>
+                      <p class="role">Consultant</p>
                      
                   </div>
               </div>
@@ -58,15 +58,15 @@
                     <div class="text-center">
                         <img src="{{ asset('frontend/img/team-central/dr-lawag.webp') }}" alt="Dr. Ivan Lawag" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Ivan Lawag, MRSC, MSc, PhD</h5>
-                        <p class="role">Role</p>
+                        <p class="role">Consultant</p>
                         
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="text-center">
-                        <img src="{{ asset('frontend/img/team-central/user-profile.webp') }}" alt="Dr. Julie Caguiat" class="rounded-circle" width="140" height="140">
+                        <img src="{{ asset('frontend/img/team-central/dr-julie.webp') }}" alt="Dr. Julie Caguiat" class="rounded-circle" width="140" height="140">
                         <h5>Dr. Julie Caguiat</h5>
-                        <p class="role">Role</p>
+                        <p class="role">Technical Assistant II</p>
                         
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="{{ asset('frontend/img/team-central/user-profile.webp') }}" alt="Salvador Alcantara" class="rounded-circle" width="140" height="140">
+                        <img src="{{ asset('frontend/img/team-central/Salvador-Alcantara.webp') }}" alt="Salvador Alcantara" class="rounded-circle" width="140" height="140">
                         <h5>Salvador Alcantara</h5>
                         <p class="role">Web Developer</p>
                         
@@ -93,9 +93,9 @@
 
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="{{ asset('frontend/img/team-central/user-profile.webp') }}" alt="Rea Epistola" class="rounded-circle" width="140" height="140">
+                        <img src="{{ asset('frontend/img/team-central/Rea-Epistola.webp') }}" alt="Rea Epistola" class="rounded-circle" width="140" height="140">
                         <h5>Rea Epistola</h5>
-                        <p class="role">Role</p>
+                        <p class="role">Web Editorial consultant</p>
                         
                     </div>
                 </div>
