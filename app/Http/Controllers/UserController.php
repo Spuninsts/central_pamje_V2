@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\EmailController;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Article;
 use App\Models\Association;
 use App\Models\entity;
@@ -146,10 +147,12 @@ class UserController extends Controller
 
         //dd($request);
         // this line checks if its a new org, it will retrieve an org id for adition.
-        $orgid = false;
-        if(!isNull($request->user_organization or $request->user_organization != null or $request->user_organization != "" )){
-            $orgid = $this->IsNewOrgId($request->user_organization);
-        }
+        // $orgid = false;
+        $orgid = $this->IsNewOrgId($request->user_organization);
+
+//        if(!isNull($request->user_organization or $request->user_organization != null or $request->user_organization != "" )){
+//            $orgid = $this->IsNewOrgId($request->user_organization);
+//        }
 
         $user_stat = "active";
         if($request->user_status == "approval"){$user_stat = "approval";}
@@ -157,6 +160,8 @@ class UserController extends Controller
 
         $user_password = Str::random(30);
         $user_password = Hash::make($user_password);
+
+        //dd($orgid);
 
         if($orgid){
             organization::insert([
@@ -350,5 +355,158 @@ class UserController extends Controller
 
         return view('frontend.frontendauthorreviewer',compact('UserData'));
     }// end Author Reviewer
+
+    public function showRegistrationForm()
+    {
+        return view('auth.user-register');
+    }
+
+    public function UserRegistration(Request $request)
+    {
+        //dd($request);
+        // Basic validation for all user types
+        /*
+         * `id`, - System ID
+            `user_id`, - auto generated ID
+            `org_id`,
+            `title`, Dr,Prof
+            `fname`,
+            `lname`,
+            `mname`,
+            `username`, - email address
+            `email`,
+            `email_verified_at`, - this will be a mechanism to confirm account
+            `password`,
+            `user_address`, - POST title MD or
+            `user_photo`, or document
+            `user_type`, admin, contact , reviewer, editor
+            `role`,  samw as user_tyupe, this can be re-used
+            `user_status`, active, pending, inactive.
+            `user_spare`,  Specialty
+            `remember_token`,
+            `created_at`,
+            `updated_at`
+
+
+                'to' => 'required|email',
+                'template' => 'required|string',
+                'subject' => 'required|string|max:255',
+                'data' => 'nullable|array'
+
+                $mailData = [
+                        'subject' => "New Registration",
+                        'title' => "New Registration",
+                        'template' => "emails.generic",
+                        'message' => $validated['message'],
+                        'name' => $validated['name'],
+                        'from_email' => $validated['from_email'],
+                        ])
+                    ];
+
+
+         * */
+
+        $emailController = new EmailController();
+
+        $rules = [
+            'title' => 'nullable|string|max:10',
+            'fname' => 'required|string|max:255',
+            'mname' => 'nullable|string|max:255',
+            'lname' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'user_address' => 'nullable|string',
+            'org_id' => 'nullable|string|max:255',
+            'user_photo' => 'nullable|image|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx,ppt,pptx,txt,rtf,csv,odt,ods,odp|max:2048',
+            'expertise' => 'nullable|array',
+            'terms' => 'required',
+            'user_type' => 'required|in:reviewer,editor',
+        ];
+
+        /* / Additional validation for editors
+        if ($request->user_type == 'editor') {
+            $editorRules = [
+                'specialty' => 'nullable|string|max:255',
+                'position' => 'nullable|string|max:255',
+                'experience' => 'nullable|string',
+            ];
+            $rules = array_merge($rules, $editorRules);
+        }*/
+
+        $validator = Validator::make($request->all(), $rules);
+
+        /*
+         *
+         if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }*/
+
+        //dd($validator);
+
+        // Handle file upload if present
+        $filenamephoto = null;
+        if($request->hasFile('article_photo')){
+            $file = $request->file('article_photo');
+            $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $filenamephoto);
+        }
+        /*
+         * */
+        //dd($filenamephoto);
+
+        // Generate a unique user_id with appropriate prefix
+        $prefix = $request->user_type == 'editor' ? 'ED-' : 'REV-';
+        $userId = $prefix . Str::random(8);
+
+        /* / Prepare user_spare data based on user type
+        $userSpare = ['expertise' => $request->expertise];
+
+        if ($request->user_type == 'reviewer') {
+            $userSpare['specialty'] = $request->specialty;
+            $userSpare['position'] = $request->position;
+            $userSpare['experience'] = $request->experience;
+        } */
+        //dd(json_encode($request->expertise));
+        // Create the user
+        $user = User::create([
+            'user_id' => $userId,
+            'org_id' => $request->org_id,
+            'title' => $request->title,
+            'fname' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'username' => $request->email,
+            'email' => $request->email,
+            //'user_address' => $request->user_address, //MD, MDm
+            'user_photo' => $filenamephoto,
+            'user_type' => $request->user_type,
+            'role' => json_encode($request->expertise),
+            'user_status' => 'approval',
+        ]);
+
+        // You can add additional logic here, such as sending a welcome email or notification
+        //dd($user);
+        return redirect()->route('user.register.success', ['type' => $request->user_type])
+            ->with('success', 'Registration successful! Your account is pending approval.');
+    }
+
+    /**
+     * Show the success page after registration.
+     *
+     * @param  string  $type
+     * @return \Illuminate\View\View
+     */
+    public function showSuccessPage($type)
+    {
+        if (!in_array($type, ['reviewer', 'editor'])) {
+            abort(404);
+        }
+
+        return view('auth.user-register-success', ['userType' => $type]);
+    }
+
+
 
 }

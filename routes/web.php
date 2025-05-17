@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\ArticleController;
 use App\Http\Controllers\Backend\ArticleTypeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\EmailController;
 
 
 /*
@@ -54,8 +56,24 @@ Route::get('/', [UserController::class, 'Index']);
     //Top SEARCH FUNCTION
     Route::get('/search', [SearchController::class, 'SearchContents'])->name('main.search');
 
+    // In routes/web.php (for testing purposes only)
+    Route::get('/test-mail', function () {
+        $data = [
+            'subject'=>'Test From laravel 101',
+            'message' => 'This is a test email from Laravel 101'
+            ];
+        try{
+        Mail::to('domainjunkie@gmail.com')->send(new \App\Mail\TestMail($data));
+
+        return 'Test email sent';
+        }catch (\Exception $e){
+            return $e->getMessage();
+        }
+    })->name('emails.test');
+
     // SEARCH
-    //return view('welcome');
+
+//return view('welcome');
     //});
 
     /* Route::get('{any}', [UserController::class, 'Index'])->where('any','/*', '.*');
@@ -66,7 +84,7 @@ Route::get('/', [UserController::class, 'Index']);
 
 Route::middleware(['auth','verified'])->group(function () {
     //Route::get('/', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('main'); //home main page
-    Route::get('/dashboard', [ArticleController::class, 'LoadFeaturedArticlesMainAuth'])->name('dashboard');
+    Route::get('/dashboard', [ArticleController::class, 'LoadFeaturedArticlesMain'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -150,6 +168,20 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 }); // end group
 
+//Email routes
+Route::middleware(['auth'])->prefix('admin/email')->group(function () {
+    Route::post('/test', [EmailController::class, 'sendTestEmail'])->name('email.test');
+    //Route::post('/contact', [EmailController::class, 'sendContactEmail'])->name('email.contact');
+    Route::post('/send', [EmailController::class, 'sendEmail'])->name('email.send');
+    Route::post('/bulk', [EmailController::class, 'sendBulkEmails'])->name('email.bulk');
+    Route::get('/test-config', [EmailController::class, 'testConfiguration'])->name('email.test.config');
+});
+
+Route::middleware(['email.rate'])->prefix('email')->group(function () {
+    Route::post('/send', [EmailController::class, 'sendEmail']);
+    Route::post('/bulk', [EmailController::class, 'sendBulkEmails']);
+    Route::post('/contact', [EmailController::class, 'sendContactEmail'])->name('email.contact');
+});
 
 /* Route::middleware(['auth','role:registered'])->group(function(){
     Route::get('/registered', [PeerEditorController::class, 'ResearcherDashboard'])->name('researcher.dashboard');
@@ -163,5 +195,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login'); //admin login.
 Route::get('/login', [UserController::class, 'UserLogin'])->name('login'); // user login
-Route::get('/register', [UserController::class, 'UserRegister'])->name('register'); // user registration
+//Route::get('/register', [UserController::class, 'UserRegister'])->name('register'); // user registration
 Route::get('/logout', [AdminController::class, 'userLogout'])->name('user.logout');
+
+//user registration
+// Routes for reviewer and editor registration
+Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('user.register.form');
+Route::post('/register', [UserController::class, 'UserRegistration'])->name('user.register');
+Route::get('/register/success/{type}', [UserController::class, 'showSuccessPage'])->name('user.register.success');

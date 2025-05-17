@@ -29,7 +29,7 @@
                             <label for="short_title" class="form-label">Short Title or Acronym</label>
                             <input type="text" class="form-control" name="short_title" autocomplete="off" placeholder="">
                         </div>
-                        <div class="mb-3">
+<!--                        <div class="mb-3">
                             <label for="org_society" class="form-label">Name of Organization or Society </label>
                             <select name="org_society" id="org_society">
                                 <option value="">--Select an organization--</option>
@@ -38,7 +38,32 @@
                                 @endforeach
 
                             </select>
-                        </div>
+                        </div> -->
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3 ">
+                                    <label for="organization" class="form-label">Organization</label>
+                                    <select class="js-example-basic-single form-select select2-hidden-accessible" id="dynamicSelect" name="org_society"  data-width="100%" data-select2-id="6" tabindex="-1" aria-hidden="true">
+                                        <option value="">--Select an organization--</option>
+                                        @foreach($organizationData as $item)
+                                            <option value="{{$item->org_id}}">{{$item->org_title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-4">
+                                <div class="mb-3 pt-4">
+                                    <input type="text" class="form-control" placeholder="New Organization Name" id="newItemInput">
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-sm-2">
+                                <div class="mb-3 pt-4">
+                                    <button class="btn btn-primary" type="button" id="addNewItem">Add New Organization</button>
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
+
                         <div class="mb-3">
                             <label for="email" class="form-label">Journal eContact </label>
                             <input type="text" class="form-control" name="email" placeholder="Enter Email">

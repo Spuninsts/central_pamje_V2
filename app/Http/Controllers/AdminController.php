@@ -12,6 +12,7 @@ use App\Models\journal;
 use App\Models\organization;
 use App\Models\Association;
 use App\Models\entity;
+use App\Traits\BunchOfFunctions;
 
     /**
      * Thist controller will handle all Administrative tasks
@@ -19,6 +20,8 @@ use App\Models\entity;
 
 class AdminController extends Controller
 {
+    use BunchOfFunctions;
+
     public function AdminDashboard(){
         //resources-view-folder-filename
         return view('admin.index');
@@ -69,16 +72,17 @@ class AdminController extends Controller
         $id = Auth::user()->id;
         $data = User::find($id);
         $data->username = $request->username;
-        $data->name = $request->name;
-        $data->phone = $request->phone;
+        $data->fname = $request->first_name;
+        $data->lname = $request->last_name;
+//      $data->phone = $request->phone;
         $data->email = $request->email;
         $data->user_address = $request->address;
 
-        if($request->file('user_photo')){
+        if($request->hasFile('photo')){
             $file = $request->file('photo');
             $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images'), $filename);
-            $data['photo'] = $filename;
+            $file->move(public_path('/upload/admin_images/'), $filename);
+            $data->user_photo = $filename;
         }
 
         $data->save();
@@ -524,6 +528,21 @@ class AdminController extends Controller
             }else{
             $filename = null;
         }*/
+
+        //Checking if the organization is new
+        $orgid = $this->IsNewOrgId($request->org_society);
+
+        if($orgid){
+            organization::insert([
+                'org_id' => $orgid,
+                'org_status' => "active",
+                'org_title' => $request->org_society,
+            ]);
+            $entry_orgid = $orgid;
+        } else {
+            $entry_orgid = $request->org_society; //this means its null
+        }
+
          if($request->hasFile('article_photo')){
             $file = $request->file('article_photo');
             $filenamephoto = date('YmdHis')."_".$file->getClientOriginalName();
@@ -545,7 +564,7 @@ class AdminController extends Controller
                  'article_status' => $article_stat,
                  'full_title' => $request->full_title,
                  'short_title' => $request->short_title,
-                 'org_society' => $request->org_society,
+                 'org_society' => $entry_orgid,
                  'email' => $request->email,
                  'article_contact' => $request->journal_contact,
                  'contact_number' => $request->contact_number,
@@ -589,7 +608,7 @@ class AdminController extends Controller
                  'article_status' => $article_stat,
                  'full_title' => $request->full_title,
                  'short_title' => $request->short_title,
-                 'org_society' => $request->org_society,
+                 'org_society' => $entry_orgid,
                  'email' => $request->email,
                  'article_contact' => $request->journal_contact,
                  'contact_number' => $request->contact_number,

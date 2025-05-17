@@ -81,7 +81,7 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <img id="showImage" class="wd-xl-100" src="{{ (!empty($userData->user_address)) ? url('upload/admin_images/'.$userData->user_address) : url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
+                                                        <img id="showImage" class="wd-xl-100" src="{{ (!empty($userData->user_photo)) ? url('upload/admin_images/'.$userData->user_photo) : url('upload/admin_images/placeholder.jpg') }}" alt="Journal Picture">
                                                     </div>
                                                 </div>
                                             </div>

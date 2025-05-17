@@ -10,25 +10,31 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                 <div>
-                    <img class="wd-70 rounded-circle" src="{{ (!empty($profileData->Photo)) ? url('upload/admin_images/'.$profileData->Photo) : url('upload/no_image.jpg') }}" alt="profile">
+                    <img class="wd-70 rounded-circle" src="{{ (!empty($profileData->user_photo)) ? url('upload/admin_images/'.$profileData->user_photo) : url('upload/no_image.jpg') }}" alt="profile">
                     <span class="h4 ms-3">{{ $profileData->username }}</span>
                 </div>
                 </div>
-                <div class="mt-3">
-                <label class="tx-11 fw-bolder mb-0 text-uppercase">Name:</label>
-                <p class="text-muted">{{ $profileData->name }}</p>
+                <div class="mt-3 row">
+                    <div class="col-md-6">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">First Name:</label>
+                        <p class="text-muted">{{ $profileData->fname }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Last Name:</label>
+                        <p class="text-muted">{{ $profileData->lname }}</p>
+                    </div>
                 </div>
                 <div class="mt-3">
                 <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
                 <p class="text-muted">{{ $profileData->email }}</p>
                 </div>
-                <div class="mt-3">
-                <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>
-                <p class="text-muted">{{ $profileData->phone }}</p>
-                </div>
+{{--                <div class="mt-3">--}}
+{{--                <label class="tx-11 fw-bolder mb-0 text-uppercase">Phone:</label>--}}
+{{--                <p class="text-muted">{{ $profileData->phone }}</p>--}}
+{{--                </div>--}}
                 <div class="mt-3">
                 <label class="tx-11 fw-bolder mb-0 text-uppercase">Address:</label>
-                <p class="text-muted">{{ $profileData->address }}</p>
+                <p class="text-muted">{{ $profileData->user_address }}</p>
                 </div>
                 <div class="mt-3 d-flex social-links">
                 <a href="javascript:;" class="btn btn-icon border btn-xs me-2">
@@ -59,29 +65,35 @@
 										<label for="exampleInputUsername1" class="form-label">Username</label>
 										<input type="text" name="username" class="form-control" id="username" autocomplete="off" value="{{ $profileData->username }}">
 									</div>
-                                    <div class="mb-3">
-										<label for="exampleInputUsername1" class="form-label">Name</label>
-										<input type="text" name="name" class="form-control" id="name" autocomplete="off" value="{{ $profileData->name }}">
-									</div>
+                                    <div class="mb-3 row">
+                                        <div class="col-md-6">
+                                            <label for="first_name" class="form-label">First Name</label>
+                                            <input type="text" name="first_name" class="form-control" id="first_name" autocomplete="off" value="{{ $profileData->fname }}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="last_name" class="form-label">Last Name</label>
+                                            <input type="text" name="last_name" class="form-control" id="last_name" autocomplete="off" value="{{ $profileData->lname }}">
+                                        </div>
+                                    </div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Email address</label>
 										<input type="email" name="email" class="form-control" id="email" autocomplete="off" value="{{ $profileData->email }}">
 									</div>
-                                    <div class="mb-3">
-										<label for="exampleInputUsername1" class="form-label">Phone</label>
-										<input type="text" name="phone" class="form-control" id="phone" autocomplete="off" value="{{ $profileData->phone }}">
-									</div>
+{{--                                    <div class="mb-3">--}}
+{{--										<label for="exampleInputUsername1" class="form-label">Phone</label>--}}
+{{--										<input type="text" name="phone" class="form-control" id="phone" autocomplete="off" value="{{ $profileData->phone }}">--}}
+{{--									</div>--}}
                                     <div class="mb-3">
 										<label for="exampleInputUsername1" class="form-label">Address</label>
-										<input type="text" name="address" class="form-control" id="address" autocomplete="off" value="{{ $profileData->address }}">
+										<input type="text" name="address" class="form-control" id="address" autocomplete="off" value="{{ $profileData->user_address }}">
 									</div>
                                     <div class="mb-3">
 										<label for="exampleInputUsername1" class="form-label">Photo</label>
-										<input type="file" name="photo" class="form-control" id="photo" autocomplete="off" value="{{ $profileData->photo }}">
+										<input type="file" name="photo" class="form-control" id="photo" autocomplete="off" value="{{ $profileData->user_photo }}">
 									</div>
 
                                     <div class="mb-3">
-									    <img class="wd-80 rounded-circle" id="showImage" src="{{ (!empty($profileData->Photo)) ? url('upload/admin_images/'.$profileData->Photo) : url('upload/no_image.jpg') }}" alt="profile">
+									    <img class="wd-80 rounded-circle" id="showImage" src="{{ (!empty($profileData->user_photo)) ? url('upload/admin_images/'.$profileData->user_photo) : url('upload/no_image.jpg') }}" alt="profile">
                                     </div>
 									<button type="submit" class="btn btn-primary me-2">Save Changes</button>
 								</form>
